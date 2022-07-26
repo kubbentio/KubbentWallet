@@ -5,7 +5,7 @@ SQlite.enablePromise(true);
 
 export const openDatabase = async (): Promise<SQLiteDatabase> => {
   const db = await SQlite.openDatabase({
-    name: "Blixt",
+    name: "Kubbent",
     location: "default",
   });
   return db;
@@ -21,7 +21,7 @@ export const setupInitialSchema = async (db: SQLiteDatabase) => {
 
 export const deleteDatabase = async () => {
   const r = await SQlite.deleteDatabase({
-    name: "Blixt",
+    name: "Kubbent",
     location: "default",
   });
   console.log(r);

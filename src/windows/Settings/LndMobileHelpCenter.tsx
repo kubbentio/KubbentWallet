@@ -8,7 +8,7 @@ import { newAddress } from "../../lndmobile/onchain";
 import { toast } from "../../utils";
 import { getWalletPassword } from "../../storage/keystore";
 import { unlockWallet } from "../../lndmobile/wallet";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import Color from "color";
 import Clipboard from "@react-native-community/clipboard";
 import { lnrpc } from "../../../proto/lightning";
@@ -232,10 +232,10 @@ export default function LndMobileHelpCenter({ navigation }) {
               </H1>
               <Button small info disabled={runningSteps} style={{width: 85, justifyContent: "center" }} onPress={onPressDoTest}>
                 {!runningSteps && <Text>Do Test</Text>}
-                {runningSteps && <Spinner size="small" color={blixtTheme.light} />}
+                {runningSteps && <Spinner size="small" color={kubbentTheme.light} />}
               </Button>
             </View>
-            <View style={{ flex: 1, padding: 3, backgroundColor: Color(blixtTheme.gray).darken(0.2).hex(), marginBottom: 10, width:"100%" }}>
+            <View style={{ flex: 1, padding: 3, backgroundColor: Color(kubbentTheme.gray).darken(0.2).hex(), marginBottom: 10, width:"100%" }}>
               {stepsResult.map((stepResult, i) => {
                 return (
                   <View style={style.resultItem} key={i}>
@@ -255,7 +255,7 @@ export default function LndMobileHelpCenter({ navigation }) {
                 );
               })}
             </View>
-            <View style={{ flex: 0.75, padding: 3, width: "100%", backgroundColor: Color(blixtTheme.gray).darken(0.2).hex() }}>
+            <View style={{ flex: 0.75, padding: 3, width: "100%", backgroundColor: Color(kubbentTheme.gray).darken(0.2).hex() }}>
               <LogBox text={log.current} scrollLock={true} />
             </View>
             <View style={{flexDirection: "row",  flexWrap:"wrap", justifyContent:"flex-end"}}>

@@ -7,9 +7,9 @@ import Long from "long";
 
 import { ReceiveStackParamList } from "./index";
 import { useStoreActions, useStoreState } from "../../state/store";
-import BlixtForm from "../../components/Form";
+import KubbentForm from "../../components/Form";
 import { formatBitcoin, BitcoinUnits, IBitcoinUnits, valueBitcoin, valueFiat } from "../../utils/bitcoin-units";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import useBalance from "../../hooks/useBalance";
 import { MATH_PAD_NATIVE_ID, MAX_SAT_INVOICE, PLATFORM } from "../../utils/constants";
 import { toast } from "../../utils";
@@ -59,12 +59,12 @@ export default function ReceiveSetupLsp({ navigation }: IReceiveSetupProps) {
 
   // Dunder
   const connectPeer = useStoreActions((store) => store.lightning.connectPeer);
-  const checkOndemandChannelService = useStoreActions((store) => store.blixtLsp.ondemandChannel.checkOndemandChannelService);
-  const ondemandConnectToService = useStoreActions((store) => store.blixtLsp.ondemandChannel.connectToService);
-  const ondemandChannelServiceStatus = useStoreActions((store) => store.blixtLsp.ondemandChannel.serviceStatus);
-  const ondemandChannelStatus = useStoreState((store) => store.blixtLsp.ondemandChannel.status);
-  const ondemandChannelServiceActive = useStoreState((store) => store.blixtLsp.ondemandChannel.serviceActive);
-  const ondemandChannelAddInvoice = useStoreActions((store) => store.blixtLsp.ondemandChannel.addInvoice);
+  const checkOndemandChannelService = useStoreActions((store) => store.kubbentLsp.ondemandChannel.checkOndemandChannelService);
+  const ondemandConnectToService = useStoreActions((store) => store.kubbentLsp.ondemandChannel.connectToService);
+  const ondemandChannelServiceStatus = useStoreActions((store) => store.kubbentLsp.ondemandChannel.serviceStatus);
+  const ondemandChannelStatus = useStoreState((store) => store.kubbentLsp.ondemandChannel.status);
+  const ondemandChannelServiceActive = useStoreState((store) => store.kubbentLsp.ondemandChannel.serviceActive);
+  const ondemandChannelAddInvoice = useStoreActions((store) => store.kubbentLsp.ondemandChannel.addInvoice);
   const currentRate = useStoreState((store) => store.fiat.currentRate);
   const remoteBalance = useStoreState((store) => store.channel.remoteBalance);
 
@@ -151,7 +151,7 @@ export default function ReceiveSetupLsp({ navigation }: IReceiveSetupProps) {
     }
   };
 
-  const createBlixtLspInvoice = async () => {
+  const createKubbentLspInvoice = async () => {
     setCreateInvoiceDisabled(true);
 
     const connectToPeer = await ondemandConnectToService();
@@ -379,7 +379,7 @@ export default function ReceiveSetupLsp({ navigation }: IReceiveSetupProps) {
 
   return (
     <Container>
-      <BlixtForm
+      <KubbentForm
         mathPadProps={{
           visible: mathPadVisibleOriginal,
           onAddPress: () => addMathOperatorToInput("+"),
@@ -399,13 +399,13 @@ export default function ReceiveSetupLsp({ navigation }: IReceiveSetupProps) {
             key="CREATE_INVOICE"
             block={true}
             primary={true}
-            onPress={shouldUseDunder ? createBlixtLspInvoice : createInvoice}
-            onLongPress={ondemandChannelServiceActive ? createBlixtLspInvoice : undefined}
+            onPress={shouldUseDunder ? createKubbentLspInvoice : createInvoice}
+            onLongPress={ondemandChannelServiceActive ? createKubbentLspInvoice : undefined}
             disabled={!canSend}
             style={{ marginBottom: mathPadVisible && false ? MATH_PAD_HEIGHT + 5 : 0 }}
           >
             {loading
-              ? <Spinner color={blixtTheme.light} />
+              ? <Spinner color={kubbentTheme.light} />
               : <Text>{t("createInvoice.title")}</Text>
             }
           </Button>

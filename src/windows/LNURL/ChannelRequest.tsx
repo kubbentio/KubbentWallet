@@ -4,7 +4,7 @@ import { Spinner } from "native-base";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 import Container from "../../components/Container";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { useStoreState, useStoreActions } from "../../state/store";
 import { toast, timeout } from "../../utils";
 
@@ -63,7 +63,7 @@ export default function LNURLChannelRequest({ navigation }: IChannelRequestProps
   }, []);
 
   return (
-    <Container centered style={{ backgroundColor: blixtTheme.dark }}>
+    <Container centered style={{ backgroundColor: kubbentTheme.dark }}>
       <StatusBar
         backgroundColor="transparent"
         hidden={false}
@@ -71,7 +71,7 @@ export default function LNURLChannelRequest({ navigation }: IChannelRequestProps
         networkActivityIndicatorVisible={true}
         barStyle="light-content"
       />
-      <Spinner color={blixtTheme.light} size={55} />
+      <Spinner color={kubbentTheme.light} size={55} />
     </Container>
   );
 }

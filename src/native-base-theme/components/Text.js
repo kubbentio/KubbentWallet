@@ -1,6 +1,6 @@
 // @flow
 
-import variable, { blixtTheme } from './../variables/commonColor';
+import variable, { kubbentTheme } from './../variables/commonColor';
 
 export default (variables /* : * */ = variable) => {
   let textTheme = {
@@ -13,8 +13,8 @@ export default (variables /* : * */ = variable) => {
     }
   };
 
-  // BLIXT
-  textTheme[".note"].color = blixtTheme.lightGray;
+  // KUBBENT
+  textTheme[".note"].color = kubbentTheme.lightGray;
 
   return textTheme;
 };

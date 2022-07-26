@@ -39,7 +39,7 @@
     "title": "Bienvenido",
     "createWallet": {
       "title": "Crear Cartera",
-      "msg1": "Blixt Wallet sigue estando en desarrollo.",
+      "msg1": "Kubbent Wallet sigue estando en desarrollo.",
       "msg2": "Si usas esta cartera, asegúrate de entender que puedes perder tus fondos.",
       "msg3": "No hay torre de vigilancia por ahora para vigilar tus canales mientras estas offline.",
       "msg4": "Soy temerario, cotinuar"
@@ -79,32 +79,32 @@
       "more": "Más información"
     },
     "sendOnChain": {
-      "title": "¡Bienvenido a Blixt Wallet!",
+      "title": "¡Bienvenido a Kubbent Wallet!",
       "msg1": "Para comenzar, envíe fondos en cadena a la dirección de bitcoin a la derecha.",
       "msg2": "Se abrirá automáticamente un canal para usted.",
       "msg3": "Enviar al menos",
       "alert": "Dirección de Bitcoin copiada al portapapeles"
     },
     "doBackup": {
-      "msg1": "¡Gracias por usar Blixt Wallet!",
+      "msg1": "¡Gracias por usar Kubbent Wallet!",
       "msg2": "Recomendamos hacer una copia de seguridad del monedero para que pueda restaurar sus fondos en caso de pérdida del teléfono.",
       "backup": "Copia del monedero"
     }
   },
   "help": {
     "title": "Ayuda",
-    "msg1": "Si tienes problemas o sugerencias, puedes contactar con los desarrolladores de Blixt Wallet rellenando un resumen en Github o contactándonos via email.",
+    "msg1": "Si tienes problemas o sugerencias, puedes contactar con los desarrolladores de Kubbent Wallet rellenando un resumen en Github o contactándonos via email.",
     "msg2": "También estas bienvenido a unirte a nuestro grupo público de Telegram.",
-    "msg3": "Como Blixt Wallet es una cartera nueva, necesitamos sugerencias en errores comunes que te puedes encontrar.",
+    "msg3": "Como Kubbent Wallet es una cartera nueva, necesitamos sugerencias en errores comunes que te puedes encontrar.",
     "telegramGroup": "Telegram grupo"
   },
   "syncInfo": {
     "syncedToChain": {
       "title": "Sincronización en progreso",
       "title1": "Sincronización completa",
-      "msg1": "Blixt Wallet esta sincronizandose con la blockchain.",
+      "msg1": "Kubbent Wallet esta sincronizandose con la blockchain.",
       "msg2": "Una vez tu cartera esté sincronizada con la blockchain, transacciones on-chain y fondos serán reconocidos y pueden ser vistos por la sección Bitcoin on-chain.",
-      "msg3": "Blixt Wallet está en sincronización con la blockchain.",
+      "msg3": "Kubbent Wallet está en sincronización con la blockchain.",
       "blockHeight": {
         "title": "Altura del bloque actual",
         "msg1": "Sincronización con la cadena en progreso"
@@ -152,7 +152,7 @@
   },
   "web.info": {
     "title": "Demo interactivo",
-    "pressToTry": "Pulse para probar Blixt Wallet!"
+    "pressToTry": "Pulse para probar Kubbent Wallet!"
   },
   "receive.receiveSetup": {
     "layout": {
@@ -167,7 +167,7 @@
         "msg1": "Qué es esto?"
       }
     },
-    "createBlixtLspInvoice": {
+    "createKubbentLspInvoice": {
       "title": "Abrir canal",
       "msg": "Para aceptar el pago de esta factura, un canal en la Linghtning Network tiene que ser abierto.",
       "msg1": "Esto requiere una tarifa única de aproximadamente",
@@ -198,7 +198,7 @@
   "receive.dunderLspInfo": {
     "title": "Sobre Dunder LSP",
     "msg": "Dunder es un Proveedor de Servicio Lightning (LSP) que automáticamente abre canales para ti cuando no tienes suficiente liquidez entrante.",
-    "msg1": "Esto podria ser el ejemplo del caso cuando empiezas a usar Blixt Wallet.",
+    "msg1": "Esto podria ser el ejemplo del caso cuando empiezas a usar Kubbent Wallet.",
     "msg2": "Como esto requiere una transacción on-chain, una tarifa de transacción de Bitcoin será deducida del pago. Los futuros pagos serán capaces de usar los nuevos canales abiertos con la Lightning network.",
     "msg3": "Dunder es",
     "msg4": "un software de código abierto",
@@ -424,7 +424,7 @@
       "msg1": "Dirección Lightning",
       "msg2": "Es una forma de pagar a una persona o un servicio en la Lightning Network.",
       "msg3": "Se ven como direcciones de email, pero en vez de enviar un email al receptor, le envias dinero.",
-      "msg4": "Blixt Wallet tiene todo tipo de soporte para enviar a una dirección Lightning, pero recibiendo",
+      "msg4": "Kubbent Wallet tiene todo tipo de soporte para enviar a una dirección Lightning, pero recibiendo",
       "msg5": "via una dirección Lightning está siendo trabajada."
     }
   },
@@ -497,7 +497,7 @@
     },
     "dialog": {
       "msg1": "Bienvenido al área keysend",
-      "msg2": "Keysend te permite pagar otra Blixt Wallet (o cualquier nodo Lightning que soporta keysend) sin requerir factura.",
+      "msg2": "Keysend te permite pagar otra Kubbent Wallet (o cualquier nodo Lightning que soporta keysend) sin requerir factura.",
       "msg3": "Click en la camara para escanear otro código QR de cartera o da una llave pública y clave de ruta debajo."
     },
     "send": {
@@ -657,7 +657,7 @@
         "setDialog": {
           "title": "Poner nodo",
           "info": "Configure un nodo Bitcoin compatible con BIP157 para establecer una conexión.",
-          "leaveBlankToSearch": "Déjelo en blanco para permitir que Blixt Wallet busque en la red Bitcoin un nodo válido.",
+          "leaveBlankToSearch": "Déjelo en blanco para permitir que Kubbent Wallet busque en la red Bitcoin un nodo válido.",
           "longPressToReset": "Para restablecer el nodo predeterminado ({{defaultNode}}), mantenga presionada la opción."
         },
         "restoreDialog": {
@@ -667,7 +667,7 @@
       },
       "restartDialog": {
         "title": "Reinicio requerido",
-        "msg": "Blixt Wallet tiene que ser reiniciado antes de aplicar la nueva configuración.",
+        "msg": "Kubbent Wallet tiene que ser reiniciado antes de aplicar la nueva configuración.",
         "msg1": "Te gustaría hacer esto ahora?"
       },
       "rpc": {
@@ -704,7 +704,7 @@
           "title": "Proveedor de canal entrante",
           "msg1": "Elige un proveedor de canal entrante y presiona continuar.",
           "msg2": "Tu navegador web abrirá la página web del proveedor correspondiente, cuando sea posible solicitar un canal.",
-          "msg3": "Cuando lo hayas hecho, puedes copiar la dirección del código y/o abrir el link usando Blixt Wallet."
+          "msg3": "Cuando lo hayas hecho, puedes copiar la dirección del código y/o abrir el link usando Kubbent Wallet."
         }
       },
       "LSP": {
@@ -740,7 +740,7 @@
       },
       "lndLog": {
         "title": "Copiar lnd log al almacenamiento local",
-        "subtitle": "Alcanzado por /sdcard/BlixtWallet",
+        "subtitle": "Alcanzado por /sdcard/KubbentWallet",
         "dialog": {
           "alert": "Copiado archivo lnd log",
           "error": "Error copiando archivo lnd log."
@@ -790,7 +790,7 @@
           "title": "Reiniciar aplicación y habilitar Tor",
           "msg1": "Hablitar Tor hará que la cartera se conecte con sus pares (ambos pares Bitcoin y Lightning Network) via Tor Network.",
           "msg2": "Tu serás capaz de conectar y abrir canales a los nodos de Lightning que usan los servicios onion.",
-          "msg3": "ADVERTENCIA: Blixt Wallet seguirá hablando a los siguientes servicios sin Tor",
+          "msg3": "ADVERTENCIA: Kubbent Wallet seguirá hablando a los siguientes servicios sin Tor",
           "msg4": "Razón: Para conseguir tarifas fiat/bitcoin",
           "msg5": "Razón: Para conseguir la altura actual del bloque",
           "msg6": "Razón: Para la copia de seguridad de Google Drive",
@@ -857,7 +857,7 @@
     }
   },
   "settings.about": {
-    "title": "Sobre Blixt Wallet",
+    "title": "Sobre Kubbent Wallet",
     "msg1": "Versión",
     "msg2": "Por",
     "msg3": "Cartera de código abierto con licencia MIT",
@@ -933,7 +933,7 @@
   },
   "welcome.addFunds": {
     "title": "Añadir fondos",
-    "msg1": "Para empezar a usar Lightning en Blixt Wallet",
+    "msg1": "Para empezar a usar Lightning en Kubbent Wallet",
     "msg2": "enviar Bitcoins a la siguiente dirección"
   },
   "welcome.almostDone": {
@@ -1006,7 +1006,7 @@
     }
   },
   "welcome.seed": {
-    "title": "Bienvenido a Blixt Wallet!",
+    "title": "Bienvenido a Kubbent Wallet!",
     "msg": "Esta es tu copia de seguridad de semilla.",
     "msg1": "Escribela en una hoja de papel y guardala en un lugar seguro.",
     "msg2": "Si pierdes el acceso a tu cartera",

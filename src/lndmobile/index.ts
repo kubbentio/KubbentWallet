@@ -387,7 +387,7 @@ export const addInvoice = async (amount: number, memo: string, expiry: number = 
   return response;
 };
 
-export interface IAddInvoiceBlixtLspArgs {
+export interface IAddInvoiceKubbentLspArgs {
   amount: number;
   memo: string;
   expiry?: number;
@@ -403,7 +403,7 @@ export interface IAddInvoiceBlixtLspArgs {
 /**
  * @throws
  */
-export const addInvoiceBlixtLsp = async ({amount, memo, expiry = 600, servicePubkey, chanId, cltvExpiryDelta, feeBaseMsat, feeProportionalMillionths, preimage}: IAddInvoiceBlixtLspArgs): Promise<lnrpc.AddInvoiceResponse> => {
+export const addInvoiceKubbentLsp = async ({amount, memo, expiry = 600, servicePubkey, chanId, cltvExpiryDelta, feeBaseMsat, feeProportionalMillionths, preimage}: IAddInvoiceKubbentLspArgs): Promise<lnrpc.AddInvoiceResponse> => {
   const response = await sendCommand<lnrpc.IInvoice, lnrpc.Invoice, lnrpc.AddInvoiceResponse>({
     request: lnrpc.Invoice,
     response: lnrpc.AddInvoiceResponse,

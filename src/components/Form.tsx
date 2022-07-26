@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { StyleSheet, KeyboardAvoidingView, StyleProp, ViewStyle, InputAccessoryView } from "react-native";
 import { View, Item, Text, Label, Icon } from "native-base";
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 import { MathPad, IMathPadProps } from "../components/MathPad";
 import { MATH_PAD_NATIVE_ID, PLATFORM } from "../utils/constants";
 
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     marginLeft: 3,
   },
   errorText: {
-    color: blixtTheme.red
+    color: kubbentTheme.red
   },
   notice: {
     marginTop: 24,
@@ -102,11 +102,11 @@ const styles = StyleSheet.create({
   },
   noticeIcon: {
     marginRight: 18,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   noticeText: {
     fontSize: 14,
-    color: blixtTheme.lightGray,
+    color: kubbentTheme.lightGray,
     marginRight: 60,
     justifyContent: "center",
     lineHeight: 20

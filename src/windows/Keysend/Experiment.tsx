@@ -12,9 +12,9 @@ import { generateSecureRandom } from "react-native-securerandom";
 import { lnrpc } from "../../../proto/lightning";
 import { getChanInfo, listPrivateChannels } from "../../lndmobile/channel";
 import QrCode from "../../components/QrCode";
-import BlixtForm from "../../components/Form";
+import KubbentForm from "../../components/Form";
 import { NavigationButton } from "../../components/NavigationButton";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { ITransaction } from "../../storage/database/transaction";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../Main";
@@ -251,7 +251,7 @@ export default function KeysendTest({ navigation }: ILightningInfoProps) {
   ];
 
   return (
-    <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: blixtTheme.dark }}>
+    <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: kubbentTheme.dark }}>
       <View style={{ alignItems: "center" }}>
         <H1 style={{ marginTop: 10, marginBottom: 5 }}>Keysend - scan to pay</H1>
         {routehints.length > 0  &&
@@ -277,7 +277,7 @@ export default function KeysendTest({ navigation }: ILightningInfoProps) {
           {t("dialog.msg3")}
         </Text>
       </View>
-      <BlixtForm
+      <KubbentForm
         style={{ flexGrow: 1}}
         items={formItems}
         buttons={[
@@ -291,7 +291,7 @@ export default function KeysendTest({ navigation }: ILightningInfoProps) {
             onPress={onClickSend}
           >
             {sending &&
-              <Spinner color={blixtTheme.light} />
+              <Spinner color={kubbentTheme.light} />
             }
             {!sending &&
               <Text>{t("send.title")}</Text>

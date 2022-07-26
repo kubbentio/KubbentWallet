@@ -74,8 +74,8 @@ export default (variables /* : * */ = variable) => {
     flex: 1,
     alignSelf: 'stretch',
 
-    // BLIXT
-    borderColor: variables.blixtFooterBorderColor,
+    // KUBBENT
+    borderColor: variables.kubbentFooterBorderColor,
     borderTopWidth: 1,
   };
 

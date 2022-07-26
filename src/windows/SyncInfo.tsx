@@ -7,7 +7,7 @@ import Bar from "../components/ProgressBar";
 import { useStoreState } from "../state/store";
 import Blurmodal from "../components/BlurModal";
 import TextLink from "../components/TextLink";
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 import { toast } from "../utils";
 import { PLATFORM } from "../utils/constants";
 import useForceUpdate from "../hooks/useForceUpdate";
@@ -119,7 +119,7 @@ export default function SyncInfo({}: ISyncInfoProps) {
                   <Bar
                     width={200}
                     style={{ marginTop: 3, marginLeft: 1, marginBottom: 12 }}
-                    color={blixtTheme.primary}
+                    color={kubbentTheme.primary}
                     progress={progress}
                   />
                   <Text style={{ marginTop: -5, marginLeft: 8 }}>
@@ -141,7 +141,7 @@ export default function SyncInfo({}: ISyncInfoProps) {
                       <Bar
                         width={200}
                         style={{ marginTop: 3, marginLeft: 1, marginBottom: 12 }}
-                        color={blixtTheme.primary}
+                        color={kubbentTheme.primary}
                         progress={recoverInfo.progress}
                       />
                       <Text style={{ marginTop: -5, marginLeft: 8 }}>

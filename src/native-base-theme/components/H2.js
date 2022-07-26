@@ -9,7 +9,7 @@ export default (variables /* : * */ = variable) => {
     lineHeight: variables.lineHeightH2,
 
 
-    // BLIXT
+    // KUBBENT
     fontFamily: variables.titleFontfamily, // TODO: fix upstream, H1,H2,H3 weren't affected at all of font changes, had to add this property myself
   };
 

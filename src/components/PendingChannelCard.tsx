@@ -6,7 +6,7 @@ import BigNumber from "bignumber.js";
 
 import { style } from "./ChannelCard";
 import { lnrpc } from "../../proto/lightning";
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 import { useStoreActions, useStoreState } from "../state/store";
 import { identifyService, lightningServices } from "../utils/lightning-services";
 import { constructOnchainExplorerUrl } from "../utils/onchain-explorer";
@@ -98,13 +98,13 @@ export const PendingChannelCard = ({ channel, type, alias }: IPendingChannelCard
                 <Text style={{...style.channelDetailValue, color: "orange"}}>{t("channel.statusPending")}</Text>
               }
               {type === "CLOSING" &&
-                <Text style={{...style.channelDetailValue, color: blixtTheme.red}}>{t("channel.statusClosing")}</Text>
+                <Text style={{...style.channelDetailValue, color: kubbentTheme.red}}>{t("channel.statusClosing")}</Text>
               }
               {type === "FORCE_CLOSING" &&
-                <Text style={{...style.channelDetailValue, color: blixtTheme.red}}>{t("channel.statusForceClosing")}</Text>
+                <Text style={{...style.channelDetailValue, color: kubbentTheme.red}}>{t("channel.statusForceClosing")}</Text>
               }
               {type === "WAITING_CLOSE" &&
-                <Text style={{...style.channelDetailValue, color: blixtTheme.red}}>{t("channel.statusWaitingForClose")}</Text>
+                <Text style={{...style.channelDetailValue, color: kubbentTheme.red}}>{t("channel.statusWaitingForClose")}</Text>
               }
             </Right>
           </Row>

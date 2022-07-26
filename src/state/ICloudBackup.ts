@@ -14,7 +14,7 @@ import { LndMobileEventEmitter } from "../utils/event-listener";
 import logger from "./../utils/log";
 const log = logger("ICloudBackup");
 
-export const ICLOUD_BACKUP_KEY = `blixt-wallet-backup-${Chain}${Debug ? "-debug" : ""}${Flavor ? `-${Flavor}` : ""}`;
+export const ICLOUD_BACKUP_KEY = `kubbent-wallet-backup-${Chain}${Debug ? "-debug" : ""}${Flavor ? `-${Flavor}` : ""}`;
 
 export interface IICloudBackupModel {
   initialize: Thunk<IICloudBackupModel, void, IStoreInjections, IStoreModel>;

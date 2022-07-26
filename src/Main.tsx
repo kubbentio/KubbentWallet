@@ -29,7 +29,7 @@ import { useStoreState, useStoreActions } from "./state/store";
 import { toast } from "./utils";
 import CameraFullscreen from "./windows/CameraFullscreen";
 
-import { blixtTheme } from "./native-base-theme/variables/commonColor";
+import { kubbentTheme } from "./native-base-theme/variables/commonColor";
 import Container from "./components/Container";
 import useStackNavigationOptions from "./hooks/useStackNavigationOptions";
 import { navigator } from "./utils/navigation";
@@ -115,7 +115,7 @@ export default function Main() {
           //   const lightningTimeout = setTimeout(() => {
           //     Alert.alert(
           //       "",
-          //       "It looks like Blixt Wallet is having trouble starting lnd.\n" +
+          //       "It looks like Kubbent Wallet is having trouble starting lnd.\n" +
           //       "What do you want to do?",
           //       [{
           //         text: "Go to Help Center",
@@ -177,7 +177,7 @@ export default function Main() {
             networkActivityIndicatorVisible={true}
             barStyle="light-content"
           />
-          <Spinner color={blixtTheme.light} size={55} />
+          <Spinner color={kubbentTheme.light} size={55} />
           <H1>Initializing Tor</H1>
         </Container>
       );

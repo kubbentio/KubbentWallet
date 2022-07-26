@@ -7,7 +7,7 @@ export interface ILightningService {
 
 export interface ILightningServices {
   bitrefill: ILightningService;
-  blixtwallet: ILightningService;
+  kubbentwallet: ILightningService;
   bluewallet: ILightningService;
   breez: ILightningService;
   coingate: ILightningService;
@@ -44,8 +44,8 @@ export const lightningServices: ILightningServices = {
     title: "Bitrefill",
     image: "data:image/webp;base64,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",
   },
-  blixtwallet: {
-    title: "Blixt Wallet",
+  kubbentwallet: {
+    title: "Kubbent Wallet",
     image: "data:image/webp;base64,UklGRjYDAABXRUJQVlA4ICoDAABwIgCdASrhAOEAPxGIwlgsKaejo3SoUYAiCWVu4XBPAePOTHccBeReBNtb6yNud5gPPb03aESeH2SKQFVAEIrAtfkBVQBCKzXxhm11gw2xmMtPhg/XJgLbWsAbVU3IxiVvqpQeD94S4bkh5fN4jPX9ky/8YZ1uMaAFkhW5lTcp0SN5AXPLqNugAMeUVM4XFk5A/m+yVzb8kigUyLal8crKsDLfy+s5soPs6A8bwJAs+Lz710CIez4lljMA9ilnWyYV+WFmVKxYUO8HjqisiaCYk3gKjw3KSDrQlAk1NmVQWO536nDzaOQU01pTgcG/oYVdTo755gyxiyPDkajFvEu+6tJ7ESWJY2kO+pc/i0+M3nOGWncwgFVAEIqiAAD++2zv/4Dxz6FFL4IfulvSZCAJO9X+FQMCGslGAajcdiGMP3vv7WeQVxHYwMXlRR9AED7ChkeeGm9Tb5PBjTxyW7wmNLt0jQmpOFNAonW4TGKUEkrup2bum/+LiJWxEi8MeEDqOuqpB95umFp1P7BH3W7F8W8mX8Zy+T9Wy7cNyxExA9UzdroO5QC6fpizN1R7LA26mseDHHur/TozIbMBzWU0Q9hQmff9uieuCJ6Ipz5nDKrVv17vzIfgd2IWyqspxp1GYEsi//j+vEIeBaoMyJv0PCAi8wfYD2NHGXknAT34G+cPTBSGuSUc+eIilO1FttwFZnrBEi00lJAA7oxqapPhgrOzx5m0brP+DG2JD6GOrHboS6S0y6LSx3nAW842bNaHXgFdAObhdgjUDHBJOUq5uzijKd8SXFX7TAjK22qlO5NeejbRxEk+E0JQNVYp9YXdP5kGlIcFmPA6SO9DLajHE/JCMwzcMKRhdDxLVUBqW9AO95WMioAnx9pHB5oHUhxZsIHok9ZYK9aBCqfhQU7rEe52DR6NP3FsfZVBjFhp9sNwl9ddWdZOYSeQs9obRI26R0UvkIEO8zE8FhL06PnDIMzPlJFZ8tAFGo2FVhUDemAglf+RzwSoNgXW5qPUhwtvqI0fCzA0i6XUvuv2iXqtsamt9fIEVW4/GlF4xVJQB78FVvwSSSRwgAA=",
   },
   bluewallet: {
@@ -212,7 +212,7 @@ export function identifyService(pubkey: string | null, description: string, webs
   if (pubkey === "03c2abfa93eacec04721c019644584424aab2ba4dff3ac9bdab4e9c97007491dda" || website?.includes("tippin.me")) {
     return "tippin";
   }
-  if (website?.includes("chat.blixtwallet.com")) {
+  if (website?.includes("chat.kubbentwallet.com")) {
     return "lnurlpaychat";
   }
   if (website?.includes("taproot.watch")) {
@@ -251,8 +251,8 @@ export function identifyService(pubkey: string | null, description: string, webs
   else if (description.includes("Hampus Sjöberg") || description.includes("Hampus Sjoberg")) {
     return "hampus";
   }
-  else if (pubkey === "0230a5bca558e6741460c13dd34e636da28e52afd91cf93db87ed1b0392a7466eb" || pubkey === "036b7130b27a23d6fe1d55c1d3bed9e6da5a17090588b0834e8200e0d50ee6886a" || website === "blixtwallet.com") {
-    return "blixtwallet";
+  else if (pubkey === "0230a5bca558e6741460c13dd34e636da28e52afd91cf93db87ed1b0392a7466eb" || pubkey === "036b7130b27a23d6fe1d55c1d3bed9e6da5a17090588b0834e8200e0d50ee6886a" || website === "kubbentwallet.com") {
+    return "kubbentwallet";
   }
   else if (pubkey === "031678745383bd273b4c3dbefc8ffbf4847d85c2f62d3407c0c980430b3257c403" || website?.includes("lightning-roulette.com")) {
     return "lightningroulette";

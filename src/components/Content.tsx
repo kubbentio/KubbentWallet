@@ -8,7 +8,7 @@ export interface IContentProps {
   style?: StyleProp<ViewStyle>;
   centered?: boolean;
 }
-export default function BlixtContent({ children, style, centered }: IContentProps) {
+export default function KubbentContent({ children, style, centered }: IContentProps) {
   return (
     <ScrollView alwaysBounceVertical={false} contentContainerStyle={[
       { padding: 14 },

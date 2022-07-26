@@ -7,7 +7,7 @@ import Color from "color";
 import { ContactsStackParamList } from "./index";
 import { useStoreState, useStoreActions } from "../../state/store";
 import Container from "../../components/Container";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { NavigationButton } from "../../components/NavigationButton";
 import Content from "../../components/Content";
 import usePromptLightningAddress from "../../hooks/usePromptLightningAddress";
@@ -100,7 +100,7 @@ export default function ContactList({ navigation }: IContactListProps) {
       <Header iosBarStyle="light-content" searchBar rounded style={style.searchHeader}>
         <Item rounded style={{ height: 35 }}>
           <Input
-            style={{ marginLeft: 8, marginTop: -2.5, borderRadius: 8, color: blixtTheme.dark }}
+            style={{ marginLeft: 8, marginTop: -2.5, borderRadius: 8, color: kubbentTheme.dark }}
             placeholder="Search"
             onChangeText={setSearchText}
             autoCorrect={false}
@@ -120,7 +120,7 @@ export default function ContactList({ navigation }: IContactListProps) {
         {contacts.length === 0 &&
           <Text style={{ textAlign: "center", marginTop: 20 }}>
             {t("layout.nothingHereYet")+"\n\n"+t("layout.whyNotAdd")+"\n"}
-            <Text onPress={addLightningAddress} style={{color:blixtTheme.link}}>
+            <Text onPress={addLightningAddress} style={{color:kubbentTheme.link}}>
               {t("layout.tappingHere")}
             </Text>?
           </Text>
@@ -139,7 +139,7 @@ const style = StyleSheet.create({
     paddingBottom: 25,
   },
   searchHeader: {
-    backgroundColor: Chain === "mainnet" ? blixtTheme.primary : Color(blixtTheme.lightGray).darken(0.30).hex(),
+    backgroundColor: Chain === "mainnet" ? kubbentTheme.primary : Color(kubbentTheme.lightGray).darken(0.30).hex(),
     paddingTop: 0,
     borderBottomWidth: 0,
     marginHorizontal: 8,

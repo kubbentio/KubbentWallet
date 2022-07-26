@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 
 import { SettingsStackParamList } from "./index";
 import { useStoreActions } from "../../state/store";
-import BlixtForm from "../../components/Form";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import KubbentForm from "../../components/Form";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { RouteProp } from "@react-navigation/native";
 import { toast } from "../../utils";
 import { PLATFORM } from "../../utils/constants";
@@ -52,7 +52,7 @@ export default function OpenChannel({ navigation, route }: IConnectToLightningPe
 
   return (
     <Container>
-      <BlixtForm
+      <KubbentForm
         items={[{
           key: "NODE",
           title: t("connect.title"),
@@ -66,7 +66,7 @@ export default function OpenChannel({ navigation, route }: IConnectToLightningPe
         buttons={[
           <Button key="CONNECT_TO_NODE" onPress={onConnectPress} block={true} primary={true} disabled={connecting}>
             {!connecting && <Text>{t("connect.accept")}</Text>}
-            {connecting && <Spinner color={blixtTheme.light} />}
+            {connecting && <Spinner color={kubbentTheme.light} />}
           </Button>
         ]}
       />

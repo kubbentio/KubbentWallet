@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "native-base";
 
-export default function BlixtInput(props: any) {
+export default function KubbentInput(props: any) {
   return (
     <Input
       enableFocusRing={false} // macOS prop

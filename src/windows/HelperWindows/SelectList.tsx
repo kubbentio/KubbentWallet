@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useState } from "react";
 import { Header, Icon, Item, ListItem, Text } from "native-base";
 import Container from "../../components/Container";
 import { FlatList, StyleSheet } from "react-native";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
 import Input from "../../components/Input";
@@ -48,7 +48,7 @@ export default function<T = string>({ navigation, route }: ISelectListProps<T>) 
         <Header iosBarStyle="light-content" searchBar rounded style={style.searchHeader}>
           <Item rounded style={{ height:35 }}>
             <Input
-              style={{ marginLeft: 8, marginTop: -2.5, borderRadius: 8, color: blixtTheme.dark }}
+              style={{ marginLeft: 8, marginTop: -2.5, borderRadius: 8, color: kubbentTheme.dark }}
               placeholder="Search"
               onChangeText={(text) => setSearchText(text)}
               autoCorrect={false}
@@ -89,7 +89,7 @@ const style = StyleSheet.create({
     marginBottom: 35,
   },
   searchHeader: {
-    backgroundColor: blixtTheme.primary,
+    backgroundColor: kubbentTheme.primary,
     paddingTop: 0,
     borderBottomWidth: 0,
     marginHorizontal: 8,

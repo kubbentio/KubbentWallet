@@ -4,8 +4,8 @@ import Clipboard from "@react-native-community/clipboard";
 import { Icon, Text } from "native-base";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
-import { BlixtLogo } from "./BlixtWallet";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
+import { KubbentLogo } from "./KubbentWallet";
 import usePromptLightningAddress from "../hooks/usePromptLightningAddress";
 import useEvaluateLightningCode from "../hooks/useEvaluateLightningCode";
 import { fontFactorNormalized } from "../utils/scale";
@@ -88,12 +88,12 @@ export default function Drawer() {
     setExpandAdvanced(!expandAdvanced);
   };
 
-  let statusIndicatorColor = blixtTheme.red;
+  let statusIndicatorColor = kubbentTheme.red;
   if (syncedToChain && channels.length > 0) {
     if (channels.some((channel) => channel.active)) {
-      statusIndicatorColor = blixtTheme.green;
+      statusIndicatorColor = kubbentTheme.green;
     } else {
-      statusIndicatorColor = blixtTheme.primary;
+      statusIndicatorColor = kubbentTheme.primary;
     }
   }
 
@@ -104,8 +104,8 @@ export default function Drawer() {
             backgroundColor: statusIndicatorColor,
           }, style.statusIndicator]}></View>
         <View style={style.logoContainer}>
-          <BlixtLogo />
-          <Text style={style.blixtTitle} onPress={() => goToScreen("SyncInfo", undefined, false)}>Blixt Wallet</Text>
+          <KubbentLogo />
+          <Text style={style.kubbentTitle} onPress={() => goToScreen("SyncInfo", undefined, false)}>Kubbent Wallet</Text>
         </View>
         <View style={style.menu}>
           {(layoutMode === "full" || PLATFORM === "macos") && (
@@ -180,7 +180,7 @@ export default function Drawer() {
           <View style={[{height: expandAdvanced ? "auto" : 0 }, style.advanced]}>
             <TouchableOpacity onPress={() => goToScreen("KeysendExperiment")}>
               <View style={style.menuItem}>
-                <Icon style={[style.menuItemIcon, { fontSize: 25 }]} color={blixtTheme.dark} type="FontAwesome" name="send" />
+                <Icon style={[style.menuItemIcon, { fontSize: 25 }]} color={kubbentTheme.dark} type="FontAwesome" name="send" />
                 <Text style={style.menuItemText}>{t("menu.keysendExperiment")}</Text>
               </View>
             </TouchableOpacity>
@@ -198,7 +198,7 @@ const style = StyleSheet.create({
   drawerContainer: {
     flex: 1,
     width: "100%",
-    backgroundColor: blixtTheme.dark,
+    backgroundColor: kubbentTheme.dark,
   },
   drawerScroll: {
     flex: 1,
@@ -209,9 +209,9 @@ const style = StyleSheet.create({
     paddingBottom: 10,
     alignItems: "center",
   },
-  blixtTitle: {
+  kubbentTitle: {
     marginTop: 3,
-    fontFamily: blixtTheme.fontMedium,
+    fontFamily: kubbentTheme.fontMedium,
     fontSize: 33 / PixelRatio.getFontScale(),
   },
   menu: {
@@ -221,7 +221,7 @@ const style = StyleSheet.create({
   menuItem: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: blixtTheme.gray,
+    backgroundColor: kubbentTheme.gray,
     paddingVertical: 10,
     paddingHorizontal: 13,
     marginLeft: 19,
@@ -255,11 +255,11 @@ const style = StyleSheet.create({
     marginRight: 11,
   },
   menuItemText: {
-    fontFamily: blixtTheme.fontMedium,
+    fontFamily: kubbentTheme.fontMedium,
     fontSize: 15 * fontFactorNormalized,
   },
   bottom: {
-    backgroundColor: blixtTheme.dark,
+    backgroundColor: kubbentTheme.dark,
     paddingTop: 10,
     paddingBottom: 20,
     flexDirection: "column-reverse",

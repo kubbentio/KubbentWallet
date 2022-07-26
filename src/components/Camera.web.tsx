@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useEffect } from "react";
 import { StyleProp, ViewStyle, InteractionManager, View } from "react-native";
 import { QrReader } from "react-qr-reader";
 import Container from "./Container";
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 
 export interface ICamera {
   active?: boolean;
@@ -31,7 +31,7 @@ export default function CameraComponent({ cameraType, children, onNotAuthorized,
   }
 
   return (
-    <View style={[{ width: "100%", height: "100%", backgroundColor: blixtTheme.dark }, style]}>
+    <View style={[{ width: "100%", height: "100%", backgroundColor: kubbentTheme.dark }, style]}>
       <QrReader
         onResult={(result, error) => {
           if (!!result) {
@@ -42,7 +42,7 @@ export default function CameraComponent({ cameraType, children, onNotAuthorized,
             console.info(error);
           }
         }}
-        // style={{ width: "100%", height: "100%", backgroundColor: blixtTheme.dark }}
+        // style={{ width: "100%", height: "100%", backgroundColor: kubbentTheme.dark }}
         constraints={{}}
         videoContainerStyle={{ position: undefined }}
       />

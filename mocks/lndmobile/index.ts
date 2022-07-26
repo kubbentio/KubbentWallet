@@ -4,7 +4,7 @@ import { DeviceEventEmitter } from "react-native";
 import * as base64 from "base64-js";
 import payReq from "bolt11";
 import Long from "long";
-import { IAddInvoiceBlixtLspArgs } from "../../src/lndmobile";
+import { IAddInvoiceKubbentLspArgs } from "../../src/lndmobile";
 import { bytesToHexString } from "../../src/utils";
 
 export enum ELndMobileStatusCodes {
@@ -207,7 +207,7 @@ export const addInvoice = async (amount: number, memo: string, expiry: number = 
   }
 };
 
-export const addInvoiceBlixtLsp = ({amount, memo, expiry = 600, servicePubkey, chanId, cltvExpiryDelta, feeBaseMsat, feeProportionalMillionths, preimage}: IAddInvoiceBlixtLspArgs) => {
+export const addInvoiceKubbentLsp = ({amount, memo, expiry = 600, servicePubkey, chanId, cltvExpiryDelta, feeBaseMsat, feeProportionalMillionths, preimage}: IAddInvoiceKubbentLspArgs) => {
   return addInvoice(amount, memo, expiry);
 }
 

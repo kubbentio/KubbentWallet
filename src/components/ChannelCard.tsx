@@ -16,7 +16,7 @@ import { constructOnchainExplorerUrl } from "../utils/onchain-explorer";
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../i18n/i18n.constants";
 
-const blixtTheme = nativeBaseTheme.blixtTheme;
+const kubbentTheme = nativeBaseTheme.kubbentTheme;
 
 export interface IChannelCardProps {
   channel: lnrpc.IChannel;
@@ -177,7 +177,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
                   y1="15"
                   x2={100 * percentageLocal}
                   y2="15"
-                  stroke={blixtTheme.green}
+                  stroke={kubbentTheme.green}
                   strokeWidth="8"
                 />
                 <Line
@@ -185,7 +185,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
                   y1="15"
                   x2={(100 * percentageLocal) + (100 * percentageRemote)}
                   y2="15"
-                  stroke={blixtTheme.red}
+                  stroke={kubbentTheme.red}
                   strokeWidth="8"
                 />
                 <Line
@@ -193,7 +193,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
                   y1="15"
                   x2={(100 * percentageLocal) + (100 * percentageRemote) + (100 * percentageReverse)}
                   y2="15"
-                  stroke={blixtTheme.lightGray}
+                  stroke={kubbentTheme.lightGray}
                   strokeWidth="8"
                 />
               </Svg>
@@ -207,7 +207,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
               <Text>
                 {!preferFiat &&
                   <>
-                    <Text style={{ color: blixtTheme.green }}>
+                    <Text style={{ color: kubbentTheme.green }}>
                       {valueBitcoin(localBalance, bitcoinUnit)}{" "}
                     </Text>
                     <Text>
@@ -217,7 +217,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
                 }
                 {preferFiat &&
                   <>
-                    <Text style={{ color: blixtTheme.green }}>
+                    <Text style={{ color: kubbentTheme.green }}>
                       {valueFiat(localBalance, currentRate).toFixed(2)}{" "}
                     </Text>
                     <Text>
@@ -236,7 +236,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
               <Text style={{ textAlign: "right" }}>
                 {!preferFiat &&
                   <>
-                    <Text style={{ color: blixtTheme.red }}>
+                    <Text style={{ color: kubbentTheme.red }}>
                       {valueBitcoin(remoteBalance, bitcoinUnit)}{" "}
                     </Text>
                     <Text>
@@ -246,7 +246,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
                 }
                 {preferFiat &&
                   <>
-                    <Text style={{ color: blixtTheme.red}}>
+                    <Text style={{ color: kubbentTheme.red}}>
                       {valueFiat(remoteBalance, currentRate).toFixed(2)}{" "}
                     </Text>
                     <Text>

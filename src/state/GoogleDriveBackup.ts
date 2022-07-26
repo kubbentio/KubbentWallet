@@ -14,7 +14,7 @@ import { LndMobileEventEmitter } from "../utils/event-listener";
 import logger from "./../utils/log";
 const log = logger("GoogleDriveBackup");
 
-export const GOOGLE_DRIVE_BACKUP_FILE = `blixt-wallet-backup-${Chain}${Debug ? "-debug" : ""}.b64`;
+export const GOOGLE_DRIVE_BACKUP_FILE = `kubbent-wallet-backup-${Chain}${Debug ? "-debug" : ""}.b64`;
 
 export interface IGoogleDriveBackupModel {
   initialize: Thunk<IGoogleDriveBackupModel, void, any, IStoreModel>;
@@ -104,7 +104,7 @@ export const googleDriveBackup: IGoogleDriveBackupModel = {
       // to create a new file.
       const uploadResult = await uploadFileAsString(accessToken, {
         name: GOOGLE_DRIVE_BACKUP_FILE,
-        description: "Base64-encoded channel backup for Blixt Wallet",
+        description: "Base64-encoded channel backup for Kubbent Wallet",
         mimeType: "application/base64",
       }, backupsB64, files.files[0] ? files.files[0].id : undefined);
 

@@ -3,7 +3,7 @@
 import { Platform } from 'react-native';
 
 import variable from './../variables/commonColor';
-import { PLATFORM, blixtTheme } from './../variables/commonColor';
+import { PLATFORM, kubbentTheme } from './../variables/commonColor';
 
 export default (variables /* : * */ = variable) => {
   let itemTheme = {
@@ -237,8 +237,8 @@ export default (variables /* : * */ = variable) => {
     marginLeft: 2,
   };
 
-  // BLIXT
-  itemTheme["NativeBase.Label"].color = blixtTheme.primary;
+  // KUBBENT
+  itemTheme["NativeBase.Label"].color = kubbentTheme.primary;
   itemTheme[".underline"][".success"].borderColor = variables.inputBorderColor;
   itemTheme[".regular"][".success"].borderColor = variables.inputBorderColor;
   itemTheme[".rounded"][".success"].borderColor = variables.inputBorderColor;

@@ -10,7 +10,7 @@ import QrCode from "../../components/QrCode";
 import { formatBitcoin, valueFiat } from "../../utils/bitcoin-units";
 import { smallScreen } from "../../utils/device";
 import CopyAddress from "../../components/CopyAddress";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { toast } from "../../utils";
 import { NavigationButton } from "../../components/NavigationButton";
 import { lnrpc } from "../../../proto/lightning";
@@ -123,7 +123,7 @@ export const OnChainInfo = ({ navigation }: IOnChainInfoProps) => {
             </>
           }
           {!address &&
-            <Spinner color={blixtTheme.light} />
+            <Spinner color={kubbentTheme.light} />
           }
         </View>
         <View style={style.buttons}>

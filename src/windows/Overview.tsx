@@ -24,7 +24,7 @@ import { fontFactor, fontFactorNormalized, zoomed } from "../utils/scale";
 import useLayoutMode from "../hooks/useLayoutMode";
 import CopyAddress from "../components/CopyAddress";
 import { StackNavigationProp } from "@react-navigation/stack";
-import BlixtHeader from "../components/BlixtHeader";
+import KubbentHeader from "../components/KubbentHeader";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../i18n/i18n.constants";
@@ -33,7 +33,7 @@ const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
 
 const theme = nativeBaseTheme.default;
-const blixtTheme = nativeBaseTheme.blixtTheme;
+const kubbentTheme = nativeBaseTheme.kubbentTheme;
 const NUM_TRANSACTIONS_PER_LOAD = 25;
 const LOAD_BOTTOM_PADDING = 475;
 
@@ -121,8 +121,8 @@ function Overview({ navigation }: IOverviewProps) {
           title="Refreshing"
           progressViewOffset={183 / (zoomed ? 0.85 : 1)}
           refreshing={refreshing}
-          colors={[blixtTheme.light]}
-          progressBackgroundColor={blixtTheme.gray}
+          colors={[kubbentTheme.light]}
+          progressBackgroundColor={kubbentTheme.gray}
           onRefresh={async () => {
             if (!rpcReady) {
               return;
@@ -229,7 +229,7 @@ function Overview({ navigation }: IOverviewProps) {
           {txs}
         </ScrollView>
         <Animated.View style={[style.animatedTop, { height: headerHeight }]} pointerEvents="box-none">
-          <BlixtHeader height={PLATFORM === "macos" ? headerHeight : undefined} />
+          <KubbentHeader height={PLATFORM === "macos" ? headerHeight : undefined} />
             <View style={StyleSheet.absoluteFill}>
               {/* <AnimatedIcon
                 style={[style.onchainIcon, { opacity: iconOpacity }]} type="FontAwesome" name="btc" onPress={() => navigation.navigate("OnChain")}
@@ -362,7 +362,7 @@ const SendOnChain = ({ bitcoinAddress }: ISendOnChain) => {
                   <CopyAddress text={bitcoinAddress}  onPress={copyAddress} />
                 </>
               : <View style={{ width: 135 + 10 + 9, height: 135 + 10 + 8, justifyContent: "center" }}>
-                  <NativeBaseSpinner color={blixtTheme.light} />
+                  <NativeBaseSpinner color={kubbentTheme.light} />
                 </View>
             }
           </View>
@@ -414,7 +414,7 @@ const iconTopPadding = Platform.select({
 const style = StyleSheet.create({
   overview: {
     flex: 1,
-    backgroundColor: blixtTheme.dark,
+    backgroundColor: kubbentTheme.dark,
   },
   animatedTop: {
     position: "absolute",
@@ -424,7 +424,7 @@ const style = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: theme.blixtFooterBorderColor,
+    borderBottomColor: theme.kubbentFooterBorderColor,
   },
   menuIcon: {
     position: "absolute",
@@ -436,7 +436,7 @@ const style = StyleSheet.create({
     }) ?? 0,
     left: 8,
     fontSize: 31,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   onchainIcon: {
     position: "absolute",
@@ -448,7 +448,7 @@ const style = StyleSheet.create({
     }) ?? 0,
     left: 8,
     fontSize: 25,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   channelsIcon: {
     position: "absolute",
@@ -460,7 +460,7 @@ const style = StyleSheet.create({
     }) ?? 0,
     left: 8 + 24 + 8 + 2,
     fontSize: 28,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   settingsIcon: {
     position: "absolute",
@@ -471,7 +471,7 @@ const style = StyleSheet.create({
     }),
     right: 8,
     fontSize: 29,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   helpIcon: {
     position: "absolute",
@@ -485,7 +485,7 @@ const style = StyleSheet.create({
       web: 8 + 24 + 8 + 7
     }) ?? 0,
     fontSize: 27,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   lightningSyncIcon: {
     position: "absolute",
@@ -505,7 +505,7 @@ const style = StyleSheet.create({
     }) ?? 0,
     right: 8 + 24 + 8 + 24 + 7 + 14  + (PLATFORM === "web" ? -1 : 0),
     fontSize: 24,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   transactionList: {
     paddingTop: HEADER_MAX_HEIGHT + 10,
@@ -517,17 +517,17 @@ const style = StyleSheet.create({
 
 const headerInfo = StyleSheet.create({
   btc: {
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     marginBottom: Platform.select({
       android: 4,
       ios: -1,
       web: 0,
     }),
-    fontFamily: blixtTheme.fontMedium,
+    fontFamily: kubbentTheme.fontMedium,
     zIndex: 1000,
   },
   fiat: {
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     fontSize: 18 * fontFactor,
     lineHeight: 21 * fontFactor,
     fontFamily: theme.fontFamily,
@@ -567,7 +567,7 @@ export function DrawerComponent() {
         backgroundColor: "transparent",
         borderRightColor: "transparent",
         width: 305,
-        borderEndColor: blixtTheme.dark,
+        borderEndColor: kubbentTheme.dark,
       },
       drawerType: layoutMode === "mobile" ? "front" : "permanent",
       swipeEdgeWidth: 400,

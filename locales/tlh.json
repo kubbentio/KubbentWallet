@@ -79,14 +79,14 @@
       "more": "vaj HutlhtaHvIS"
     },
     "sendOnChain": {
-      "title": "yI'el Blixt Wallet!",
+      "title": "yI'el Kubbent Wallet!",
       "msg1": "pa'Daq QottaH qaDanganpu' 'e' vISov.",
       "msg2": "SoHvaD Qu' Hoch vIta'rup.",
       "msg3": "pa'",
       "alert": "sengvamDaq QotDI' sengmey."
     },
     "doBackup": {
-      "msg1": "qatlho' Blixt Wallet!",
+      "msg1": "qatlho' Kubbent Wallet!",
       "msg2": "wo'maj nadev Data'laHchugh, ngIvwI'ghom'e' wIqelchu'meH, ngIvlu'taHvIS ngIvwI'ghom ra'wI' 'e' vIHon.",
       "backup": "yojHa'"
     }
@@ -167,7 +167,7 @@
         "msg1": "nuq 'oH Dochvam'e'?"
       }
     },
-    "createBlixtLspInvoice": {
+    "createKubbentLspInvoice": {
       "title": "valwI'",
       "msg": "'eldI' tlhoS Hoch, veSDujmey potlhqu' QoraQ tuq.",
       "msg1": "chenpu'DI' noyqangwI''e' lutu'lu'be'",
@@ -740,7 +740,7 @@
       },
       "lndLog": {
         "title": "quvHa'ghachwIj vIparHa'qu'",
-        "subtitle": "raQ /sdcard/BlixtWallet",
+        "subtitle": "raQ /sdcard/KubbentWallet",
         "dialog": {
           "alert": "yIqaD",
           "error": "qaSDI' choraQ."

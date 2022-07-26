@@ -2,7 +2,7 @@ import Color from "color";
 import { StackNavigationOptions, StackCardInterpolationProps } from "@react-navigation/stack";
 
 import { useStoreState } from "../state/store";
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 import { Chain } from "../utils/build";
 import { Platform } from "react-native";
 
@@ -37,16 +37,16 @@ export default function useStackNavigationOptions(): StackNavigationOptions {
       }),
     },
     headerStyle: {
-      backgroundColor: Chain === "mainnet" ? blixtTheme.primary : Color(blixtTheme.lightGray).darken(0.30).hex(),
+      backgroundColor: Chain === "mainnet" ? kubbentTheme.primary : Color(kubbentTheme.lightGray).darken(0.30).hex(),
       elevation: 0,
       shadowColor: "transparent",
       borderBottomColor: "transparent", // web
     },
     headerTitleStyle: {
-      color: blixtTheme.light
+      color: kubbentTheme.light
     },
-    headerTintColor: blixtTheme.light,
-    headerPressColor: blixtTheme.light,
+    headerTintColor: kubbentTheme.light,
+    headerPressColor: kubbentTheme.light,
     headerRightContainerStyle: {
       paddingRight: 20,
     },

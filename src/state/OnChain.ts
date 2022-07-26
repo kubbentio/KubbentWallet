@@ -12,12 +12,12 @@ import { toast } from "../utils";
 import logger from "./../utils/log";
 const log = logger("OnChain");
 
-export interface IBlixtTransaction extends lnrpc.ITransaction {
+export interface IKubbentTransaction extends lnrpc.ITransaction {
   type: "NORMAL" | "CHANNEL_OPEN" | "CHANNEL_CLOSE";
 }
 
 export interface ISetTransactionsPayload {
-  transactions: IBlixtTransaction[];
+  transactions: IKubbentTransaction[];
 }
 
 export interface IGetAddressPayload {
@@ -58,7 +58,7 @@ export interface IOnChainModel {
   totalBalance: Computed<IOnChainModel, Long>;
   address?: string;
   addressType?: lnrpc.AddressType;
-  transactions: IBlixtTransaction[];
+  transactions: IKubbentTransaction[];
   transactionSubscriptionStarted: boolean;
 
   getOnChainTransactionByTxId: Computed<IOnChainModel, (txId: string) => lnrpc.ITransaction | undefined>;
@@ -181,9 +181,9 @@ export const onChain: IOnChainModel = {
     const channelEvents = getStoreState().channel.channelEvents;
     const transactionDetails = await getTransactions();
 
-    const transactions: IBlixtTransaction[] = [];
+    const transactions: IKubbentTransaction[] = [];
     for (const tx of transactionDetails.transactions) {
-      let type: IBlixtTransaction["type"] = "NORMAL";
+      let type: IKubbentTransaction["type"] = "NORMAL";
       const matchChannelEvent = channelEvents.find((channelEvent) => channelEvent.txId === tx.txHash);
       if (matchChannelEvent) {
         switch (matchChannelEvent.type) {

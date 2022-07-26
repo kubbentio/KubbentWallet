@@ -6,13 +6,13 @@ import { RouteProp } from "@react-navigation/native";
 import Long from "long";
 
 import Container from "../../components/Container";
-import BlixtContent from "../../components/Content";
+import KubbentContent from "../../components/Content";
 import { useStoreActions, useStoreState } from "../../state/store";
 import { NavigationButton } from "../../components/NavigationButton";
 import { identifyService, lightningServices } from "../../utils/lightning-services";
 import { SettingsStackParamList } from "./index";
 import { lnrpc } from "../../../proto/lightning";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
@@ -64,12 +64,12 @@ export default function({ navigation }: ISelectListProps) {
     <Container>
       {(loading && lightningPeers.length === 0) &&
         <View style={style.loadingContainer}>
-          <Spinner color={blixtTheme.light} size={55} />
+          <Spinner color={kubbentTheme.light} size={55} />
         </View>
       }
       {!loading &&
         <>
-          <BlixtContent style={{ paddingBottom: 25 }}>
+          <KubbentContent style={{ paddingBottom: 25 }}>
             {lightningPeers.map((peer) => {
               const serviceKey = identifyService(peer.peer.pubKey, "", null);
               let service;
@@ -195,7 +195,7 @@ export default function({ navigation }: ISelectListProps) {
                 </Card>
               );
             })}
-          </BlixtContent>
+          </KubbentContent>
           <Fab
             style={style.fab}
             position="bottomRight"
@@ -223,10 +223,10 @@ const style = StyleSheet.create({
     textAlign: "right",
   },
   fab: {
-    backgroundColor: blixtTheme.primary,
+    backgroundColor: kubbentTheme.primary,
   },
   fabConnectToPerIcon: {
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   loadingContainer: {
     flex: 1,

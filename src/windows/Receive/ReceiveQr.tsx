@@ -15,7 +15,7 @@ import { smallScreen } from "../../utils/device";
 import CopyAddress from "../../components/CopyAddress";
 import Container from "../../components/Container";
 import Content from "../../components/Content";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { toast } from "../../utils";
 
 import { useTranslation } from "react-i18next";
@@ -43,7 +43,7 @@ export default function ReceiveQr({ navigation, route }: IReceiveQRProps) {
     return (
       <Container>
         <Content centered style={{ marginTop: -50 }}>
-          <Spinner color={blixtTheme.light} size={55} />
+          <Spinner color={kubbentTheme.light} size={55} />
         </Content>
       </Container>
     );

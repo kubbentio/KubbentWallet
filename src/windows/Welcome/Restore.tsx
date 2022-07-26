@@ -7,7 +7,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 
 import { WelcomeStackParamList } from "./index";
 import { useStoreActions, useStoreState } from "../../state/store";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import Container from "../../components/Container";
 import { ICreateWalletPayload } from "../../state";
 import { getStatusBarHeight } from "react-native-status-bar-height";
@@ -169,7 +169,7 @@ export default function Restore({ navigation }: IProps) {
   return (
     <Container>
       <StatusBar
-        backgroundColor={blixtTheme.dark}
+        backgroundColor={kubbentTheme.dark}
         hidden={false}
         translucent={true}
         networkActivityIndicatorVisible={true}
@@ -257,7 +257,7 @@ export default function Restore({ navigation }: IProps) {
         <View style={style.buttons}>
           <Button block={true} onPress={onRestorePress} disabled={loading}>
             {!loading && <Text>{t("restore.title")}</Text>}
-            {loading && <Spinner color={blixtTheme.light} />}
+            {loading && <Spinner color={kubbentTheme.light} />}
           </Button>
         </View>
       </View>
@@ -288,7 +288,7 @@ const style = StyleSheet.create({
   seedBox: {
     width: "100%",
     height: 150,
-    backgroundColor: blixtTheme.gray,
+    backgroundColor: kubbentTheme.gray,
     fontSize: 20,
     marginTop: PLATFORM !== "android" ? 60 : undefined,
   },
@@ -302,7 +302,7 @@ const style = StyleSheet.create({
     paddingLeft: 9,
     width: "100%",
     bottom: 24,
-    backgroundColor: blixtTheme.dark,
+    backgroundColor: kubbentTheme.dark,
   },
   text: {
     flex: 1,

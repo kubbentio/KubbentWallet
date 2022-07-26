@@ -3,7 +3,7 @@ import { StyleSheet, LayoutAnimation, Animated, Keyboard } from "react-native";
 import { createAnimatableComponent } from "react-native-animatable";
 import { Button, Text } from "native-base";
 
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 import { PLATFORM } from "../utils/constants";
 
 const AnimatedButton = createAnimatableComponent(Button);
@@ -52,7 +52,7 @@ export function MathPad({ visible, onAddPress, onSubPress, onMulPress, onDivPres
         flexDirection: "row",
         justifyContent: "center",
         alignItems:"center",
-        backgroundColor: blixtTheme.gray,
+        backgroundColor: kubbentTheme.gray,
         // overflow: "hidden",
         width: "100%",
         // height: visible ? 50 : 1, // https://github.com/facebook/react-native/issues/18415
@@ -100,7 +100,7 @@ const mathPadStyles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     height: PLATFORM === "android" ? 35 : 32,
-    backgroundColor: blixtTheme.lightGray
+    backgroundColor: kubbentTheme.lightGray
   },
   buttonText: {
     fontFamily: PLATFORM === "android" ? "monospace" : undefined,

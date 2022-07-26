@@ -4,7 +4,7 @@ import color from 'color';
 import { Platform, Dimensions, PixelRatio } from 'react-native';
 
 // https://coolors.co/151314-232323-bc6610-f2af13-e5eaea
-export const blixtTheme = {
+export const kubbentTheme = {
   dark: "#151314",
   gray: "#232323",
   primary: "#bc6610",
@@ -328,11 +328,11 @@ export default {
   },
 
 
-  // Blixt customization:
-  buttonFontFamily: platform === PLATFORM.IOS ? blixtTheme.fontMedium : blixtTheme.fontMedium,
-  buttonDisabledBg: color(blixtTheme.gray).lighten(0.3).hex(),
+  // Kubbent customization:
+  buttonFontFamily: platform === PLATFORM.IOS ? kubbentTheme.fontMedium : kubbentTheme.fontMedium,
+  buttonDisabledBg: color(kubbentTheme.gray).lighten(0.3).hex(),
 
-  cardDefaultBg: blixtTheme.gray,
+  cardDefaultBg: kubbentTheme.gray,
   cardBorderColor: "transparent",
 
   CheckboxRadius: platform === "ios" ? 7 : 7,
@@ -341,42 +341,42 @@ export default {
 
   CheckboxIconMarginTop: platform === "ios" ? -1 : 1.2,
   CheckboxFontSize: platform === "ios" ? 16 : 16,
-  checkboxBgColor: blixtTheme.primary,
+  checkboxBgColor: kubbentTheme.primary,
 
-  checkboxTickColor: blixtTheme.light,
+  checkboxTickColor: kubbentTheme.light,
   checkboxDefaultColor: "transparent", // Upstream doesn't seem to set this by default
 
-  brandPrimary: platform === "ios" ? blixtTheme.primary : blixtTheme.primary,
+  brandPrimary: platform === "ios" ? kubbentTheme.primary : kubbentTheme.primary,
 
-  containerBgColor: blixtTheme.dark,
+  containerBgColor: kubbentTheme.dark,
 
-  fontFamily: platform === "ios" ? blixtTheme.fontRegular : blixtTheme.fontRegular,
+  fontFamily: platform === "ios" ? kubbentTheme.fontRegular : kubbentTheme.fontRegular,
 
-  footerDefaultBg: platform === "ios" ? blixtTheme.gray : blixtTheme.gray,
+  footerDefaultBg: platform === "ios" ? kubbentTheme.gray : kubbentTheme.gray,
 
-  blixtFooterBorderColor: color(blixtTheme.gray).darken(0.12).hex(), //!
+  kubbentFooterBorderColor: color(kubbentTheme.gray).darken(0.12).hex(), //!
 
-  toolbarBtnColor: platform === "ios" ? "#007aff" : blixtTheme.light,
-  toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : blixtTheme.primary,
+  toolbarBtnColor: platform === "ios" ? "#007aff" : kubbentTheme.light,
+  toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : kubbentTheme.primary,
 
-  inputBorderColor: blixtTheme.lightGray,
+  inputBorderColor: kubbentTheme.lightGray,
 
-  listBorderColor: blixtTheme.lightGray,
+  listBorderColor: kubbentTheme.lightGray,
 
-  textColor: blixtTheme.light,
-  inverseTextColor: blixtTheme.light,
+  textColor: kubbentTheme.light,
+  inverseTextColor: kubbentTheme.light,
 
-  titleFontfamily: platform === "ios" ? blixtTheme.fontRegular : blixtTheme.fontRegular,
+  titleFontfamily: platform === "ios" ? kubbentTheme.fontRegular : kubbentTheme.fontRegular,
 
-  subtitleColor: platform === "ios" ? "#000" : blixtTheme.light,
-  titleFontColor: platform === "ios" ? "#000" : blixtTheme.light,
+  subtitleColor: platform === "ios" ? "#000" : kubbentTheme.light,
+  titleFontColor: platform === "ios" ? "#000" : kubbentTheme.light,
 
-  tabBarTextColor: platform === "ios" ? blixtTheme.light : blixtTheme.light,
+  tabBarTextColor: platform === "ios" ? kubbentTheme.light : kubbentTheme.light,
 
   DefaultFontSize: 15, // TODO unused?
   fontSizeBase: platform === "web" ? 13 : 14,
 
-  listBtnUnderlayColor: color(blixtTheme.gray).lighten(0.2).hex(),
+  listBtnUnderlayColor: color(kubbentTheme.gray).lighten(0.2).hex(),
 };
 
-export const blixtFooterBorderColor = color(blixtTheme.gray).darken(0.12).hex();
+export const kubbentFooterBorderColor = color(kubbentTheme.gray).darken(0.12).hex();

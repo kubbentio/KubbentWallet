@@ -446,7 +446,7 @@ export default (variables /* : * */ = variable) => {
     borderColor: variables.listBorderColor
   };
 
-  // BLIXT
+  // KUBBENT
   listItemTheme[".itemHeader"].paddingLeft = 0;
   listItemTheme["NativeBase.Left"]["NativeBase.Body"]["NativeBase.Text"][".note"].fontWeight = "200";
   listItemTheme["NativeBase.Left"]["NativeBase.Icon"].marginTop = 3;

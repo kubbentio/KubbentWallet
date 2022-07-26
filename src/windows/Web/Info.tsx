@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Button, H1, Text } from "native-base";
 
 import Blurmodal from "../../components/BlurModal";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
@@ -33,7 +33,7 @@ export default function WebInfo({ navigation }: IWebInfoProps) {
 
 const style = StyleSheet.create({
   title: {
-    fontFamily: blixtTheme.fontMedium,
+    fontFamily: kubbentTheme.fontMedium,
     textAlign: "center",
     paddingBottom: 4,
   },

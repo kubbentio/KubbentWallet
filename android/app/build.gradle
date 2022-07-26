@@ -145,7 +145,7 @@ android {
         versionName "0.5.1"
         missingDimensionStrategy 'react-native-camera', 'general'
         multiDexEnabled true
-        manifestPlaceholders = [appName: "Blixt Wallet"]
+        manifestPlaceholders = [appName: "Kubbent Wallet"]
     }
     signingConfigs {
         debug {

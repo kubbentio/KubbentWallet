@@ -20,7 +20,7 @@ import { OnchainExplorer } from "../../state/Settings";
 import TorSvg from "./TorSvg";
 import { DEFAULT_DUNDER_SERVER, DEFAULT_INVOICE_EXPIRY, DEFAULT_NEUTRINO_NODE, PLATFORM } from "../../utils/constants";
 import { IFiatRates } from "../../state/Fiat";
-import BlixtWallet from "../../components/BlixtWallet";
+import KubbentWallet from "../../components/KubbentWallet";
 import { Alert } from "../../utils/alert";
 import { getNodeInfo } from "../../lndmobile";
 
@@ -1006,7 +1006,7 @@ ${t("experimental.tor.disabled.msg2")}`;
   return (
     <Container>
       <Content style={{ padding: 10 }}>
-        <BlixtWallet />
+        <KubbentWallet />
 
         <List style={style.list}>
           <ListItem style={style.itemHeader} itemHeader={true} first={true}>

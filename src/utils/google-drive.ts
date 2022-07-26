@@ -123,7 +123,7 @@ export const uploadFileAsString = async (bearer: string, metaData: GoogleDriveUp
     metaData.parents = ["appDataFolder"];
   }
 
-  const multipartBoundary = "blixt_googledrive_upload";
+  const multipartBoundary = "kubbent_googledrive_upload";
   const multipartBody = `\r\n--${multipartBoundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n`
   + `${JSON.stringify(metaData)}\r\n`
   + `--${multipartBoundary}\r\nContent-Type: text/plain\r\n\r\n`

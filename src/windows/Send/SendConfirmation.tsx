@@ -6,8 +6,8 @@ import { StackNavigationProp } from "@react-navigation/stack";
 
 import { SendStackParamList } from "./index";
 import { useStoreActions, useStoreState } from "../../state/store";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
-import BlixtForm from "../../components/Form";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
+import KubbentForm from "../../components/Form";
 import { BitcoinUnits, unitToSatoshi } from "../../utils/bitcoin-units";
 import { extractDescription } from "../../utils/NameDesc";
 import Long from "long";
@@ -173,7 +173,7 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
 
   return (
     <Container>
-      <BlixtForm
+      <KubbentForm
         items={formItems}
         buttons={[(
           <Button
@@ -185,7 +185,7 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
             disabled={!canSend || (amountEditable ? (bitcoinValue === "0" || bitcoinValue === "" || bitcoinValue === undefined) : false)}
           >
             {canSend && <Text>Pay</Text>}
-            {!canSend && <Spinner color={blixtTheme.light} />}
+            {!canSend && <Spinner color={kubbentTheme.light} />}
           </Button>
         ),]}
       />

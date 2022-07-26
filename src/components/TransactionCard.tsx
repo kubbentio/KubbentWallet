@@ -4,7 +4,7 @@ import { Body, Card, CardItem, Text, Right, Row } from "native-base";
 
 import { fromUnixTime } from "date-fns";
 import { ITransaction } from "../storage/database/transaction";
-import { blixtTheme } from ".././native-base-theme/variables/commonColor";
+import { kubbentTheme } from ".././native-base-theme/variables/commonColor";
 import { capitalize, formatISO, isLong } from "../utils";
 import { extractDescription } from "../utils/NameDesc";
 import { IBitcoinUnits, formatBitcoin, convertBitcoinToFiat } from "../utils/bitcoin-units";
@@ -126,12 +126,12 @@ const transactionStyle = StyleSheet.create({
     fontSize: (zoomed ? 12 : 15) * fontFactor,
   },
   transactionTopValuePositive: {
-    color: blixtTheme.green,
+    color: kubbentTheme.green,
     fontSize: (zoomed ? 12 : 15) * fontFactor,
     textAlign: "right",
   },
   transactionTopValueNegative: {
-    color: blixtTheme.red,
+    color: kubbentTheme.red,
     fontSize: (zoomed ? 12 : 15) * fontFactor,
     textAlign: "right",
   },

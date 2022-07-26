@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-LABEL Description="Blixt Wallet image, forked from gengjiawen/docker-android"
+LABEL Description="Kubbent Wallet image, forked from gengjiawen/docker-android"
 LABEL maintainer="Hampus Sjöberg  <hampus.sjoberg@protonmail.com>"
 
 ENV LANG C.UTF-8

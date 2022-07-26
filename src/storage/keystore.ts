@@ -1,6 +1,6 @@
 import * as Keychain from 'react-native-keychain';
 
-const USER = 'blixt';
+const USER = 'kubbent';
 
 export const setItem = async (key: string, value: string, accessible: Keychain.ACCESSIBLE = Keychain.ACCESSIBLE.ALWAYS) => {
   const options = {

@@ -7,7 +7,7 @@ import { createContact, IContact } from "../storage/database/contact";
 import { createTransaction, ITransaction } from "../storage/database/transaction";
 import { ILightningServices } from "./lightning-services";
 
-export default async function SetupBlixtDemo(
+export default async function SetupKubbentDemo(
   db: any,
   dispatch: Dispatch<IStoreModel>,
   createDbTransactions: boolean = false,
@@ -176,11 +176,11 @@ export default async function SetupBlixtDemo(
     note: "fiatjaf on Telegram",
   }, {
     id: 3,
-    domain: "blixtwallet.com",
+    domain: "kubbentwallet.com",
     type: "PERSON",
     lnUrlPay: "https://789",
     lnUrlWithdraw: null,
-    lightningAddress: "hampus@blixtwallet.com",
+    lightningAddress: "hampus@kubbentwallet.com",
     lud16IdentifierMimeType: "text/identifier",
     note: "Hampus's Lightning Box",
   }, {

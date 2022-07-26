@@ -228,7 +228,7 @@ autopilot.heuristic=preferential:0.05
         let dataWrapped = Data(base64Encoded: base64Backups, options: [])
         if let data = dataWrapped {
           let savePanel = NSSavePanel()
-          savePanel.nameFieldStringValue = "blixt-channel-backup.dat"
+          savePanel.nameFieldStringValue = "kubbent-channel-backup.dat"
           if (savePanel.runModal() == NSApplication.ModalResponse.OK) {
             let saveUrl = savePanel.url
             NSLog(saveUrl?.path ?? "")

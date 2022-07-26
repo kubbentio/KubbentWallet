@@ -7,7 +7,7 @@ import * as Animatable from "react-native-animatable";
 
 import { SendStackParamList } from "./index";
 import Svg, { Circle, Polyline } from "react-native-svg";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import Container from "../../components/Container";
 
 import { useTranslation } from "react-i18next";
@@ -37,7 +37,7 @@ function CheckmarkCircle() {
       cx="93"
       cy="95"
       r={circleRadius}
-      fill={blixtTheme.green}
+      fill={kubbentTheme.green}
     />
   );
 }

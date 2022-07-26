@@ -1,7 +1,7 @@
 import Color from "color";
 import { StyleSheet } from "react-native";
 
-import { blixtTheme } from "../../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../../native-base-theme/variables/commonColor";
 import { PLATFORM } from "../../../utils/constants";
 
 export default StyleSheet.create({
@@ -75,7 +75,7 @@ export default StyleSheet.create({
   input: {
     height: 28,
     fontSize: 13,
-    backgroundColor: Color(blixtTheme.gray).lighten(0.28).hex(),
+    backgroundColor: Color(kubbentTheme.gray).lighten(0.28).hex(),
     borderRadius: 32,
     paddingTop: 5,
     paddingBottom: 5,

@@ -1,14 +1,14 @@
-# Blixt Lightning Wallet
+# Kubbent Lightning Wallet
 
-<a href="https://play.google.com/apps/testing/com.blixtwallet"><img alt="Get it on Google Play" height="52" src="https://blixtwallet.github.io/assets/images/google-play-badge-2.png" /></a>&nbsp;
-<a href="https://testflight.apple.com/join/EXvGhRzS"><img alt="Download on the App Store" height="52" src="https://blixtwallet.github.io/assets/images/appstore-badge.svg" /></a>&nbsp;
-<a href="https://t.me/BlixtWallet"><img height="52" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" /></a>
+<a href="https://play.google.com/apps/testing/com.kubbentwallet"><img alt="Get it on Google Play" height="52" src="https://kubbentwallet.github.io/assets/images/google-play-badge-2.png" /></a>&nbsp;
+<a href="https://testflight.apple.com/join/EXvGhRzS"><img alt="Download on the App Store" height="52" src="https://kubbentwallet.github.io/assets/images/appstore-badge.svg" /></a>&nbsp;
+<a href="https://t.me/KubbentWallet"><img height="52" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" /></a>
 
-Blixt Wallet is an open source Lightning Bitcoin Wallet for Android with focus on usability and user experience,
+Kubbent Wallet is an open source Lightning Bitcoin Wallet for Android with focus on usability and user experience,
 powered by lnd and Neutrino SPV.
 
 <p>
-  <img alt="Blixt Lightning Wallet screenshot" src="blixt-wallet-screenshot.png" width="390" />
+  <img alt="Kubbent Lightning Wallet screenshot" src="kubbent-wallet-screenshot.png" width="390" />
 </p>
 
 ## Features
@@ -39,18 +39,18 @@ The wallet uses lnd that is young and might have bugs. Check [lnd bug list here]
 
 ## Translation
 
-You can contribute to the project by translating the app via [Transifex](https://www.transifex.com/blixt-wallet/blixt-wallet).
+You can contribute to the project by translating the app via [Transifex](https://www.transifex.com/kubbent-wallet/kubbent-wallet).
 
 ## Build Steps
 
-Blixt targets three platforms right now: Web, Android and iOS.
+Kubbent targets three platforms right now: Web, Android and iOS.
 
 The web target is only used for prototyping and is not a real wallet.
 
 ### Web
 
 The easiest way get started is to build the web version, because you only need NodeJS and Yarn installed.
-For the other targets you need to install their respective toolchains and also [golang](https://golang.org) &amp; [gomobile](https://pkg.go.dev/golang.org/x/mobile#section-readme) in order to build lnd for Blixt.
+For the other targets you need to install their respective toolchains and also [golang](https://golang.org) &amp; [gomobile](https://pkg.go.dev/golang.org/x/mobile#section-readme) in order to build lnd for Kubbent.
 
 The web version is not used as a real wallet and is only for fast prototyping.
 It's useful if you want to make design and GUI changes.
@@ -64,7 +64,7 @@ It's useful if you want to make design and GUI changes.
 
 - Install [Node](https://nodejs.org), [Yarn](https://classic.yarnpkg.com) and [Android Studio + Android SDK (including NDK)](https://developer.android.com/studio/)
 - If needed, install an emulated android device inside Android Studio
-- Download lnd binary from [from the latest Blixt Wallet release](https://github.com/hsjoberg/blixt-wallet/releases) and put it in `android/lndmobile`. Alternatively build lnd for Android by following the steps in [build-android-aar.md](build-android-aar.md)
+- Download lnd binary from [from the latest Kubbent Wallet release](https://github.com/hsjoberg/kubbent-wallet/releases) and put it in `android/lndmobile`. Alternatively build lnd for Android by following the steps in [build-android-aar.md](build-android-aar.md)
 - Get the tor sub-module: `git submodule update --init`
 - Install Node packages: `yarn`
 - Compile the Tor Android lib: `yarn build-tor-lib`
@@ -84,9 +84,9 @@ To build the iOS version, a computer running macOS is required. You also need an
 - Generate proto files: `yarn gen-proto`
 - Install CocoaPods libs: `cd ios && pod install`
 - Setup team signing:
-  - Open ios/BlixtWallet/BlixtWallet.xcworkspace with Xcode
+  - Open ios/KubbentWallet/KubbentWallet.xcworkspace with Xcode
   - Login with your Apple Developer account if Xcode asks you to
-  - Click on BlixtWallet in the left column
+  - Click on KubbentWallet in the left column
   - Click on the Signing &amp; Capabilities tab
   - Choose your Team in the dropdown and choose a new unique Bundle Identifier (cannot be the same as the ones released on the App Store). Do this for every configuration
 

@@ -9,7 +9,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 
 import { WelcomeStackParamList } from "./index";
 import Container from "../../components/Container";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { PLATFORM } from "../../utils/constants";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 
@@ -66,7 +66,7 @@ function TopMenu() {
       NativeModules.LndMobileTools.restartApp();
     } else {
       const title = "Restart required";
-      const message = "Blixt Wallet has to be restarted before the new configuration is applied."
+      const message = "Kubbent Wallet has to be restarted before the new configuration is applied."
       Alert.alert(title, message);
     }
   };
@@ -233,14 +233,14 @@ ${t("createWallet.msg3")}`,
             <AnimatedView>
               <Button style={style.button} onPress={onCreateWalletPress}>
                 {!createWalletLoading && <Text>{t("createWallet.title")}</Text>}
-                {createWalletLoading && <Spinner color={blixtTheme.light} />}
+                {createWalletLoading && <Spinner color={kubbentTheme.light} />}
               </Button>
               <Button style={style.button} onPress={onRestoreWalletPress}>
                 <Text>{t("restoreWallet.title")}</Text>
               </Button>
             </AnimatedView>
           :
-            <Spinner color={blixtTheme.light} />
+            <Spinner color={kubbentTheme.light} />
         }
       </SafeAreaView>
     </Container>

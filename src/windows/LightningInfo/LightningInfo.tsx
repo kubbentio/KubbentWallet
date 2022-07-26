@@ -9,7 +9,7 @@ import { useStoreState, useStoreActions } from "../../state/store";
 import Container from "../../components/Container";
 import ChannelCard from "../../components/ChannelCard";
 import PendingChannelCard from "../../components/PendingChannelCard";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { formatBitcoin, valueFiat } from "../../utils/bitcoin-units";
 import { NavigationButton } from "../../components/NavigationButton";
 import { toast } from "../../utils";
@@ -137,7 +137,7 @@ export default function LightningInfo({ navigation }: ILightningInfoProps) {
       }
       {!rpcReady &&
         <View style={style.loadingContainer}>
-          <Spinner color={blixtTheme.light} />
+          <Spinner color={kubbentTheme.light} />
         </View>
       }
       <Fab
@@ -173,9 +173,9 @@ const style = StyleSheet.create({
     textAlign: "center",
   },
   fab: {
-    backgroundColor: blixtTheme.primary,
+    backgroundColor: kubbentTheme.primary,
   },
   fabNewChannelIcon: {
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
 });

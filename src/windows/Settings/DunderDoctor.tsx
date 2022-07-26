@@ -9,7 +9,7 @@ import Container from "../../components/Container";
 import { useStoreActions, useStoreState } from "../../state/store";
 import { NavigationButton } from "../../components/NavigationButton";
 import { SettingsStackParamList } from "./index";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { timeout, toast } from "../../utils";
 import Loading from "../../components/Loading";
 
@@ -21,9 +21,9 @@ export interface ISelectListProps {
 export default function DunderDoctor({ navigation }: ISelectListProps) {
   const [running, setRunning] = useState(false);
   const syncedToChain = useStoreState((store) => store.lightning.syncedToChain);
-  const serviceStatus = useStoreActions((store) => store.blixtLsp.ondemandChannel.serviceStatus);
-  const checkStatus = useStoreActions((store) => store.blixtLsp.ondemandChannel.checkStatus);
-  const claim = useStoreActions((store) => store.blixtLsp.ondemandChannel.claim);
+  const serviceStatus = useStoreActions((store) => store.kubbentLsp.ondemandChannel.serviceStatus);
+  const checkStatus = useStoreActions((store) => store.kubbentLsp.ondemandChannel.checkStatus);
+  const claim = useStoreActions((store) => store.kubbentLsp.ondemandChannel.claim);
   const connectPeer = useStoreActions((store) => store.lightning.connectPeer);
   const [log, setLog] = useState<string[]>([]);
 
@@ -130,7 +130,7 @@ export default function DunderDoctor({ navigation }: ISelectListProps) {
   return (
     <Container>
       <View style={{ flex: 1, padding: 14 }}>
-        <ScrollView contentContainerStyle={{ padding: 10 }} style={{ backgroundColor: blixtTheme.gray, marginTop: 10, marginBottom: 20, flex: 1 }}>
+        <ScrollView contentContainerStyle={{ padding: 10 }} style={{ backgroundColor: kubbentTheme.gray, marginTop: 10, marginBottom: 20, flex: 1 }}>
           {log.map((logItem, i) => (
             <Text key={i}>{logItem}</Text>
           ))}
@@ -142,7 +142,7 @@ export default function DunderDoctor({ navigation }: ISelectListProps) {
           disabled={running}
         >
           {running
-            ? <Spinner color={blixtTheme.light} />
+            ? <Spinner color={kubbentTheme.light} />
             : <Text>Run</Text>
           }
         </Button>

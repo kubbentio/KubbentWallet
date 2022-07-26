@@ -4,7 +4,7 @@ import { PLATFORM } from "../utils/constants";
 type LayoutMode = "mobile" | "full";
 
 const evalutateMode = (width: number): LayoutMode => {
-  if (PLATFORM === "web" && window.BLIXT_WEB_DEMO) {
+  if (PLATFORM === "web" && window.KUBBENT_WEB_DEMO) {
     return "mobile";
   }
   return width > 750 ? "full" : "mobile";

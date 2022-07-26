@@ -3,13 +3,13 @@ import { View, StyleProp, ViewStyle } from "react-native";
 import { Body, Text, Right, ListItem, Icon } from "native-base";
 import { fromUnixTime } from "date-fns";
 
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
-import { IBlixtTransaction } from "../state/OnChain";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
+import { IKubbentTransaction } from "../state/OnChain";
 import { formatISO } from "../utils";
 import { IBitcoinUnits, formatBitcoin } from "../utils/bitcoin-units";
 
 export interface IOnChainTransactionItemProps {
-  transaction: IBlixtTransaction;
+  transaction: IKubbentTransaction;
   onPress: (id: string) => void;
   style?: StyleProp<ViewStyle>;
   unit: keyof IBitcoinUnits;
@@ -18,15 +18,15 @@ export const OnChainTransactionItem = ({ transaction, onPress, style, unit }: IO
   let icon;
   let text;
   if (transaction.amount === undefined) {
-    icon = (<Icon type="MaterialIcons" name="error-outline" style={{color: blixtTheme.red }} />);
+    icon = (<Icon type="MaterialIcons" name="error-outline" style={{color: kubbentTheme.red }} />);
     text = (<Text>Error</Text>);
   }
   else if (transaction.type === "NORMAL" && transaction.amount!.isPositive()) {
-    icon = (<Icon type="AntDesign" name="plus" style={{ color: blixtTheme.green }} />);
+    icon = (<Icon type="AntDesign" name="plus" style={{ color: kubbentTheme.green }} />);
     text = (<Text style={{ fontSize: 13 }} note={true}>Received Bitcoin</Text>);
   }
   else if (transaction.type === "NORMAL" && transaction.amount!.isNegative()) {
-    icon = (<Icon type="AntDesign" name="minus" style={{ color: blixtTheme.red }} />);
+    icon = (<Icon type="AntDesign" name="minus" style={{ color: kubbentTheme.red }} />);
     text = (
       <Text style={{ fontSize: 12.5 }} note={true}>
         To {transaction!.destAddresses![0]}
@@ -34,11 +34,11 @@ export const OnChainTransactionItem = ({ transaction, onPress, style, unit }: IO
     );
   }
   else if (transaction.type === "CHANNEL_OPEN") {
-    icon = (<Icon type="Entypo" name="circle" style={{ color: blixtTheme.primary }} />);
+    icon = (<Icon type="Entypo" name="circle" style={{ color: kubbentTheme.primary }} />);
     text = (<Text>Opened a payment channel</Text>);
   }
   else if (transaction.type === "CHANNEL_CLOSE") {
-    icon = (<Icon type="Entypo" name="circle-with-cross" style={{ color: blixtTheme.primary }} />);
+    icon = (<Icon type="Entypo" name="circle-with-cross" style={{ color: kubbentTheme.primary }} />);
     text = (<Text>Closed a payment channel</Text>);
   }
 

@@ -8,7 +8,7 @@ import { Card, Icon } from "native-base";
 import { WebView } from 'react-native-webview';
 import Color from "color";
 
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { useStoreActions } from "../../state/store";
 import { RootStackParamList } from "../../Main";
 import BlurModal from "../../components/BlurModal";
@@ -18,7 +18,7 @@ import { Alert } from "../../utils/alert";
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
 
-const INITIAL_URL = "https://blixtwallet.github.io/webln";
+const INITIAL_URL = "https://kubbentwallet.github.io/webln";
 
 interface IBrowserProps {
   navigation: StackNavigationProp<RootStackParamList, "WebLNBrowser">;
@@ -147,7 +147,7 @@ export default function WebLNBrowser({ navigation, route }: IBrowserProps) {
             containerStyle={{ opacity: showWebview ? 1 : 0 }}
             ref={webview}
             onMessage={onMessage}
-            userAgent="BlixtWallet/alpha (WebLN)"
+            userAgent="KubbentWallet/alpha (WebLN)"
             source={{ uri: url }}
             onLoadStart={(e) => {
               console.log("onLoadStart");
@@ -254,13 +254,13 @@ const style = StyleSheet.create({
     flexBasis: "auto",
     height: 28,
     fontSize: 13,
-    backgroundColor: Color(blixtTheme.gray).lighten(0.28).hex(),
+    backgroundColor: Color(kubbentTheme.gray).lighten(0.28).hex(),
     borderRadius: 32,
     paddingTop: 5,
     paddingBottom: 5,
     paddingLeft: 13,
     paddingRight: 8,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
   },
   closeButton: {
     paddingLeft: 3,

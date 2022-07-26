@@ -380,11 +380,11 @@ export const lnUrl: ILNUrlModel = {
     const dunderEnabled = getStoreState().settings.dunderEnabled;
 
     if (dunderEnabled) {
-      await getStoreActions().blixtLsp.ondemandChannel.checkOndemandChannelService();
+      await getStoreActions().kubbentLsp.ondemandChannel.checkOndemandChannelService();
     }
     const shouldUseDunder =
       dunderEnabled &&
-      getStoreState().blixtLsp.ondemandChannel.serviceActive &&
+      getStoreState().kubbentLsp.ondemandChannel.serviceActive &&
       (
         getStoreState().lightning.rpcReady && getStoreState().channel.channels.length === 0 ||
         getStoreState().channel.remoteBalance.toSigned().subtract(5000).lessThan(satoshi) // Not perfect...
@@ -393,8 +393,8 @@ export const lnUrl: ILNUrlModel = {
     if (lnUrlStr && type === "withdrawRequest" && lnUrlObject && lnUrlObject.tag === "withdrawRequest") {
       const promise = new Promise<boolean>(async (resolve, reject) => {
         if (shouldUseDunder) {
-          await getStoreActions().blixtLsp.ondemandChannel.connectToService(); // TODO check if it worked
-          const serviceStatus = await getStoreActions().blixtLsp.ondemandChannel.serviceStatus();
+          await getStoreActions().kubbentLsp.ondemandChannel.connectToService(); // TODO check if it worked
+          const serviceStatus = await getStoreActions().kubbentLsp.ondemandChannel.serviceStatus();
           const result = await dunderPrompt(
             serviceStatus.approxFeeSat,
             getStoreState().settings.bitcoinUnit,
@@ -406,7 +406,7 @@ export const lnUrl: ILNUrlModel = {
           }
 
           try {
-            await getStoreActions().blixtLsp.ondemandChannel.addInvoice({
+            await getStoreActions().kubbentLsp.ondemandChannel.addInvoice({
               sat: satoshi,
               description: lnUrlObject.defaultDescription,
             });

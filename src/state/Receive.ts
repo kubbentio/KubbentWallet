@@ -32,7 +32,7 @@ interface IReceiveModelAddInvoicePayload {
   tmpData?: IInvoiceTempData;
 }
 
-interface IReceiveModelAddInvoiceBlixtLspPayload {
+interface IReceiveModelAddInvoiceKubbentLspPayload {
   description: string;
   sat: number;
   expiry?: number;
@@ -55,7 +55,7 @@ export interface IReceiveModel {
   deinitialize: Thunk<IReceiveModel>;
 
   addInvoice: Thunk<IReceiveModel, IReceiveModelAddInvoicePayload, IStoreInjections, IStoreModel, Promise<lnrpc.AddInvoiceResponse>>;
-  addInvoiceBlixtLsp: Thunk<IReceiveModel, IReceiveModelAddInvoiceBlixtLspPayload, IStoreInjections, IStoreModel, Promise<lnrpc.AddInvoiceResponse>>;
+  addInvoiceKubbentLsp: Thunk<IReceiveModel, IReceiveModelAddInvoiceKubbentLspPayload, IStoreInjections, IStoreModel, Promise<lnrpc.AddInvoiceResponse>>;
   cancelInvoice: Thunk<IReceiveModel, IReceiveModelCancelInvoicePayload, IStoreInjections, Promise<invoicesrpc.CancelInvoiceResp>>;
   subscribeInvoice: Thunk<IReceiveModel, void, IStoreInjections, IStoreModel>;
   setInvoiceSubscriptionStarted: Action<IReceiveModel, boolean>;
@@ -113,13 +113,13 @@ export const receive: IReceiveModel = {
     return result;
   }),
 
-  addInvoiceBlixtLsp: thunk(async (actions, payload, { injections, getStoreState, getStoreActions }) => {
+  addInvoiceKubbentLsp: thunk(async (actions, payload, { injections, getStoreState, getStoreActions }) => {
     log.d("addInvoice()");
-    const addInvoiceBlixtLsp = injections.lndMobile.index.addInvoiceBlixtLsp;
+    const addInvoiceKubbentLsp = injections.lndMobile.index.addInvoiceKubbentLsp;
     const name = getStoreState().settings.name;
     const description = setupDescription(payload.description, name);
 
-    const result = await addInvoiceBlixtLsp({
+    const result = await addInvoiceKubbentLsp({
       amount: payload.sat,
       preimage: payload.preimage,
       chanId: payload.chanId,

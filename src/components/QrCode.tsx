@@ -1,5 +1,5 @@
 import React from "react";
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 import { StyleSheet, TouchableHighlight, GestureResponderEvent, View, StyleProp, ViewStyle } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 
@@ -38,7 +38,7 @@ const style = StyleSheet.create({
   qrCodeContainer: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: blixtTheme.light,
+    backgroundColor: kubbentTheme.light,
     margin: 4,
   },
 });

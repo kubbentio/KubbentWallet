@@ -1,16 +1,16 @@
 {
   "project_info": {
     "project_number": "20360468868",
-    "firebase_url": "https://blixt-wallet-testnet.firebaseio.com",
-    "project_id": "blixt-wallet-testnet",
-    "storage_bucket": "blixt-wallet-testnet.appspot.com"
+    "firebase_url": "https://kubbent-wallet-testnet.firebaseio.com",
+    "project_id": "kubbent-wallet-testnet",
+    "storage_bucket": "kubbent-wallet-testnet.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:20360468868:android:7fa77201810356c9d725d1",
         "android_client_info": {
-          "package_name": "com.blixtwallet.testnet"
+          "package_name": "com.kubbentwallet.testnet"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "20360468868-sk831o6phevm33pf34hqi74t1gev5he3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.blixtwallet.testnet",
+            "package_name": "com.kubbentwallet.testnet",
             "certificate_hash": "b8c178ee58a694507442dbe627f5343addb4c5bb"
           }
         },
@@ -47,7 +47,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:20360468868:android:369bf3392d68cfc7d725d1",
         "android_client_info": {
-          "package_name": "com.blixtwallet.testnet.debug"
+          "package_name": "com.kubbentwallet.testnet.debug"
         }
       },
       "oauth_client": [
@@ -55,7 +55,7 @@
           "client_id": "20360468868-rcqilt22roamksmv2tebuf66lit3cnm8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.blixtwallet.testnet.debug",
+            "package_name": "com.kubbentwallet.testnet.debug",
             "certificate_hash": "076a963bc0168507ca72117b5a9513fe814b6e9d"
           }
         },
@@ -86,7 +86,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:123465798:android:123465798123",
         "android_client_info": {
-          "package_name": "com.blixtwallet.testnet.experiment1"
+          "package_name": "com.kubbentwallet.testnet.experiment1"
         }
       },
       "api_key": [{
@@ -97,7 +97,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:123465798:android:123465798123",
         "android_client_info": {
-          "package_name": "com.blixtwallet.testnet.experiment1.debug"
+          "package_name": "com.kubbentwallet.testnet.experiment1.debug"
         }
       },
       "api_key": [{
@@ -108,7 +108,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:123465798:android:123465798123",
         "android_client_info": {
-          "package_name": "com.blixtwallet.testnet.fakelnd.debug"
+          "package_name": "com.kubbentwallet.testnet.fakelnd.debug"
         }
       },
       "api_key": [{
@@ -119,7 +119,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:123465798:android:123465798123",
         "android_client_info": {
-          "package_name": "com.blixtwallet.testnet.fakelnd"
+          "package_name": "com.kubbentwallet.testnet.fakelnd"
         }
       },
       "api_key": [{

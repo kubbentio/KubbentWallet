@@ -23,8 +23,8 @@
 -keep class com.facebook.jni.** { *; }
 
 # react-native-build-config
--keep class com.blixtwallet.BuildConfig { *; }
--keep class com.blixtwallet.testnet.BuildConfig { *; }
+-keep class com.kubbentwallet.BuildConfig { *; }
+-keep class com.kubbentwallet.testnet.BuildConfig { *; }
 
 -keep class com.facebook.crypto.** {
    *;

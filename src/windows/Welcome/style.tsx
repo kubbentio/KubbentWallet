@@ -1,6 +1,6 @@
 import { Dimensions, StyleProp, ViewStyle, TextStyle, StatusBar } from "react-native";
 import { getStatusBarHeight } from "react-native-status-bar-height";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 const smallScreen = Dimensions.get("window").height < 700;
 
 export default {
@@ -29,7 +29,7 @@ export default {
   } as StyleProp<ViewStyle>,
   buttons: {
     flexDirection: "row",
-    backgroundColor: blixtTheme.dark,
+    backgroundColor: kubbentTheme.dark,
   } as StyleProp<ViewStyle>,
   button: {
     width: "100%",

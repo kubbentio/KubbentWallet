@@ -4,7 +4,7 @@ import { View, Button, H1, Card, CardItem, Text, Spinner, Icon, H3 } from "nativ
 import { StackNavigationProp } from "@react-navigation/stack";
 
 import { WelcomeStackParamList } from "./index";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { useStoreActions } from "../../state/store";
 import style from "./style";
 import { smallScreen } from "../../utils/device";
@@ -108,7 +108,7 @@ export default function Confirm({ navigation }: IProps) {
                     <Text
                       key={word + i}
                       style={{
-                        color: confirmedWords.length === i ? blixtTheme.primary : blixtTheme.light,
+                        color: confirmedWords.length === i ? kubbentTheme.primary : kubbentTheme.light,
                       }}
                     >
                       {i + 1}. {confirmedWords[i]}
@@ -120,7 +120,7 @@ export default function Confirm({ navigation }: IProps) {
                     <Text
                       key={word + i + 8}
                       style={{
-                        color: confirmedWords.length === i + 8 ? blixtTheme.primary : blixtTheme.light,
+                        color: confirmedWords.length === i + 8 ? kubbentTheme.primary : kubbentTheme.light,
                       }}
                     >
                       {i + 9}. {confirmedWords[i + 8]}
@@ -132,7 +132,7 @@ export default function Confirm({ navigation }: IProps) {
                     <Text
                       key={word + i + 16}
                       style={{
-                        color: confirmedWords.length === i + 16 ? blixtTheme.primary : blixtTheme.light,
+                        color: confirmedWords.length === i + 16 ? kubbentTheme.primary : kubbentTheme.light,
                       }}
                     >
                       {i + 17}. {confirmedWords[i + 16]}
@@ -181,13 +181,13 @@ export default function Confirm({ navigation }: IProps) {
           <View style={style.buttons}>
             <Button onPress={() => { if (!proceeding) { setLoadSpinnerForButton("skip"); onContinue(); }}} block={true} style={{width: "50%", marginRight: 5 }}>
               <>
-                {loadSpinnerForButton === "skip" && <Spinner color={blixtTheme.light} />}
+                {loadSpinnerForButton === "skip" && <Spinner color={kubbentTheme.light} />}
                 {loadSpinnerForButton !== "skip" && <Text>{t("buttons.skip",{ns:namespaces.common})}</Text>}
               </>
             </Button>
             <Button disabled={!seedCorrect} onPress={() => { if (!proceeding) { setLoadSpinnerForButton("proceed"); onContinue(); }}} block={true} style={{width: "50%", marginLeft: 5 }}>
               <>
-                {loadSpinnerForButton === "proceed" && <Spinner color={blixtTheme.light} />}
+                {loadSpinnerForButton === "proceed" && <Spinner color={kubbentTheme.light} />}
                 {loadSpinnerForButton !== "proceed" && <Text>{t("buttons.proceed",{ns:namespaces.common})}</Text>}
               </>
             </Button>

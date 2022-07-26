@@ -8,7 +8,7 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import BarcodeMask from "../../components/BarCodeMask";
 import { SendStackParamList } from "./index";
 import { useStoreState } from "../../state/store";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import Camera from "../../components/Camera";
 import { Chain } from "../../utils/build";
 import { RouteProp } from "@react-navigation/native";
@@ -151,7 +151,7 @@ export default function SendCamera({ navigation, route }: ISendCameraProps) {
         Alert.alert(
           "Not authorized.",
           "Camera access was not granted.\n" +
-          "Blixt Wallet needs access to the camera in order to be able to scan QR-codes."
+          "Kubbent Wallet needs access to the camera in order to be able to scan QR-codes."
         );
         setTimeout(() => navigation.goBack(), 1)
       }}
@@ -159,7 +159,7 @@ export default function SendCamera({ navigation, route }: ISendCameraProps) {
       <View style={StyleSheet.absoluteFill}>
         <BarcodeMask
           showAnimatedLine={false}
-          edgeColor={blixtTheme.primary}
+          edgeColor={kubbentTheme.primary}
           width={265}
           height={265}
         />
@@ -185,7 +185,7 @@ const sendStyle = StyleSheet.create({
   lightningAddress: {
     position: "absolute",
     fontSize: 28,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     padding: 9,
     top: getStatusBarHeight(false) + 8,
     right: 8 + 6,
@@ -193,7 +193,7 @@ const sendStyle = StyleSheet.create({
   swapCamera: {
     position: "absolute",
     fontSize: 26,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     padding: 9,
     bottom: 10,
     left: 13,
@@ -201,7 +201,7 @@ const sendStyle = StyleSheet.create({
   paste: {
     position: "absolute",
     fontSize: 26,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     padding: 9,
     bottom: 12,
     right: 8 + 8,
@@ -209,7 +209,7 @@ const sendStyle = StyleSheet.create({
   pasteDebug: {
     position: "absolute",
     fontSize: 26,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     padding: 9,
     bottom: 12,
     right: 64 + 9,

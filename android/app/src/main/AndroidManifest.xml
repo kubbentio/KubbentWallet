@@ -1,6 +1,6 @@
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.blixtwallet"
+  package="com.kubbentwallet"
   xmlns:tools="http://schemas.android.com/tools"
 >
 
@@ -45,7 +45,7 @@
           <action android:name="android.intent.action.VIEW" />
           <category android:name="android.intent.category.BROWSABLE" />
           <category android:name="android.intent.category.DEFAULT" />
-          <data android:scheme="blixtwallet" />
+          <data android:scheme="kubbentwallet" />
         </intent-filter>
 
         <intent-filter>
@@ -97,7 +97,7 @@
       <service
         android:name=".LndMobileService"
         android:exported="false"
-        android:process=":blixtLndMobile" />
+        android:process=":kubbentLndMobile" />
     </application>
 
 </manifest>

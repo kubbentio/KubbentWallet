@@ -9,7 +9,7 @@ import { TLV_RECORD_NAME } from "../../utils/constants";
 import * as base64 from "base64-js";
 import payReq from "bolt11";
 import { decodeStreamResult } from "../utils";
-import { IAddInvoiceBlixtLspArgs } from "../index";
+import { IAddInvoiceKubbentLspArgs } from "../index";
 
 const { LndMobileTools } = NativeModules;
 
@@ -345,7 +345,7 @@ export const addInvoice = async (amount: number, memo: string, expiry: number = 
     throw e;
   }
 };
-export const addInvoiceBlixtLsp = ({amount, memo, expiry = 600, servicePubkey, chanId, cltvExpiryDelta, feeBaseMsat, feeProportionalMillionths, preimage}: IAddInvoiceBlixtLspArgs) => {
+export const addInvoiceKubbentLsp = ({amount, memo, expiry = 600, servicePubkey, chanId, cltvExpiryDelta, feeBaseMsat, feeProportionalMillionths, preimage}: IAddInvoiceKubbentLspArgs) => {
   return addInvoice(amount, memo, expiry);
 }
 

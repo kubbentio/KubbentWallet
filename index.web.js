@@ -31,5 +31,5 @@ AppRegistry.registerComponent(AppConfig.name, () => App);
 
 AppRegistry.runApplication(AppConfig.name, {
   initialProps: {},
-  rootTag: document.getElementById('blixt-web-root'),
+  rootTag: document.getElementById('kubbent-web-root'),
 })

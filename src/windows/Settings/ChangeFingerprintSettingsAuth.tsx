@@ -4,7 +4,7 @@ import { Container, View, Text, Icon } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
 import { useStoreActions, useStoreState, } from "../../state/store";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import useFingerprintAuth from "../../hooks/useFingerprintAuth";
 import { PLATFORM } from "../../utils/constants";
 import { getStatusBarHeight } from "react-native-status-bar-height";
@@ -57,7 +57,7 @@ const style = StyleSheet.create({
     marginBottom: 12,
     textAlign: "center",
     // textTransform: "uppercase",
-    backgroundColor: blixtTheme.dark, // Bug: Text disappears without this
+    backgroundColor: kubbentTheme.dark, // Bug: Text disappears without this
   },
   fingerPrintSymbolContainer: {
     padding: 8,

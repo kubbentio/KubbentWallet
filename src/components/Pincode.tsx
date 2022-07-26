@@ -7,7 +7,7 @@ import Container from "../components/Container";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 
 
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 import { smallScreen } from "../utils/device";
 import { PLATFORM } from "../utils/constants";
 
@@ -145,10 +145,10 @@ const style = StyleSheet.create({
     textAlign: "center",
     marginBottom: 8,
     textTransform: "uppercase",
-    backgroundColor: blixtTheme.dark, // Bug: Text disappears without this
+    backgroundColor: kubbentTheme.dark, // Bug: Text disappears without this
   },
   pincodeInputContainer: {
-    backgroundColor: blixtTheme.gray,
+    backgroundColor: kubbentTheme.gray,
     paddingVertical: 3,
   },
   pincodeInputText: {
@@ -158,7 +158,7 @@ const style = StyleSheet.create({
     letterSpacing: 4,
   },
   pincodeInputPlaceholderText: {
-    color: color(blixtTheme.lightGray).darken(0.6).hex(),
+    color: color(kubbentTheme.lightGray).darken(0.6).hex(),
   },
   pincodeButtons: {
     flex: smallScreen ? 1.6 : 1.2,
@@ -200,11 +200,11 @@ const style = StyleSheet.create({
     backgroundColor: "transparent",
   },
   buttonBackspaceIcon: {
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     fontSize: 23,
   },
   buttonClearIcon: {
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     fontSize: 34,
   },
 });

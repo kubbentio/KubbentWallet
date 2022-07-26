@@ -17,7 +17,7 @@ import CopyAddress from "../components/CopyAddress";
 import { MapStyle } from "../utils/google-maps";
 import TextLink from "../components/TextLink";
 import { ITransaction } from "../storage/database/transaction";
-import { blixtTheme } from ".././native-base-theme/variables/commonColor";
+import { kubbentTheme } from ".././native-base-theme/variables/commonColor";
 import { PLATFORM } from "../utils/constants";
 import { Alert } from "../utils/alert";
 
@@ -279,7 +279,7 @@ export default function TransactionDetails({ route, navigation }: ITransactionDe
                 style={{
                   width: "100%",
                   height: 475,
-                  backgroundColor:blixtTheme.gray,
+                  backgroundColor:kubbentTheme.gray,
                   opacity: mapActive ? 1 : 0,
                 }}
                 initialRegion={{

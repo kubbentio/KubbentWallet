@@ -1,14 +1,14 @@
 // @flow
 
-import variable, { blixtTheme } from './../variables/commonColor';
+import variable, { kubbentTheme } from './../variables/commonColor';
 
 export default (variables /* : * */ = variable) => {
   const iconTheme = {
     fontSize: variables.iconFontSize,
     // color: variable.textColor,
 
-    // BLIXT:
-    color: blixtTheme.light,
+    // KUBBENT:
+    color: kubbentTheme.light,
   };
 
   return iconTheme;

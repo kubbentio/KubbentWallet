@@ -7,8 +7,8 @@ import Long from "long";
 
 import { OnChainStackParamList } from "./index";
 import { useStoreActions, useStoreState } from "../../state/store";
-import BlixtForm from "../../components/Form";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import KubbentForm from "../../components/Form";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { parseBech32, toast } from "../../utils";
 import { BitcoinUnits, convertBitcoinUnit } from "../../utils/bitcoin-units";
 import useBalance from "../../hooks/useBalance";
@@ -104,7 +104,7 @@ export default ({ navigation }: IOpenChannelProps) => {
 
   return (
     <Container>
-      <BlixtForm
+      <KubbentForm
         items={[{
           key: "BTC_ADDRESS",
           title: t("form.address.title"),
@@ -174,9 +174,9 @@ export default ({ navigation }: IOpenChannelProps) => {
                   minimumValue={0}
                   maximumValue={500}
                   step={1}
-                  thumbTintColor={blixtTheme.primary}
-                  minimumTrackTintColor={blixtTheme.lightGray}
-                  maximumTrackTintColor={blixtTheme.lightGray}
+                  thumbTintColor={kubbentTheme.primary}
+                  minimumTrackTintColor={kubbentTheme.lightGray}
+                  maximumTrackTintColor={kubbentTheme.lightGray}
                 />
               )}
               <TextInput
@@ -208,7 +208,7 @@ export default ({ navigation }: IOpenChannelProps) => {
             disabled={sending}
           >
             {!sending && <Text>{t("form.withdraw.title")}</Text>}
-            {sending && <Spinner color={blixtTheme.light} />}
+            {sending && <Spinner color={kubbentTheme.light} />}
           </Button>
         ]}
         noticeText={`${formatBitcoinValue(Long.fromValue(onChainBalance))} available`}
@@ -221,10 +221,10 @@ export default ({ navigation }: IOpenChannelProps) => {
 const style = StyleSheet.create({
   feeRateTextInput: {
     height: 21,
-    fontFamily: blixtTheme.fontRegular,
+    fontFamily: kubbentTheme.fontRegular,
     fontSize: 15,
     padding: 0,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     flex: 1,
   },
 });

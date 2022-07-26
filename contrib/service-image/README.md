@@ -27,4 +27,4 @@ brew install webp
 2. Run `./generate-code.sh` to generate code to either be used in the WebLN list or
 the transaction log.
   - For WebLN List, open `contrib/service-image/code/code.html` and copy the things you need
-  - For Blixt transaction list etc, open `contrib/service-image/code/code.js` and copy the whole code and replace what's in lightning-services.ts
+  - For Kubbent transaction list etc, open `contrib/service-image/code/code.js` and copy the whole code and replace what's in lightning-services.ts

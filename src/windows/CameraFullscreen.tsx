@@ -4,7 +4,7 @@ import { StatusBar, StyleSheet } from "react-native";
 import Camera from "../components/Camera";
 import BarcodeMask from "../components/BarCodeMask";
 import { smallScreen } from "../utils/device";
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 import GoBackIcon from "../components/GoBackIcon";
 import { PLATFORM } from "../utils/constants";
 import { getStatusBarHeight } from "react-native-status-bar-height";
@@ -43,7 +43,7 @@ export default function CameraFullscreen({ navigation, route }: ICameraFullscree
         <>
           <BarcodeMask
             showAnimatedLine={false}
-            edgeColor={blixtTheme.primary}
+            edgeColor={kubbentTheme.primary}
             width={smallScreen ? 270 : 275}
             height={smallScreen ? 270 : 275}
           />

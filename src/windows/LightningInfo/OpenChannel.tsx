@@ -7,8 +7,8 @@ import Long from "long";
 
 import { LightningInfoStackParamList } from "./index";
 import { useStoreActions, useStoreState } from "../../state/store";
-import BlixtForm from "../../components/Form";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import KubbentForm from "../../components/Form";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import useBalance from "../../hooks/useBalance";
 import { RouteProp } from "@react-navigation/native";
 import { toast } from "../../utils";
@@ -75,7 +75,7 @@ export default function OpenChannel({ navigation, route }: IOpenChannelProps) {
 
   return (
     <Container>
-      <BlixtForm
+      <KubbentForm
         items={[{
           key: "CHANNEL",
           title: t("form.channel.title"),
@@ -111,9 +111,9 @@ export default function OpenChannel({ navigation, route }: IOpenChannelProps) {
                   minimumValue={0}
                   maximumValue={500}
                   step={1}
-                  thumbTintColor={blixtTheme.primary}
-                  minimumTrackTintColor={blixtTheme.lightGray}
-                  maximumTrackTintColor={blixtTheme.lightGray}
+                  thumbTintColor={kubbentTheme.primary}
+                  minimumTrackTintColor={kubbentTheme.lightGray}
+                  maximumTrackTintColor={kubbentTheme.lightGray}
                 />
               )}
               <TextInput
@@ -139,7 +139,7 @@ export default function OpenChannel({ navigation, route }: IOpenChannelProps) {
         buttons={[
           <Button key="OPEN_CHANNEL" onPress={onOpenChannelPress} block={true} primary={true} disabled={opening}>
             {!opening && <Text>{t("form.title")}</Text>}
-            {opening && <Spinner color={blixtTheme.light} />}
+            {opening && <Spinner color={kubbentTheme.light} />}
           </Button>
         ]}
         noticeText={`${formatBitcoinValue(onChainBalance)} available`}
@@ -152,10 +152,10 @@ export default function OpenChannel({ navigation, route }: IOpenChannelProps) {
 const style = StyleSheet.create({
   feeRateTextInput: {
     height: 21,
-    fontFamily: blixtTheme.fontRegular,
+    fontFamily: kubbentTheme.fontRegular,
     fontSize: 15,
     padding: 0,
-    color: blixtTheme.light,
+    color: kubbentTheme.light,
     flex: 1,
   },
 });

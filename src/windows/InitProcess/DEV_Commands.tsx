@@ -26,7 +26,7 @@ import { status, modifyStatus, queryScores } from "../../lndmobile/autopilot";
 import { RootStackParamList } from "../../Main";
 import { setWalletPassword, getWalletPassword, getItemObject, getPin } from "../../storage/keystore";
 import Content from "../../components/Content";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { LoginMethods } from "../../state/Security";
 import Spinner from "../../components/Spinner";
 
@@ -74,7 +74,7 @@ export default function DEV_Commands({ navigation, continueCallback }: IProps) {
         barStyle="light-content"
       />
       <Content style={styles.content}>
-        <View style={{ backgroundColor: blixtTheme.dark, marginTop: 32, width: "100%", display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+        <View style={{ backgroundColor: kubbentTheme.dark, marginTop: 32, width: "100%", display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
           {!navigation && <Button success onPress={continueCallback}><Text style={styles.buttonText}>continueCallback()</Text></Button>}
           {navigation &&
             <>
@@ -106,7 +106,7 @@ export default function DEV_Commands({ navigation, continueCallback }: IProps) {
             console.log(encoder);
           }}><Text style={styles.buttonText}>TextEncoder</Text></Button>
           <Button small onPress={async () => {
-            const metadata = '[["text/plain","lnurl-pay chat:  Comment 📝"],["text/long-desc","Write a message to be displayed on chat.blixtwallet.com.\\n\\nOnce the payment goes through, your message will be displayed on the web page."]]';
+            const metadata = '[["text/plain","lnurl-pay chat:  Comment 📝"],["text/long-desc","Write a message to be displayed on chat.kubbentwallet.com.\\n\\nOnce the payment goes through, your message will be displayed on the web page."]]';
 
             console.log(
               await JSHash(metadata, CONSTANTS.HashAlgorithms.sha256)
@@ -125,12 +125,12 @@ export default function DEV_Commands({ navigation, continueCallback }: IProps) {
             <Text style={styles.buttonText}>getTorEnabled</Text>
           </Button>
           <Button small onPress={async () => {
-            console.log("Tor", await NativeModules.BlixtTor.startTor());
+            console.log("Tor", await NativeModules.KubbentTor.startTor());
           }}>
             <Text style={styles.buttonText}>startTor</Text>
           </Button>
           <Button small onPress={async () => {
-            console.log("Tor", await NativeModules.BlixtTor.stopTor());
+            console.log("Tor", await NativeModules.KubbentTor.stopTor());
           }}>
             <Text style={styles.buttonText}>stopTor</Text>
           </Button>
@@ -842,7 +842,7 @@ export default function DEV_Commands({ navigation, continueCallback }: IProps) {
             <Text style={styles.buttonText}>easy-peasy store initialize()</Text>
           </Button>
         </View>
-        <View style={{ backgroundColor: blixtTheme.dark, padding: 15, marginTop: 10 }}>
+        <View style={{ backgroundColor: kubbentTheme.dark, padding: 15, marginTop: 10 }}>
           <Input
             onChangeText={(text: string) => {
               setConnectPeer(text);

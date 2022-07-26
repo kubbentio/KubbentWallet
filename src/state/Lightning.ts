@@ -137,7 +137,7 @@ export const lightning: ILightningModel = {
         dispatch.notificationManager.initialize(),
         dispatch.clipboardManager.initialize(),
         dispatch.deeplinkManager.initialize(),
-        dispatch.blixtLsp.initialize(),
+        dispatch.kubbentLsp.initialize(),
       ]);
     } catch (e) {
       toast(e.message, 0, "danger", "OK");

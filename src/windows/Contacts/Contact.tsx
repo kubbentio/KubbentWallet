@@ -22,7 +22,7 @@ import { fontFactorNormalized } from "../../utils/scale";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 
 interface IContactProps {
   contact: IContact;
@@ -284,7 +284,7 @@ const style = StyleSheet.create({
     paddingBottom: 25,
   },
   searchHeader: {
-    backgroundColor: Chain === "mainnet" ? blixtTheme.primary : Color(blixtTheme.lightGray).darken(0.30).hex(),
+    backgroundColor: Chain === "mainnet" ? kubbentTheme.primary : Color(kubbentTheme.lightGray).darken(0.30).hex(),
     paddingTop: 0,
     borderBottomWidth: 0,
     marginHorizontal: 8,

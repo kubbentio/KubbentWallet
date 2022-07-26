@@ -5,7 +5,7 @@ import { View, Button, H1, Text, Spinner } from "native-base";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 import { WelcomeStackParamList } from "./index";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import { useStoreState, useStoreActions } from "../../state/store";
 import QrCode from "../../components/QrCode";
 
@@ -37,7 +37,7 @@ export default function AddFunds({ navigation }: IProps) {
   if (!address) {
     return (
       <Container centered={true}>
-        <Spinner color={blixtTheme.light} size={55} />
+        <Spinner color={kubbentTheme.light} size={55} />
       </Container>
     );
   }
@@ -94,7 +94,7 @@ const extraStyle = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: blixtTheme.gray,
+    backgroundColor: kubbentTheme.gray,
   },
   qrInner: {
     justifyContent: "center",

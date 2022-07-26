@@ -2,12 +2,12 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Spinner } from "native-base";
 
-import { blixtTheme } from "../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../native-base-theme/variables/commonColor";
 
 export default function Loading() {
   return (
     <View style={style.loadingContainer}>
-      <Spinner size={55} color={blixtTheme.light} />
+      <Spinner size={55} color={kubbentTheme.light} />
     </View>
   );
 }

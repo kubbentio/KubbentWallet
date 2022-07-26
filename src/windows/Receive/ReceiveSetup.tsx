@@ -7,9 +7,9 @@ import Long from "long";
 
 import { ReceiveStackParamList } from "./index";
 import { useStoreActions, useStoreState } from "../../state/store";
-import BlixtForm from "../../components/Form";
+import KubbentForm from "../../components/Form";
 import { formatBitcoin, BitcoinUnits, IBitcoinUnits } from "../../utils/bitcoin-units";
-import { blixtTheme } from "../../native-base-theme/variables/commonColor";
+import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import useBalance from "../../hooks/useBalance";
 import { MATH_PAD_NATIVE_ID, MAX_SAT_INVOICE, PLATFORM } from "../../utils/constants";
 import { toast } from "../../utils";
@@ -277,7 +277,7 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
 
   return (
     <Container>
-      <BlixtForm
+      <KubbentForm
         mathPadProps={{
           visible: mathPadVisibleOriginal,
           onAddPress: () => addMathOperatorToInput("+"),
@@ -302,7 +302,7 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
             style={{ marginBottom: mathPadVisible && false ? MATH_PAD_HEIGHT + 5 : 0 }}
           >
             {loading
-              ? <Spinner color={blixtTheme.light} />
+              ? <Spinner color={kubbentTheme.light} />
               : <Text>{t("createInvoice.title")}</Text>
             }
           </Button>

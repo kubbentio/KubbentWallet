@@ -25,7 +25,7 @@ import { IDeeplinkManager, deeplinkManager } from "./DeeplinkManager";
 import { INotificationManagerModel, notificationManager } from "./NotificationManager";
 import { ILightNameModel, lightName } from "./LightName";
 import { IICloudBackupModel, iCloudBackup } from "./ICloudBackup";
-import { IBlixtLsp, blixtLsp } from "./BlixtLsp";
+import { IKubbentLsp, kubbentLsp } from "./KubbentLsp";
 import { IContactsModel, contacts } from "./Contacts";
 
 import { ELndMobileStatusCodes } from "../lndmobile/index";
@@ -35,7 +35,7 @@ import { clearTransactions } from "../storage/database/transaction";
 import { appMigration } from "../migration/app-migration";
 import { setWalletPassword, getItem, getWalletPassword } from "../storage/keystore";
 import { PLATFORM } from "../utils/constants";
-import SetupBlixtDemo from "../utils/setup-demo";
+import SetupKubbentDemo from "../utils/setup-demo";
 import { Chain, VersionCode } from "../utils/build";
 import { LndMobileEventEmitter } from "../utils/event-listener";
 import { lnrpc } from "../../proto/lightning";
@@ -106,7 +106,7 @@ export interface IStoreModel {
   notificationManager: INotificationManagerModel;
   lightName: ILightNameModel;
   iCloudBackup: IICloudBackupModel;
-  blixtLsp: IBlixtLsp;
+  kubbentLsp: IKubbentLsp;
   contacts: IContactsModel;
 
   walletSeed?: string[];
@@ -118,7 +118,7 @@ export interface IStoreModel {
 export const model: IStoreModel = {
   setupDemo: thunk(async (_, payload, { getState, dispatch }) => {
     const db = getState().db;
-    await SetupBlixtDemo(db, dispatch, payload.changeDb);
+    await SetupKubbentDemo(db, dispatch, payload.changeDb);
   }),
 
   openDb: thunk(async (actions) => {
@@ -203,7 +203,7 @@ export const model: IStoreModel = {
         try {
           actions.setTorLoading(true);
           if (PLATFORM === "android") {
-            await NativeModules.BlixtTor.startTor();
+            await NativeModules.KubbentTor.startTor();
           } else if (PLATFORM === "ios") {
             const tor = Tor({
               stopDaemonOnBackground: false,
@@ -550,7 +550,7 @@ protocol.no-script-enforced-lease=true
   notificationManager,
   lightName,
   iCloudBackup,
-  blixtLsp,
+  kubbentLsp,
   contacts,
 };
 
