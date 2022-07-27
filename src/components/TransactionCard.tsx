@@ -65,7 +65,7 @@ export default function TransactionCard({ onPress, transaction, unit }: IProps) 
 
   return (
     <Card>
-      <CardItem activeOpacity={1} button={true} onPress={() => onPress(transaction.rHash)}>
+      <CardItem style={{borderRadius: 5, borderWidth: 1, borderColor: 'white', backgroundColor: 'black',}} activeOpacity={1} button={true} onPress={() => onPress(transaction.rHash)}>
         <Body style={{ flexDirection: "row" }}>
           {lightningService &&
             <View style={transactionStyle.avatarContainer}>
@@ -124,14 +124,17 @@ const transactionStyle = StyleSheet.create({
   transactionTopDate: {
     paddingRight: 4,
     fontSize: (zoomed ? 12 : 15) * fontFactor,
+    fontFamily: 'Sora-Regular'
   },
   transactionTopValuePositive: {
     color: kubbentTheme.green,
     fontSize: (zoomed ? 12 : 15) * fontFactor,
     textAlign: "right",
+    fontFamily: 'Sora-Regular'
   },
   transactionTopValueNegative: {
     color: kubbentTheme.red,
+    fontFamily: 'Sora-Regular',
     fontSize: (zoomed ? 12 : 15) * fontFactor,
     textAlign: "right",
   },
@@ -149,6 +152,7 @@ const transactionStyle = StyleSheet.create({
   },
   transactionText: {
     fontSize: 15 * fontFactorSubtle,
+    fontFamily: 'Sora-Regular',
     flex: 1,
     marginRight: 0,
     ...Platform.select({
@@ -159,11 +163,13 @@ const transactionStyle = StyleSheet.create({
   },
   recipientOrSender: {
     fontSize: 15 * fontFactorSubtle,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontFamily: 'Sora-Regular'
   },
   status: {
     fontSize: 15 * fontFactorSubtle,
     marginLeft: 8,
-    marginRight: 0
+    marginRight: 0,
+    fontFamily: 'Sora-Regular'
   },
 });

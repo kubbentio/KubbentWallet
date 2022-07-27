@@ -73,8 +73,8 @@
 	<string>$(TeamIdentifierPrefix)</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>IBMPlexSans-Medium.ttf</string>
-		<string>IBMPlexSans-Regular.ttf</string>
+		<string>Sora-Regular.ttf</string>
+		<string>Sora-ExtraLight.ttf</string>
 	</array>
 </dict>
 </plist>

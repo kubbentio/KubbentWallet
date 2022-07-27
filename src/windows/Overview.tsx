@@ -28,6 +28,7 @@ import KubbentHeader from "../components/KubbentHeader";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../i18n/i18n.constants";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
@@ -226,30 +227,37 @@ function Overview({ navigation }: IOverviewProps) {
               </CardItem>
             </Card>
           )}
+          <View style={{marginBottom: 26, flexDirection: "row", alignContent: 'center', alignItems: 'center', justifyContent: 'space-between'}}>
+            <TouchableOpacity onPress={() => navigation.navigate("LightningInfo")} style={{alignContent: 'center', alignItems: 'center', alignSelf: 'center', justifyContent: 'center', width: 120, height: 90, borderRadius: 5, borderWidth: 1, borderColor: 'white'}}>
+              <Icon type="Entypo" name="thunder-cloud" />
+              <Text>Channels</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("OnChain")} style={{alignContent: 'center', alignItems: 'center', alignSelf: 'center', justifyContent: 'center', width: 120, height: 90, borderRadius: 5, borderWidth: 1, borderColor: 'white'}}>
+              <AnimatedIcon style={{color: 'white'}} type="MaterialCommunityIcons" name="bitcoin" />
+              <Text>On-Chain</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Settings")} style={{alignContent: 'center', alignItems: 'center', alignSelf: 'center', justifyContent: 'center', width: 120, height: 90, borderRadius: 5, borderWidth: 1, borderColor: 'white'}}>
+              <AnimatedIcon
+                type="MaterialIcons" name="more-horiz" style={{color: 'white'}} 
+              />
+              <Text style={{fontFamily: 'Sora-Regular'}}>More</Text>
+            </TouchableOpacity>
+          </View>
           {txs}
         </ScrollView>
         <Animated.View style={[style.animatedTop, { height: headerHeight }]} pointerEvents="box-none">
-          <KubbentHeader height={PLATFORM === "macos" ? headerHeight : undefined} />
             <View style={StyleSheet.absoluteFill}>
               {/* <AnimatedIcon
                 style={[style.onchainIcon, { opacity: iconOpacity }]} type="FontAwesome" name="btc" onPress={() => navigation.navigate("OnChain")}
               /> */}
-              {(layoutMode === "mobile" && PLATFORM !== "macos") && (
-                <AnimatedIcon
-                  style={[style.menuIcon]} type="Entypo" name="menu" onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}
-                />
-              )}
               {/* <AnimatedIcon
                 style={[style.channelsIcon, { opacity: iconOpacity }]} type="Entypo" name="thunder-cloud" onPress={() => (navigation.navigate as any)("LightningInfo")}
               /> */}
               <AnimatedIcon
                 style={[style.settingsIcon, {}]} type="MaterialIcons" name="settings" onPress={() => navigation.navigate("Settings")}
               />
-              <AnimatedIcon
-                style={[style.helpIcon, { opacity: iconOpacity }]} type="MaterialIcons" name="live-help" onPress={() => navigation.navigate("Help")}
-              />
               {!syncedToChain &&
-                <Animated.View style={[style.lightningSyncIcon, { opacity: iconOpacity }]}>
+                <Animated.View style={[style.helpIcon, { opacity: iconOpacity }]}>
                   <Spinner onPress={onPressSyncIcon} />
                 </Animated.View>
               }
@@ -423,8 +431,7 @@ const style = StyleSheet.create({
     right: 0,
     justifyContent: "center",
     alignItems: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: theme.kubbentFooterBorderColor,
+    backgroundColor: 'black'
   },
   menuIcon: {
     position: "absolute",
@@ -566,7 +573,7 @@ export function DrawerComponent() {
       drawerStyle: {
         backgroundColor: "transparent",
         borderRightColor: "transparent",
-        width: 305,
+        width: 0,
         borderEndColor: kubbentTheme.dark,
       },
       drawerType: layoutMode === "mobile" ? "front" : "permanent",

@@ -10,17 +10,15 @@ export default function FooterNav() {
   const t = useTranslation(namespaces.footerNav).t;
 
   return (
-    <Footer>
-      <FooterTab>
+    <Footer style={{backgroundColor: 'black'}}>
+      <FooterTab style={{backgroundColor: 'black'}}>
         <Button testID="FOOTER_RECEIVE" onPress={() => navigation.navigate("Receive")}>
-          {<Icon type="AntDesign" name="qrcode" />}
-          <Text>{t("receive")}</Text>
+          <Text style={{color: 'white', fontSize: 14,}}>{t("receive")}</Text>
         </Button>
       </FooterTab>
-      <FooterTab>
+      <FooterTab style={{backgroundColor: 'black'}}>
         <Button testID="FOOTER_SEND" onPress={() => navigation.navigate("Send", { params: { viaSwipe: false }})}>
-          <Icon type="AntDesign" name="camerao" />
-          <Text>{t("send")}</Text>
+          <Text style={{color: 'white', fontSize: 14,}}>{t("send")}</Text>
         </Button>
       </FooterTab>
     </Footer>

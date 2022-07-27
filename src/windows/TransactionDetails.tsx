@@ -348,7 +348,7 @@ const style = StyleSheet.create({
     overflow: "hidden",
   },
   header: {
-    fontWeight: "bold",
+    fontFamily: 'Sora-Regular'
   },
   detailText: {
     marginBottom: 7,

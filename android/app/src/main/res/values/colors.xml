@@ -1,7 +1,7 @@
 <resources>
-  <color name="primary">#bc6610</color>
+  <color name="primary">#ffffff</color>
   <color name="secondary">#efad13</color>
-  <color name="dark">#151314</color>
+  <color name="dark">#000000</color>
   <color name="light">#e5eaea</color>
   <color name="gray">#232323</color>
   <color name="lightGray">#878787</color>

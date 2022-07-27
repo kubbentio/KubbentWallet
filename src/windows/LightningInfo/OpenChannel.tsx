@@ -47,7 +47,7 @@ export default function OpenChannel({ navigation, route }: IOpenChannelProps) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: t("layout.title"),
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -75,6 +75,9 @@ export default function OpenChannel({ navigation, route }: IOpenChannelProps) {
 
   return (
     <Container>
+
+<Text style={{fontSize: 22, marginLeft: 14, fontFamily: 'Sora-Regular', marginTop: 32, alignContent: 'center', alignItems: 'center'}}>Open Channel</Text>
+      <Text style={{marginBottom: '25%', fontSize: 18, marginLeft: 14, fontFamily: 'Sora-ExtraLight', alignContent: 'center', alignItems: 'center'}}>Configure the node and the amount of sats to open a channel just below.</Text>
       <KubbentForm
         items={[{
           key: "CHANNEL",
@@ -102,7 +105,7 @@ export default function OpenChannel({ navigation, route }: IOpenChannelProps) {
                 <Slider
                   ref={slider}
                   style={{
-                    width: 185,
+                    width: 150,
                     height: 25,
                     marginTop: 10,
                     marginBottom: 10,
@@ -138,7 +141,7 @@ export default function OpenChannel({ navigation, route }: IOpenChannelProps) {
         }]}
         buttons={[
           <Button key="OPEN_CHANNEL" onPress={onOpenChannelPress} block={true} primary={true} disabled={opening}>
-            {!opening && <Text>{t("form.title")}</Text>}
+            {!opening && <Text style={{color: 'black'}}>{t("form.title")}</Text>}
             {opening && <Spinner color={kubbentTheme.light} />}
           </Button>
         ]}

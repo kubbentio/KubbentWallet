@@ -339,7 +339,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
                 <Text style={{ fontSize: 8 }}>Close channel</Text>
               </Button>
               <Button style={{ marginTop: 14, marginLeft: 10 }} small={true} onPress={onPressViewInExplorer}>
-                <Text style={{ fontSize: 8 }}>View in block explorer</Text>
+                <Text style={{ color: 'black', fontSize: 8 }}>View in block explorer</Text>
               </Button>
             </Left>
           </Row>
@@ -357,6 +357,10 @@ export const style = StyleSheet.create({
     marginTop: 8,
   },
   channelDetail: {
+    backgroundColor: 'black',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'white'
   },
   channelDetails: {
     fontSize: 16,

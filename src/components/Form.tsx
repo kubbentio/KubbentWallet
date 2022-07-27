@@ -31,10 +31,11 @@ export default function Form({ buttons, items, style, noticeText, noticeIcon, ma
           active ?? true
             ?
             <Item key={key} style={{
-              marginTop: i > 0 ? 16 : 8
+              marginTop: i > 0 ? 16 : 8, backgroundColor: '#1a1b1b', padding: 16, borderRadius: 5,
             }} success={success}>
               <Label style={{
                 ...styles.itemLabel,
+                color: 'white',
                 fontSize: (title !== null && title.length) >= 14 ? 15 : 17,
               }}>{title}</Label>
               {component}

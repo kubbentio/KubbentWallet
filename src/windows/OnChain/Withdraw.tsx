@@ -47,7 +47,7 @@ export default ({ navigation }: IOpenChannelProps) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: t("layout.title"),
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -104,6 +104,8 @@ export default ({ navigation }: IOpenChannelProps) => {
 
   return (
     <Container>
+      <Text style={{fontSize: 22, marginLeft: 14, fontFamily: 'Sora-Regular', marginTop: 32, alignContent: 'center', alignItems: 'center'}}>Withdraw your coins</Text>
+      <Text style={{marginBottom: '25%', fontSize: 18, marginLeft: 14, fontFamily: 'Sora-ExtraLight', alignContent: 'center', alignItems: 'center'}}>Send your bitcoin to another wallet here.</Text>
       <KubbentForm
         items={[{
           key: "BTC_ADDRESS",
@@ -134,8 +136,8 @@ export default ({ navigation }: IOpenChannelProps) => {
                 disabled={withdrawAll}
               />
               {!withdrawAll
-                ? <Button onPress={onWithdrawAllPress} style={{ marginRight: 5 }} small={true}><Text>{t("form.amount.all")}</Text></Button>
-                : <Button onPress={onCancelWithdrawAllPress} style={{ marginRight: 5 }} small={true}><Text>x</Text></Button>
+                ? <Button onPress={onWithdrawAllPress} style={{ marginRight: 5 }} small={true}><Text style={{color: 'black'}}>{t("form.amount.all")}</Text></Button>
+                : <Button onPress={onCancelWithdrawAllPress} style={{ marginRight: 5 }} small={true}><Text style={{color: 'black'}}>x</Text></Button>
               }
             </>
           ),
@@ -165,7 +167,7 @@ export default ({ navigation }: IOpenChannelProps) => {
                 <Slider
                   ref={slider}
                   style={{
-                    width: 185,
+                    width: 150,
                     height: 25,
                     marginTop: 10,
                     marginBottom: 10,
@@ -207,7 +209,7 @@ export default ({ navigation }: IOpenChannelProps) => {
             onPress={onWithdrawClick}
             disabled={sending}
           >
-            {!sending && <Text>{t("form.withdraw.title")}</Text>}
+            {!sending && <Text style={{color: 'black'}}>{t("form.withdraw.title")}</Text>}
             {sending && <Spinner color={kubbentTheme.light} />}
           </Button>
         ]}
@@ -224,7 +226,7 @@ const style = StyleSheet.create({
     fontFamily: kubbentTheme.fontRegular,
     fontSize: 15,
     padding: 0,
-    color: kubbentTheme.light,
+    color: 'white',
     flex: 1,
   },
 });

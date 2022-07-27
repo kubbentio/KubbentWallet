@@ -56,7 +56,7 @@ export default function LightningInfo({ navigation }: ILightningInfoProps) {
     navigation.setOptions({
       headerTitle: t("layout.title"),
       headerBackTitle: t("buttons.back",{ns:namespaces.common}),
-      headerShown: true,
+      headerShown: false,
       headerRight: () => {
         return (
           <NavigationButton onPress={getChans}>
@@ -118,7 +118,7 @@ export default function LightningInfo({ navigation }: ILightningInfoProps) {
   }
 
   return (
-    <Container>
+    <Container style={{}}>
       {rpcReady &&
         <ScrollView contentContainerStyle={style.container}>
           <View style={style.balanceInfo}>
@@ -176,6 +176,6 @@ const style = StyleSheet.create({
     backgroundColor: kubbentTheme.primary,
   },
   fabNewChannelIcon: {
-    color: kubbentTheme.light,
+    color: 'black'
   },
 });

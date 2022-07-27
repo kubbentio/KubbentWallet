@@ -849,7 +849,7 @@ exports[`renders correctly 1`] = `
                                         style={
                                           Object {
                                             "color": "#e5eaea",
-                                            "fontFamily": "IBMPlexSans-Medium",
+                                            "fontFamily": "Sora-Regular",
                                             "fontSize": 24.025974025974026,
                                             "height": 72.8,
                                             "marginBottom": -1,

@@ -3,11 +3,11 @@
 import color from 'color';
 import { Platform, Dimensions, PixelRatio } from 'react-native';
 
-// https://coolors.co/151314-232323-bc6610-f2af13-e5eaea
+// https://coolors.co/000000-232323-bc6610-f2af13-e5eaea
 export const kubbentTheme = {
-  dark: "#151314",
-  gray: "#232323",
-  primary: "#bc6610",
+  dark: "black",
+  gray: "black",
+  primary: "#fff",
   secondary: "#f5c13d",
   light: "#e5eaea",
 
@@ -17,8 +17,8 @@ export const kubbentTheme = {
 
   link: "#4f9ca8",
 
-  fontMedium: "IBMPlexSans-Medium",
-  fontRegular:  (Platform.OS === "ios" || Platform.OS === "macos") ? "IBMPlexSans" : "IBMPlexSans-Regular",
+  fontMedium: "Sora-ExtraLight",
+  fontRegular:  (Platform.OS === "ios" || Platform.OS === "macos") ? "Sora-ExtraLight" : "Sora-Regular  ",
 }
 
 export const PLATFORM = {

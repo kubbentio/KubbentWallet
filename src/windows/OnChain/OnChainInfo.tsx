@@ -47,7 +47,7 @@ export const OnChainInfo = ({ navigation }: IOnChainInfoProps) => {
     navigation.setOptions({
       headerTitle: "Bitcoin",
       headerBackTitle: t("buttons.back",{ns:namespaces.common}),
-      headerShown: true,
+      headerShown: false,
       headerRight: () => {
         return (
           <NavigationButton onPress={() => navigation.navigate("OnChainTransactionLog")}>
@@ -136,10 +136,10 @@ export const OnChainInfo = ({ navigation }: IOnChainInfoProps) => {
             onPress={onGeneratePress}
             onLongPress={() => onGenerateP2SHPress()}
           >
-            <Text>{t("newAddress.title")}</Text>
+            <Text style={{color: 'black'}}>{t("newAddress.title")}</Text>
           </Button>
           <Button testID="WITHDRAW" block={true} primary={true} disabled={!rpcReady} style={[style.button, { marginBottom: 0 }]} onPress={onWithdrawPress}>
-            <Text>{t("withdraw.title")}</Text>
+            <Text style={{color: 'black'}}>{t("withdraw.title")}</Text>
           </Button>
         </View>
       </View>
@@ -162,6 +162,7 @@ const style = StyleSheet.create({
   fundsInfoText: {
     textAlign: "center",
     margin: 0,
+    fontFamily: 'Sora-Regular'
   },
   qr: {
     width: "100%",
