@@ -213,7 +213,9 @@
   },
   "send.sendConfirmation": {
     "layout": {
-      "title": "Payer la facture"
+      "title": "Envoyez vos pièces",
+      "subtitle": "Veuillez vérifier les détails de la transaction avant de soumettre.",
+      "balance": "Votre solde"
     },
     "form": {
       "invoice": {

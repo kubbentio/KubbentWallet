@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { Vibration, BackHandler, Keyboard } from "react-native";
+import { Vibration, BackHandler, Keyboard, TouchableOpacity } from "react-native";
 import { Button, Container, Icon, Text, Spinner } from "native-base";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -19,6 +19,9 @@ import Input from "../../components/Input";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { formatBitcoin, convertBitcoinToFiat } from "../utils/bitcoin-units";
+import { TextInput } from "react-native-gesture-handler";
 
 export interface ISendConfirmationProps {
   navigation: StackNavigationProp<SendStackParamList, "SendConfirmation">;
@@ -30,11 +33,15 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
   const sendPayment = useStoreActions((actions) => actions.send.sendPayment);
   const getBalance = useStoreActions((actions) => actions.channel.getBalance);
   const nodeInfo = useStoreState((store) => store.send.remoteNodeInfo);
+  const currentRate = useStoreState((store) => store.fiat.currentRate);
+  const balance = useStoreState((store) => store.channel.balance);
+  const bitcoinUnit = useStoreState((store) => store.settings.bitcoinUnit);
+  const fiatUnit = useStoreState((store) => store.settings.fiatUnit);
+  const bitcoinBalance = formatBitcoin(balance, bitcoinUnit, false);
+  const fiatBalance = convertBitcoinToFiat(balance, currentRate, fiatUnit);
   const paymentRequest = useStoreState((store) => store.send.paymentRequest);
   const bolt11Invoice = useStoreState((store) => store.send.paymentRequestStr);
   const [isPaying, setIsPaying] = useState(false);
-  const bitcoinUnit = useStoreState((store) => store.settings.bitcoinUnit);
-  const fiatUnit = useStoreState((store) => store.settings.fiatUnit);
   const {
     dollarValue,
     bitcoinValue,
@@ -66,7 +73,7 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
     navigation.setOptions({
       headerTitle: t("layout.title"),
       headerBackTitle: t("buttons.back", { ns:namespaces.common }),
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -173,7 +180,28 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
 
   return (
     <Container>
-      <KubbentForm
+      <Container style={{margin: 32}}>
+        <Text style={{fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text>
+        <Text style={{fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text>
+        <SafeAreaView style={{marginBottom: 32, marginTop: 32}}>
+          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("layout.balance")}</Text>
+          <Text style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${bitcoinBalance} - ${fiatBalance}`}</Text>
+          {/* <Text style={{marginBottom: 8, fontSize: 18, fontFamily: 'Sora-ExtraLight'}}>{`${fiatBalance}`}</Text> */}
+          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("form.invoice.title")}</Text>
+          <Text style={{ marginBottom: 8, fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${bolt11Invoice!.substring(0, 29).toLowerCase()}...`}</Text>
+          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} in ${bitcoinUnit}`}</Text>
+          <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeBitcoinInput) || undefined} keyboardType="numeric" placeholder="0" value={bitcoinValue}/>
+          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} in ${fiatUnit}`}</Text>
+          <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeFiatInput) || undefined} keyboardType="numeric" placeholder="0" value={dollarValue}/>
+          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.description.title")}`}</Text>
+          <TextInput multiline={PLATFORM === "android"} value={description} placeholder="Type here your message" style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}/>
+        </SafeAreaView>
+        <TouchableOpacity onPress={send} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
+          {canSend && <Text style={{color: 'black', fontFamily: 'Sora-Regular', textAlign: 'center'}}>Pay</Text>}
+          {!canSend && <Spinner color={kubbentTheme.light} />}
+        </TouchableOpacity>
+      </Container>
+      {/* <KubbentForm
         items={formItems}
         buttons={[(
           <Button
@@ -188,7 +216,7 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
             {!canSend && <Spinner color={kubbentTheme.light} />}
           </Button>
         ),]}
-      />
+      /> */}
     </Container>
   );
 };

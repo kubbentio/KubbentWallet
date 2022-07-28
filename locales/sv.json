@@ -213,7 +213,9 @@
   },
   "send.sendConfirmation": {
     "layout": {
-      "title": "Betala faktura"
+      "title": "Skicka dina mynt",
+      "subtitle": "Kontrollera transaktionsinformationen innan du skickar in.",
+      "balance": "Din balans"
     },
     "form": {
       "invoice": {

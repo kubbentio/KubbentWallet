@@ -530,14 +530,14 @@ const headerInfo = StyleSheet.create({
       ios: -1,
       web: 0,
     }),
-    fontFamily: kubbentTheme.fontMedium,
+    fontFamily: 'Sora-Regular',
     zIndex: 1000,
   },
   fiat: {
     color: kubbentTheme.light,
     fontSize: 18 * fontFactor,
     lineHeight: 21 * fontFactor,
-    fontFamily: theme.fontFamily,
+    fontFamily: 'Sora-ExtraLight',
     zIndex: 1000,
   },
   pending: {

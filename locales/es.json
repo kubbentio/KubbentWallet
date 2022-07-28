@@ -213,7 +213,9 @@
   },
   "send.sendConfirmation": {
     "layout": {
-      "title": "Pagar factura"
+      "title": "Envía tus monedas",
+      "subtitle": "Verifique los detalles de la transacción antes de enviarla.",
+      "balance": "Tu balance"
     },
     "form": {
       "invoice": {

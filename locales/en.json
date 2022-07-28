@@ -213,7 +213,9 @@
   },
   "send.sendConfirmation": {
     "layout": {
-      "title": "Pay invoice"
+      "title": "Send your coins",
+      "subtitle": "Please check transaction details before submitting.",
+      "balance": "Your balance"
     },
     "form": {
       "invoice": {
@@ -496,7 +498,7 @@
         "account": "Account on"
       },
       "send": {
-        "title": "Send",
+        "title": "Send your coins",
         "couldNotPay": "Could not pay to this LNURL-pay code",
         "invalidResponse": "The response was not an LNURL-pay response (got {{response}})",
         "invalidOperation": "Invalid operation, contact neither has LUD-16 identifier or LNURL-pay code"
