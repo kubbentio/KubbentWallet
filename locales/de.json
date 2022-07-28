@@ -213,7 +213,9 @@
   },
   "send.sendConfirmation": {
     "layout": {
-      "title": "Invoice bezahlen"
+      "title": "Senden Sie Ihre Teile",
+      "subtitle": "Bitte überprüfen Sie die Transaktionsdetails vor dem Absenden.",
+      "balance": "Dein Kontostand"
     },
     "form": {
       "invoice": {

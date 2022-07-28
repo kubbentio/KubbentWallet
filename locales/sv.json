@@ -156,7 +156,8 @@
   },
   "receive.receiveSetup": {
     "layout": {
-      "title": "Ta emot"
+      "title": "Ta emot",
+      "subtitle": "Ta emot dina pengar utan mellanhänder med Kubbent-plånboken."
     },
     "createInvoice": {
       "title": "Skapa faktura",

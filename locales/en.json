@@ -156,7 +156,8 @@
   },
   "receive.receiveSetup": {
     "layout": {
-      "title": "Receive"
+      "title": "Receive",
+      "subtitle": "Receive your money without intermediaries with the Kubbent wallet."
     },
     "createInvoice": {
       "title": "Create invoice",

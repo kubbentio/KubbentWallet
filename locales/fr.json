@@ -156,7 +156,8 @@
   },
   "receive.receiveSetup": {
     "layout": {
-      "title": "Recevoir"
+      "title": "Recevoir",
+      "subtitle": "Recevez votre argent sans intermédiaires avec le portefeuille Kubbent."
     },
     "createInvoice": {
       "title": "Créer une facture",

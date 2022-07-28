@@ -13,13 +13,15 @@ import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import useBalance from "../../hooks/useBalance";
 import { MATH_PAD_NATIVE_ID, MAX_SAT_INVOICE, PLATFORM } from "../../utils/constants";
 import { toast } from "../../utils";
-import { Keyboard } from "react-native";
+import { Keyboard, TouchableOpacity } from "react-native";
 import Container from "../../components/Container";
 import { IFiatRates } from "../../state/Fiat";
 import Input from "../../components/Input";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { TextInput } from "react-native-gesture-handler";
 
 const MATH_PAD_HEIGHT = 44;
 
@@ -74,7 +76,7 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
     navigation.setOptions({
       headerTitle: t("layout.title"),
       headerBackTitle: t("buttons.back",{ns:namespaces.common}),
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -275,9 +277,33 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
     }
   };
 
+  if(bitcoinValue != undefined) {
+    
+  } else {
+    bitcoinValue == 0.00;
+  }
+
   return (
-    <Container>
-      <KubbentForm
+    <Container style={{alignItems: 'center'}}>
+      <Container style={{width: '95%', marginTop: 20, marginBottom: 12}}>
+        {/* <Text style={{fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text> */}
+        <Text style={{flex: 1, fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text>
+        <SafeAreaView style={{flex: 2}}>
+          <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountBitcoin.title")} in ${bitcoinUnit.nice} - ${dollarValue}`}</Text>
+          <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeBitcoinInput} placeholder="0" value={bitcoinValue !== undefined ? bitcoinValue.toString() : undefined}/>
+          <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountFiat.title")} in ${fiatUnit}`}</Text>
+          <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeFiatInput} placeholder="0" value={dollarValue !== undefined ? dollarValue.toString() : undefined}/>
+          <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.description.title")}`}</Text>
+          <TextInput onChangeText={setDescription} onFocus={() => setMathPadVisible(false)} value={description} placeholder={t("form.description.placeholder")} style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}}/>
+        </SafeAreaView>
+        <TouchableOpacity disabled={!canSend} onPress={onCreateInvoiceClick} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
+          {loading
+            ? <Spinner color={'white'} />
+            : <Text style={{fontFamily: 'Sora-ExtraLight', color: 'black'}}>{t("createInvoice.title")}</Text>
+          }
+        </TouchableOpacity>
+      </Container>
+      {/* <KubbentForm
         mathPadProps={{
           visible: mathPadVisibleOriginal,
           onAddPress: () => addMathOperatorToInput("+"),
@@ -307,19 +333,7 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
             }
           </Button>
         ]}
-      />
-      {/* {mathPadVisibleOriginal  && false &&
-        <MathPad
-          visible={mathPadVisibleOriginal}
-          onAddPress={() => addMathOperatorToInput("+")}
-          onSubPress={() => addMathOperatorToInput("-")}
-          onMulPress={() => addMathOperatorToInput("*")}
-          onDivPress={() => addMathOperatorToInput("/")}
-          onParenthesisLeftPress={() => addMathOperatorToInput("(")}
-          onParenthesisRightPress={() => addMathOperatorToInput(")")}
-          onEqualSignPress={() => evalMathExpression(currentlyFocusedInput ?? "bitcoin")}
-        />
-      } */}
+      /> */}
     </Container>
   );
 };

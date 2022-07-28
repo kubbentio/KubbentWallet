@@ -156,7 +156,8 @@
   },
   "receive.receiveSetup": {
     "layout": {
-      "title": "Recibir"
+      "title": "Recibir",
+      "subtitle": "Recibe tu dinero sin intermediarios con el monedero Kubbent."
     },
     "createInvoice": {
       "title": "Crear factura",
