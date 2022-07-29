@@ -284,8 +284,8 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
   }
 
   return (
-    <Container style={{alignItems: 'center'}}>
-      <Container style={{width: '95%', marginTop: 20, marginBottom: 12}}>
+    <Container style={{alignItems: 'center'}}> 
+      <Container style={{width: '95%', marginTop: 12, marginBottom: 12}}>
         {/* <Text style={{fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text> */}
         <Text style={{flex: 1, fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text>
         <SafeAreaView style={{flex: 2}}>
