@@ -125,7 +125,7 @@ export default function LightningInfo({ navigation }: ILightningInfoProps) {
             <H1 style={[style.spendableAmount]}>
               {t("balance.title")}
             </H1>
-            <H1 onPress={onPressBalance}>
+            <H1 style={{fontFamily: 'Sora-Regular'}} onPress={onPressBalance}>
               {preferFiat
                 ? (valueFiat(balance, currentRate).toFixed(2) + " " + fiatUnit)
                 : formatBitcoin(balance, bitcoinUnit)
@@ -168,9 +168,11 @@ const style = StyleSheet.create({
     alignItems: "center",
     paddingTop: 24,
     paddingBottom: 24,
+    fontFamily: 'Sora-Regular'
   },
   spendableAmount: {
     textAlign: "center",
+    fontFamily: 'Sora-ExtraLight'
   },
   fab: {
     backgroundColor: kubbentTheme.primary,

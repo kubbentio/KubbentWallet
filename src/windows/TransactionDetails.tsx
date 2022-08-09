@@ -38,7 +38,7 @@ function MetaData({ title, data, url }: IMetaDataProps) {
         toast("Copied to clipboard", undefined, "warning");
       }}
     >
-      <Text style={{ fontWeight: "bold" }}>{title}:{"\n"}</Text>
+      <Text style={{ fontFamily: 'Sora-Regular' }}>{title}:{"\n"}</Text>
       {!url && data}
       {url && <TextLink url={url}>{data}</TextLink>}
     </Text>
@@ -204,7 +204,7 @@ export default function TransactionDetails({ route, navigation }: ITransactionDe
               </View>
               <View style={{ flexDirection: "row", marginTop: 5, marginBottom: 10 }}>
                 <Button small style={style.actionBarButton} onPress={onPressSetNote}>
-                  <Text>{t("button.setNote")}</Text>
+                  <Text style={{fontFamily: 'Sora-ExtraLight', color: 'black'}}>{t("button.setNote")}</Text>
                 </Button>
                 {transaction.status === "OPEN" &&
                   <Button small danger onPress={onPressCancelInvoice} style={style.actionBarButton}>
@@ -351,6 +351,7 @@ const style = StyleSheet.create({
     fontFamily: 'Sora-Regular'
   },
   detailText: {
+    fontFamily: 'Sora-ExtraLight',
     marginBottom: 7,
     ...Platform.select({
       web: {

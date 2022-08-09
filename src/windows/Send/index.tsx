@@ -37,7 +37,7 @@ export default function SendIndex({ route }: { route: RouteProp<{ "Send": {viaSw
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }} />
       <Stack.Screen name="SendDone" component={SendDone} options={{
-        cardStyleInterpolator: CardStyleInterpolators.forNoAnimation,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }} />
     </Stack.Navigator>
   )

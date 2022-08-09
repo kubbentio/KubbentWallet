@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Animated } from "react-native";
-import { Text } from "native-base";
+import { Icon, Text } from "native-base";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import * as Animatable from "react-native-animatable";
@@ -17,7 +17,7 @@ import { namespaces } from "../../i18n/i18n.constants";
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 const AnimatedPolyline = Animated.createAnimatedComponent(Polyline);
 const AnimatedText = Animatable.createAnimatableComponent(Text);
-
+const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 // https://codepen.io/ottodevs/pen/BMmdMM
 
 function CheckmarkCircle() {
@@ -80,14 +80,14 @@ export function Done() {
 
   return (
     <>
-      <Check />
+      <AnimatedIcon style={{color: 'white', fontSize: 100}} type="Feather" name="check-circle"/>
       <AnimatedText
-        style={{ marginTop: 12 }}
+        style={{ fontFamily: 'Sora-Regular', fontSize: 26, marginTop: 12, color: 'white' }}
         duration={300}
         animation="fadeIn"
         useNativeDriver={true}
       >
-        {t("done.title")}
+        Payment Confirmed
       </AnimatedText>
     </>
   )

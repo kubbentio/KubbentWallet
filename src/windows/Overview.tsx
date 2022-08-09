@@ -32,7 +32,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
-
 const theme = nativeBaseTheme.default;
 const kubbentTheme = nativeBaseTheme.kubbentTheme;
 const NUM_TRANSACTIONS_PER_LOAD = 25;
@@ -173,7 +172,7 @@ function Overview({ navigation }: IOverviewProps) {
           return (<TransactionCard key={transaction.rHash} transaction={transaction} unit={bitcoinUnit} onPress={(rHash) => navigation.navigate("TransactionDetails", { rHash })} />);
       });
     }
-    return (<Text style={{ textAlign: "center", margin: 16 }}>No transactions yet</Text>);
+    return (<Text style={{ fontFamily: 'Sora-Regular', textAlign: "center", margin: 16 }}>No transactions yet</Text>);
   }, [transactions, contentExpand, bitcoinUnit, hideExpiredInvoices]);
 
   const onPressBalanceHeader = async () => {
@@ -220,7 +219,7 @@ function Overview({ navigation }: IOverviewProps) {
                   <Text style={{ flexShrink: 1, width: "100%", marginRight: 5 }}>
                     A new channel is in the process of being opened...
                   </Text>
-                  <Button style={{ }} small onPress={() => navigation.navigate("LightningInfo")}>
+                  <Button style={{ }} small onPress={() => navigation.navigate("LightningInfo" as never)}>
                     <Text>View</Text>
                   </Button>
                 </View>
@@ -228,20 +227,30 @@ function Overview({ navigation }: IOverviewProps) {
             </Card>
           )}
           <View style={{marginBottom: 26, flexDirection: "row", alignContent: 'center', alignItems: 'center', justifyContent: 'space-between'}}>
-            <TouchableOpacity onPress={() => navigation.navigate("LightningInfo")} style={{alignContent: 'center', alignItems: 'center', alignSelf: 'center', justifyContent: 'center', width: 120, height: 90, borderRadius: 5, borderWidth: 1, borderColor: 'white'}}>
-              <Icon type="Entypo" name="thunder-cloud" />
-              <Text>Channels</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("OnChain")} style={{alignContent: 'center', alignItems: 'center', alignSelf: 'center', justifyContent: 'center', width: 120, height: 90, borderRadius: 5, borderWidth: 1, borderColor: 'white'}}>
-              <AnimatedIcon style={{color: 'white'}} type="MaterialCommunityIcons" name="bitcoin" />
-              <Text>On-Chain</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Settings")} style={{alignContent: 'center', alignItems: 'center', alignSelf: 'center', justifyContent: 'center', width: 120, height: 90, borderRadius: 5, borderWidth: 1, borderColor: 'white'}}>
-              <AnimatedIcon
-                type="MaterialIcons" name="more-horiz" style={{color: 'white'}} 
-              />
-              <Text style={{fontFamily: 'Sora-Regular'}}>More</Text>
-            </TouchableOpacity>
+            <View style={{alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
+              <TouchableOpacity onPress={() => navigation.navigate("Send" as never)} style={{marginBottom: 5, borderRadius: 15, padding: 15, borderWidth: 1, borderColor: 'white'}}>
+                <AnimatedIcon style={{color: 'white'}} type="Feather" name="send" />
+              </TouchableOpacity>
+              <Text style={{fontFamily: 'Sora-Regular'}}>Send</Text>
+            </View>
+            <View style={{alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
+              <TouchableOpacity onPress={() => navigation.navigate("Receive" as never)} style={{marginBottom: 5, borderRadius: 15, padding: 15, borderWidth: 1, borderColor: 'white'}}>
+                <AnimatedIcon style={{color: 'white'}} type="Feather" name="arrow-down" />
+              </TouchableOpacity>
+              <Text style={{fontFamily: 'Sora-Regular'}}>Receive</Text>
+            </View>
+            <View style={{alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
+              <TouchableOpacity onPress={() => navigation.navigate("LightningInfo" as never)} style={{marginBottom: 5, borderRadius: 15, padding: 15, borderWidth: 1, borderColor: 'white'}}>
+                <AnimatedIcon style={{color: 'white'}} type="Feather" name="cloud-lightning" />
+              </TouchableOpacity>
+              <Text style={{fontFamily: 'Sora-Regular'}}>Channels</Text>
+            </View>
+            <View style={{alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
+              <TouchableOpacity onPress={() => navigation.navigate("OnChain")} style={{marginBottom: 5, borderRadius: 15, padding: 15, borderWidth: 1, borderColor: 'white'}}>
+                <AnimatedIcon style={{color: 'white'}} type="Feather" name="link" />
+              </TouchableOpacity>
+              <Text style={{fontFamily: 'Sora-Regular'}}>On-Chain</Text>
+            </View>
           </View>
           {txs}
         </ScrollView>
@@ -254,7 +263,7 @@ function Overview({ navigation }: IOverviewProps) {
                 style={[style.channelsIcon, { opacity: iconOpacity }]} type="Entypo" name="thunder-cloud" onPress={() => (navigation.navigate as any)("LightningInfo")}
               /> */}
               <AnimatedIcon
-                style={[style.settingsIcon, {}]} type="MaterialIcons" name="settings" onPress={() => navigation.navigate("Settings")}
+                style={[style.settingsIcon, {}]} type="Feather" name="menu" onPress={() => navigation.navigate("Settings")}
               />
               {!syncedToChain &&
                 <Animated.View style={[style.helpIcon, { opacity: iconOpacity }]}>
@@ -390,7 +399,7 @@ const DoBackup = () => {
   };
 
   const onPressBackupWallet = () => {
-    navigation.navigate("Welcome", { screen: "Seed"})
+    navigation.navigate("Welcome" as never, { screen: "Seed"} as never)
   };
 
   return (
@@ -556,7 +565,7 @@ export function OverviewTabsComponent() {
   return (
     <OverviewTabs.Navigator screenOptions={{
       header: () => null,
-    }} tabBar={() => layoutMode === "mobile" && PLATFORM !== "macos" ? <FooterNav /> : <></>}>
+    }} tabBar={() => layoutMode === "mobile" && PLATFORM !== "macos" ? <></> : <></>}>
       <OverviewTabs.Screen name="Overview" component={Overview} />
     </OverviewTabs.Navigator>
   );

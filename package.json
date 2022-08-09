@@ -89,7 +89,7 @@
     "react-native-build-config": "git+https://github.com/hsjoberg/react-native-build-config.git#d53d9a486331dd8b06764a6bbc61e74eb253f475",
     "react-native-camera": "^4.2.1",
     "react-native-codegen": "^0.70.3",
-    "react-native-dialogs": "1.1.1",
+    "react-native-dialogs": "^1.1.1",
     "react-native-document-picker": "^8.1.1",
     "react-native-easy-grid": "0.2.2",
     "react-native-enhanced-popup-menu": "^0.7.0",

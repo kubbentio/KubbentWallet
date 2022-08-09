@@ -20,6 +20,7 @@ import { toast } from "../../utils";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface IReceiveQRProps {
   navigation: StackNavigationProp<ReceiveStackParamList, "ReceiveQr">;
@@ -35,7 +36,7 @@ export default function ReceiveQr({ navigation, route }: IReceiveQRProps) {
     navigation.setOptions({
       headerTitle: t("title"),
       headerBackTitle: t("buttons.back",{ns:namespaces.common}),
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -65,20 +66,28 @@ export default function ReceiveQr({ navigation, route }: IReceiveQRProps) {
   };
 
   return (
-    <Container testID="qr">
+    <Container>
       <View style={style.container}>
-        <H1 style={style.scanThisQr}>Scan this QR code</H1>
-        <Text testID="expire" style={style.expires}>
-          <>Expires in </>
-          <Ticker expire={transaction.expire.toNumber()} />
-        </Text>
+        {/* <H1 style={style.scanThisQr}>Invoice created</H1> */}
         <QrCode size={smallScreen ? 225 : undefined} data={transaction.paymentRequest.toUpperCase()} onPress={onQrPress} />
-        <View style={{ width: "89%", marginBottom: 16 }} testID="payment-request-string">
+        {/* <View style={{ width: "89%", marginBottom: 22 }} testID="payment-request-string">
           <CopyAddress text={transaction.paymentRequest} onPress={onPressPaymentRequest} />
-        </View>
+        </View> */}
         {transaction.value?.neq(0) &&
-          <H3 testID="pay-amount">{formatBitcoin(transaction.value, bitcoinUnit)}</H3>
+          <View style={{marginTop: 15, width: '85%', flexDirection: 'row', alignContent: 'space-between', justifyContent: 'space-between'}}>
+            <H3 testID="pay-amount" style={{fontFamily: 'Sora-Regular'}}>Amount</H3>
+            <H3 style={{fontFamily: 'Sora-Regular'}}>{formatBitcoin(transaction.value, bitcoinUnit)}</H3>
+          </View>
         }
+        <View style={{marginTop: 15, width: '85%', flexDirection: 'row', alignContent: 'space-between', justifyContent: 'space-between'}}>
+          <H3 testID="pay-amount" style={{fontFamily: 'Sora-Regular'}}>Expires in</H3>
+          <H3 style={{fontFamily: 'Sora-Regular'}}><Ticker expire={transaction.expire.toNumber()} /></H3>
+        </View>
+        <View style={{marginTop: 15, width: '85%'}}>
+          <TouchableOpacity onPress={onPressPaymentRequest} style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'white', padding: 10, borderRadius: 5}}>
+            <Text style={{fontFamily: 'Sora-Regular', textAlign: 'center', color: 'black'}}>Copy Invoice</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </Container>
   );
@@ -91,18 +100,21 @@ const style = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "100%",
-    marginTop: -16,
+    padding: 15,
   },
   scanThisQr: {
-    marginBottom: 2,
+    marginBottom: 15,
+    fontFamily: 'Sora-Regular'
   },
   expires: {
     marginBottom: 6,
+    fontFamily: 'Sora-Regular'
   },
   paymentRequest: {
     paddingTop: 6,
     paddingLeft: 18,
     paddingRight: 18,
     paddingBottom: 20,
+    fontFamily: 'Sora-Regular'
   },
 });

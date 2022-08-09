@@ -85,10 +85,10 @@ export default function SendCamera({ navigation, route }: ISendCameraProps) {
       else {
         navigation.getParent()?.goBack();
       }
-      navigation.navigate(screen, options);
+      navigation.navigate(screen as never, options as never);
     }
     else {
-      navigation.replace(screen, options);
+      navigation.replace(screen as never, options as never);
     }
   };
 
@@ -165,7 +165,6 @@ export default function SendCamera({ navigation, route }: ISendCameraProps) {
         />
         <Icon type="Ionicons" name="at" style={sendStyle.lightningAddress} onPress={onLightningAddressClick} />
         <Icon type="Ionicons" name="camera-reverse" style={sendStyle.swapCamera} onPress={onCameraSwitchClick} />
-        {(__DEV__ || PLATFORM === "web") && <Icon type="MaterialCommunityIcons" name="debug-step-over" style={sendStyle.pasteDebug} onPress={onDebugPaste} />}
         <Icon testID="paste-clipboard" type="FontAwesome" name="paste" style={sendStyle.paste} onPress={onPasteClick} />
         {PLATFORM !== "android" &&
           <GoBackIcon style={sendStyle.goBack} />

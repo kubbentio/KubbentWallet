@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { Vibration, BackHandler, Keyboard, TouchableOpacity } from "react-native";
-import { Button, Container, Icon, Text, Spinner } from "native-base";
+import { Button, Icon, Text, Spinner } from "native-base";
 import { RouteProp } from "@react-navigation/native";
+import Container from "../../components/Container";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 import { SendStackParamList } from "./index";
@@ -179,14 +180,15 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
   );
 
   return (
-    <Container>
-      <Container style={{margin: 32}}>
-        <Text style={{fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text>
-        <Text style={{fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text>
-        <SafeAreaView style={{marginBottom: 32, marginTop: 32}}>
+    <Container style={{alignItems: 'center', alignContent: 'center', marginTop: PLATFORM === "macos" ? 0.5 : 0 }}>
+      <Container style={{paddingLeft: 5, paddingRight: 5, alignContent: 'center', justifyContent: 'space-between'}}>
+        {/* <SafeAreaView>
+          <Text style={{fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text>
+          <Text style={{fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text>
+        </SafeAreaView> */}
+        <SafeAreaView>
           <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("layout.balance")}</Text>
           <Text style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${bitcoinBalance} - ${fiatBalance}`}</Text>
-          {/* <Text style={{marginBottom: 8, fontSize: 18, fontFamily: 'Sora-ExtraLight'}}>{`${fiatBalance}`}</Text> */}
           <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("form.invoice.title")}</Text>
           <Text style={{ marginBottom: 8, fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${bolt11Invoice!.substring(0, 29).toLowerCase()}...`}</Text>
           <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} in ${bitcoinUnit}`}</Text>
@@ -195,28 +197,15 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
           <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeFiatInput) || undefined} keyboardType="numeric" placeholder="0" value={dollarValue}/>
           <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.description.title")}`}</Text>
           <TextInput multiline={PLATFORM === "android"} value={description} placeholder="Type here your message" style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}/>
+
         </SafeAreaView>
-        <TouchableOpacity onPress={send} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
-          {canSend && <Text style={{color: 'black', fontFamily: 'Sora-Regular', textAlign: 'center'}}>Pay</Text>}
-          {!canSend && <Spinner color={kubbentTheme.light} />}
-        </TouchableOpacity>
-      </Container>
-      {/* <KubbentForm
-        items={formItems}
-        buttons={[(
-          <Button
-            key="PAY"
-            testID="pay-invoice"
-            block={true}
-            primary={true}
-            onPress={send}
-            disabled={!canSend || (amountEditable ? (bitcoinValue === "0" || bitcoinValue === "" || bitcoinValue === undefined) : false)}
-          >
-            {canSend && <Text>Pay</Text>}
+        <SafeAreaView>
+          <TouchableOpacity onPress={send} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
+            {canSend && <Text style={{color: 'black', fontFamily: 'Sora-Regular', textAlign: 'center'}}>Pay</Text>}
             {!canSend && <Spinner color={kubbentTheme.light} />}
-          </Button>
-        ),]}
-      /> */}
+          </TouchableOpacity>
+        </SafeAreaView>
+      </Container>
     </Container>
   );
 };

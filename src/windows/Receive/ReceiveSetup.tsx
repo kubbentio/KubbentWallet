@@ -56,6 +56,10 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
 
   const [currentlyFocusedInput, setCurrentlyFocusedInput] = useState<"bitcoin" | "fiat" | "other">("other");
 
+  if(dollarValue == undefined) {
+    dollarValue == 0.00;
+  }
+
   useEffect(() => {
     const keyboardShowListener = Keyboard.addListener("keyboardDidShow", (event) => {
       // LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -285,9 +289,9 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
 
   return (
     <Container style={{alignItems: 'center'}}> 
-      <Container style={{width: '95%', marginTop: 12, marginBottom: 12}}>
-        {/* <Text style={{fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text> */}
-        <Text style={{flex: 1, fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text>
+      <Container style={{width: '90%', marginTop: 32, marginBottom: 32}}>
+        {/* <Text style={{flex: 1, textAlign: 'center', fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text> */}
+        {/* <Text style={{flex: 1, fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text> */}
         <SafeAreaView style={{flex: 2}}>
           <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountBitcoin.title")} in ${bitcoinUnit.nice} - ${dollarValue}`}</Text>
           <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeBitcoinInput} placeholder="0" value={bitcoinValue !== undefined ? bitcoinValue.toString() : undefined}/>
