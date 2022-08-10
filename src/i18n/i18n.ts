@@ -19,11 +19,6 @@ const createI18n = (language: string): i18nInstance => {
     ns: namespaces.common,
     resources: {
       en,
-      es,
-      de,
-      fr,
-      tlh,
-      sv,
     },
   });
 

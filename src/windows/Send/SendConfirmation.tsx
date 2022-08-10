@@ -21,7 +21,7 @@ import Input from "../../components/Input";
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { formatBitcoin, convertBitcoinToFiat } from "../utils/bitcoin-units";
+import { formatBitcoin, convertBitcoinToFiat } from "../../utils/bitcoin-units";
 import { TextInput } from "react-native-gesture-handler";
 
 export interface ISendConfirmationProps {
@@ -54,9 +54,9 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
   const lightningReadyToSend = useLightningReadyToSend();
 
   useEffect(() => {
-    const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
-      callback(null);
-    });
+    // const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
+    //   callback(null);
+    // });
 
     if (paymentRequest) {
       if (!paymentRequest.numSatoshis) {
@@ -65,7 +65,7 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
     }
 
     return () => {
-      backHandler.remove();
+      // backHandler.remove();
       clear();
     }
   }, []);
@@ -195,9 +195,8 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
           <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeBitcoinInput) || undefined} keyboardType="numeric" placeholder="0" value={bitcoinValue}/>
           <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} in ${fiatUnit}`}</Text>
           <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeFiatInput) || undefined} keyboardType="numeric" placeholder="0" value={dollarValue}/>
-          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.description.title")}`}</Text>
-          <TextInput multiline={PLATFORM === "android"} value={description} placeholder="Type here your message" style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}/>
-
+          {/* <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.description.title")}`}</Text>
+          <TextInput multiline={PLATFORM === "android"} value={description} placeholder="Type here your message" style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}/> */}
         </SafeAreaView>
         <SafeAreaView>
           <TouchableOpacity onPress={send} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
