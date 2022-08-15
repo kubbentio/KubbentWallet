@@ -205,7 +205,7 @@ const AlmostDone = ({ navigation }: IProps) => {
           </View>
           <View style={style.buttons}>
             <Button style={style.button} block={true} onPress={onPressContinue}>
-              <Text>{t("buttons.continue",{ns:namespaces.common})}</Text>
+              <Text style={{fontFamily: 'Sora-ExtraLight', color: 'black'}}>{t("buttons.continue",{ns:namespaces.common})}</Text>
             </Button>
           </View>
         </View>

@@ -46,6 +46,7 @@ export default {
   } as StyleProp<ViewStyle>,
   textHeader: {
     marginBottom: 7,
+    fontFamily: 'Sora-Regular'
   } as StyleProp<TextStyle>,
   card: {
     flex: 1,

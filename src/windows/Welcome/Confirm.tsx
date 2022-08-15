@@ -26,6 +26,7 @@ export default function Confirm({ navigation }: IProps) {
 
   const getSeed = useStoreActions((store) => store.security.getSeed);
   const [seed, setSeed] = useState<string[] | undefined>([]);
+  const changeOnboardingState = useStoreActions((store) => store.changeOnboardingState);
 
   useEffect(() => {
     // tslint:disable-next-line: no-async-without-await, no-floating-promises
@@ -62,18 +63,27 @@ export default function Confirm({ navigation }: IProps) {
     }
   }
 
-  const onContinue = () => {
+  // const onContinue = () => {
+  //   if (proceeding) {
+  //     return;
+  //   }
+
+  //   if (PLATFORM === "android") {
+  //     await changeOnboardingState("DONE");
+  //   navigation.pop();
+  //   } else if (PLATFORM === "ios") {
+  //     navigation.replace("AlmostDone");
+  //   } else {
+  //     navigation.replace("AlmostDone")
+  //   }
+  // };
+  const onContinue = async () => {
     if (proceeding) {
       return;
     }
 
-    if (PLATFORM === "android") {
-      navigation.replace("GoogleDriveBackup");
-    } else if (PLATFORM === "ios") {
-      navigation.replace("ICloudBackup");
-    } else {
-      navigation.replace("AlmostDone")
-    }
+    await changeOnboardingState("DONE");
+    navigation.pop();
   };
 
   const onBackspacePress = () => {
@@ -108,7 +118,7 @@ export default function Confirm({ navigation }: IProps) {
                     <Text
                       key={word + i}
                       style={{
-                        color: confirmedWords.length === i ? kubbentTheme.primary : kubbentTheme.light,
+                        fontFamily: 'Sora-Regular', color: confirmedWords.length === i ? kubbentTheme.primary : kubbentTheme.light,
                       }}
                     >
                       {i + 1}. {confirmedWords[i]}
@@ -120,7 +130,7 @@ export default function Confirm({ navigation }: IProps) {
                     <Text
                       key={word + i + 8}
                       style={{
-                        color: confirmedWords.length === i + 8 ? kubbentTheme.primary : kubbentTheme.light,
+                        fontFamily: 'Sora-Regular', color: confirmedWords.length === i + 8 ? kubbentTheme.primary : kubbentTheme.light,
                       }}
                     >
                       {i + 9}. {confirmedWords[i + 8]}
@@ -132,7 +142,7 @@ export default function Confirm({ navigation }: IProps) {
                     <Text
                       key={word + i + 16}
                       style={{
-                        color: confirmedWords.length === i + 16 ? kubbentTheme.primary : kubbentTheme.light,
+                        fontFamily: 'Sora-Regular', color: confirmedWords.length === i + 16 ? kubbentTheme.primary : kubbentTheme.light,
                       }}
                     >
                       {i + 17}. {confirmedWords[i + 16]}
@@ -182,7 +192,7 @@ export default function Confirm({ navigation }: IProps) {
             <Button onPress={() => { if (!proceeding) { setLoadSpinnerForButton("skip"); onContinue(); }}} block={true} style={{width: "50%", marginRight: 5 }}>
               <>
                 {loadSpinnerForButton === "skip" && <Spinner color={kubbentTheme.light} />}
-                {loadSpinnerForButton !== "skip" && <Text>{t("buttons.skip",{ns:namespaces.common})}</Text>}
+                {loadSpinnerForButton !== "skip" && <Text style={{fontFamily: 'Sora-ExtraLight', color: 'black'}}>{t("buttons.skip",{ns:namespaces.common})}</Text>}
               </>
             </Button>
             <Button disabled={!seedCorrect} onPress={() => { if (!proceeding) { setLoadSpinnerForButton("proceed"); onContinue(); }}} block={true} style={{width: "50%", marginLeft: 5 }}>
@@ -208,6 +218,8 @@ const extraStyle = StyleSheet.create({
   },
   wordButtonText: {
     fontSize: 12,
+    fontFamily: 'Sora-Regular',
+    color: 'black'
   },
 });
 

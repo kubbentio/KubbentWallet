@@ -293,13 +293,13 @@ function Overview({ navigation }: IOverviewProps) {
             </Animated.Text>
 
             {pendingOpenBalance.equals(0) &&
-              <Animated.Text style={[{ opacity: headerFiatOpacity }, headerInfo.fiat]}>
+              <Animated.Text style={[{ fontFamily: 'Sora-ExtraLight',  opacity: headerFiatOpacity }, headerInfo.fiat]}>
                 {!preferFiat && fiatBalance}
                 {preferFiat && bitcoinBalance}
               </Animated.Text>
             }
             {pendingOpenBalance.greaterThan(0) &&
-              <Animated.Text style={[{ opacity: headerFiatOpacity }, headerInfo.pending]}>
+              <Animated.Text style={[{ fontFamily: 'Sora-ExtraLight', opacity: headerFiatOpacity }, headerInfo.pending]}>
                 {!preferFiat && <>({formatBitcoin(pendingOpenBalance, bitcoinUnit)} {t("msg.pending",{ns:namespaces.common})})</>}
                 {preferFiat && <>({convertBitcoinToFiat(pendingOpenBalance, currentRate, fiatUnit)} {t("msg.pending",{ns:namespaces.common})})</>}
               </Animated.Text>

@@ -57,17 +57,17 @@ export default function Seed({ navigation }: IProps) {
               <>
                 <View style={style.wordColumn}>
                   {seed.slice(0, 8).map((word, i) => (
-                    <Text key={word + i}>{i + 1}. {word}</Text>
+                    <Text style={{fontFamily: 'Sora-ExtraLight'}} key={word + i}>{i + 1}. {word}</Text>
                   ))}
                 </View>
                 <View style={style.wordColumn}>
                 {seed.slice(8, 16).map((word, i) => (
-                    <Text key={word + i + 8}>{i + 9}. {word}</Text>
+                    <Text style={{fontFamily: 'Sora-ExtraLight'}} key={word + i + 8}>{i + 9}. {word}</Text>
                   ))}
                 </View>
                 <View style={style.wordColumn}>
                 {seed.slice(16, 24).map((word, i) => (
-                    <Text key={word + i + 16}>{i + 17}. {word}</Text>
+                    <Text style={{fontFamily: 'Sora-ExtraLight'}} key={word + i + 16}>{i + 17}. {word}</Text>
                   ))}
                 </View>
               </>
@@ -81,7 +81,7 @@ export default function Seed({ navigation }: IProps) {
               :
               <H1 style={style.textHeader}>{t("title")}</H1>
             }
-            <Text>
+            <Text style={{fontFamily: 'Sora-ExtraLight'}}>
               {t("msg")}{"\n"}{"\n"}
               {t("msg1")}{"\n"}
               {t("msg2")},{"\n"}{t("msg3")}{"\n"}{"\n"}
@@ -90,7 +90,7 @@ export default function Seed({ navigation }: IProps) {
           </View>
           <View style={style.buttons}>
             <Button style={style.button} block={true} onPress={onPressContinue}>
-              <Text>{t("button")}</Text>
+              <Text style={{color: 'black'}}>{t("button")}</Text>
             </Button>
           </View>
         </View>
