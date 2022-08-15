@@ -44,7 +44,7 @@ export default function({ navigation }: ISelectListProps) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: t("layout.title"),
-      headerShown: true,
+      headerShown: false,
       headerRight: () => {
         return (
           <NavigationButton onPress={async () => rpcReady && await getLightningPeers()}>
@@ -69,7 +69,7 @@ export default function({ navigation }: ISelectListProps) {
       }
       {!loading &&
         <>
-          <KubbentContent style={{ paddingBottom: 25 }}>
+          <KubbentContent style={{ padding: 32 }}>
             {lightningPeers.map((peer) => {
               const serviceKey = identifyService(peer.peer.pubKey, "", null);
               let service;
@@ -83,9 +83,9 @@ export default function({ navigation }: ISelectListProps) {
                     <Body>
                       <Row style={{ width: "100%" }}>
                         <Left style={{ alignSelf: "flex-start" }}>
-                          <Text>{t("alias")}</Text>
+                          <Text style={{fontFamily: 'Sora-Regular'}}>{t("alias")}</Text>
                         </Left>
-                        <Right style={{ flexDirection: "row", alignItems: "flex-start", justifyContent: "flex-end" }}>
+                        <Right style={{  flexDirection: "row", alignItems: "flex-start", justifyContent: "flex-end" }}>
                           <Text style={style.cardDataText}>
                             {peer.node?.alias}
                           </Text>
@@ -101,7 +101,7 @@ export default function({ navigation }: ISelectListProps) {
                       </Row>
                       <Row style={{ width: "100%" }}>
                         <Left style={{ alignSelf: "flex-start" }}>
-                          <Text>{t("pubKey")}</Text>
+                          <Text style={{fontFamily: 'Sora-Regular'}}>{t("pubKey")}</Text>
                         </Left>
                         <Right>
                           <Text style={{ fontSize: 9, textAlign:"right" }}>{peer.peer.pubKey}</Text>
@@ -109,14 +109,14 @@ export default function({ navigation }: ISelectListProps) {
                       </Row>
                       <Row style={{ width: "100%" }}>
                         <Left style={{ alignSelf: "flex-start" }}>
-                          <Text>{t("address")}</Text>
+                          <Text style={{fontFamily: 'Sora-Regular'}}>{t("address")}</Text>
                         </Left>
                         <Right>
                         <Text style={style.cardDataText}>{peer.peer.address}</Text>
                         </Right>
                       </Row>
                       <Row style={{ width: "100%" }}>
-                        <Left style={{ alignSelf: "flex-start" }}>
+                        <Left style={{ fontFamily: 'Sora-Regular', alignSelf: "flex-start" }}>
                           <Text>{t("data.title")}</Text>
                         </Left>
                         <Right>
@@ -128,7 +128,7 @@ export default function({ navigation }: ISelectListProps) {
                       </Row>
                       <Row style={{ width: "100%" }}>
                         <Left style={{ alignSelf: "flex-start" }}>
-                          <Text>{t("transfer.title")}</Text>
+                          <Text style={{fontFamily: 'Sora-Regular'}}>{t("transfer.title")}</Text>
                         </Left>
                         <Right>
                           <Text style={style.cardDataText}>
@@ -139,7 +139,7 @@ export default function({ navigation }: ISelectListProps) {
                       </Row>
                       <Row style={{ width: "100%" }}>
                         <Left style={{ alignSelf: "flex-start" }}>
-                          <Text>{t("inbound")}</Text>
+                          <Text style={{fontFamily: 'Sora-Regular'}}>{t("inbound")}</Text>
                         </Left>
                         <Right>
                           <Text style={style.cardDataText}>
@@ -186,7 +186,7 @@ export default function({ navigation }: ISelectListProps) {
                       <Row style={{ width: "100%" }}>
                         <Left>
                           <Button style={{ marginTop: 14 }} primary={true} small={true} onPress={() => close(peer.peer.pubKey)}>
-                            <Text style={{fontSize: 9}}>{t("disconnect")}</Text>
+                            <Text style={{fontFamily: 'Sora-Regular', color: 'black', fontSize: 9}}>{t("disconnect")}</Text>
                           </Button>
                         </Left>
                       </Row>
@@ -199,7 +199,7 @@ export default function({ navigation }: ISelectListProps) {
           <Fab
             style={style.fab}
             position="bottomRight"
-            onPress={() => navigation.navigate("ConnectToLightningPeer")}>
+            onPress={() => navigation.navigate("ConnectToLightningPeer" as never)}>
             <Icon type="Entypo" name="plus" style={style.fabConnectToPerIcon} />
           </Fab>
         </>
@@ -218,15 +218,19 @@ const style = StyleSheet.create({
   card: {
     width: "100%",
     marginTop: 8,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'white'
   },
   cardDataText: {
     textAlign: "right",
+    fontFamily: 'Sora-ExtraLight'
   },
   fab: {
     backgroundColor: kubbentTheme.primary,
   },
   fabConnectToPerIcon: {
-    color: kubbentTheme.light,
+    color: 'black',
   },
   loadingContainer: {
     flex: 1,

@@ -293,7 +293,7 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
         {/* <Text style={{flex: 1, textAlign: 'center', fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text> */}
         {/* <Text style={{flex: 1, fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text> */}
         <SafeAreaView style={{flex: 2}}>
-          <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountBitcoin.title")} in ${bitcoinUnit.nice} - ${dollarValue}`}</Text>
+          <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountBitcoin.title")} in ${bitcoinUnit.nice}`}</Text>
           <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeBitcoinInput} placeholder="0" value={bitcoinValue !== undefined ? bitcoinValue.toString() : undefined}/>
           <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountFiat.title")} in ${fiatUnit}`}</Text>
           <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeFiatInput} placeholder="0" value={dollarValue !== undefined ? dollarValue.toString() : undefined}/>

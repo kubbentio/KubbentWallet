@@ -28,7 +28,7 @@ export default function OpenChannel({ navigation, route }: IConnectToLightningPe
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: t("layout.title"),
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -45,13 +45,13 @@ export default function OpenChannel({ navigation, route }: IConnectToLightningPe
   };
 
   const onCameraPress = () => {
-    navigation.navigate("CameraFullscreen", {
+    navigation.navigate("CameraFullscreen" as never, {
       onRead: setPeer,
     });
   };
 
   return (
-    <Container>
+    <Container style={{padding: 20}}>
       <KubbentForm
         items={[{
           key: "NODE",
@@ -65,7 +65,7 @@ export default function OpenChannel({ navigation, route }: IConnectToLightningPe
         },]}
         buttons={[
           <Button key="CONNECT_TO_NODE" onPress={onConnectPress} block={true} primary={true} disabled={connecting}>
-            {!connecting && <Text>{t("connect.accept")}</Text>}
+            {!connecting && <Text style={{fontFamily: 'Sora-Regular', color: 'black'}}>{t("connect.accept")}</Text>}
             {connecting && <Spinner color={kubbentTheme.light} />}
           </Button>
         ]}

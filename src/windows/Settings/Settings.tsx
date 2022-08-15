@@ -1,9 +1,10 @@
 import React, { useLayoutEffect } from "react";
-import { StyleSheet, NativeModules, PermissionsAndroid, Linking, Platform } from "react-native";
+import { StyleSheet, NativeModules, PermissionsAndroid, Linking, Platform, View, ScrollView } from "react-native";
 import Clipboard from "@react-native-community/clipboard";
 import DocumentPicker from "react-native-document-picker";
 import { readFile } from "react-native-fs";
-import { CheckBox, Body, Container, Icon, Text, Left, List, ListItem, Right } from "native-base";
+import Container from "../../components/Container";
+import { CheckBox, Body, Icon, Text, Left, List, ListItem, Right } from "native-base";
 import DialogAndroid from "react-native-dialogs";
 import { fromUnixTime } from "date-fns";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -26,6 +27,7 @@ import { getNodeInfo } from "../../lndmobile";
 
 import { useTranslation } from "react-i18next";
 import { languages, namespaces } from "../../i18n/i18n.constants";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 let ReactNativePermissions: any;
 if (PLATFORM !== "macos") {
@@ -44,7 +46,7 @@ export default function Settings({ navigation }: ISettingsProps) {
     navigation.setOptions({
       headerTitle: t("title"),
       headerBackTitle: "Back",
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation, currentLanguage]);
 
@@ -1004,473 +1006,386 @@ ${t("experimental.tor.disabled.msg2")}`;
   const setupDemo = useStoreActions((store) => store.setupDemo);
 
   return (
-    <Container>
-      <Content style={{ padding: 10 }}>
-        <KubbentWallet />
-
-        <List style={style.list}>
-          <ListItem style={style.itemHeader} itemHeader={true} first={true}>
-            <Text>{t("general.title")}</Text>
-          </ListItem>
-
-          <ListItem style={style.listItem} icon={true} onPress={onNamePress}>
-            <Left><Icon style={style.icon} type="AntDesign" name="edit" /></Left>
-            <Body>
-              <Text>{t("general.name.title")}</Text>
-              <Text note={true}>
+    // <Container>
+    //   <Content style={{ margin: 32, flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+    //     <View>
+    //       <Text style={{fontFamily: 'Sora-Regular', fontSize: 32}}>Kubbent Wallet</Text>
+    //       <Text style={{fontFamily: 'Sora-ExtraLight', fontSize: 16, textAlign: 'center'}}>Version 0.1.0</Text>
+    //     </View>
+    //     <View>
+    //       <Text style={{fontFamily: 'Sora-Regular', fontSize: 32}}>Kubbent Wallet</Text>
+    //       <Text style={{fontFamily: 'Sora-ExtraLight', fontSize: 16, textAlign: 'center'}}>Version 0.1.0</Text>
+    //     </View>
+    //   </Content>
+    // </Container>
+    <Container style={{padding: 32, justifyContent: 'space-between'}}>
+      <View style={{alignItems: 'center', marginBottom: 32, marginTop: 32}}>
+        <Text style={{fontFamily: 'Sora-Regular', fontSize: 32}}>Kubbent Wallet</Text>
+        <Text style={{fontFamily: 'Sora-ExtraLight', fontSize: 16, textAlign: 'center'}}>Version 0.1.0</Text>
+      </View>
+      <ScrollView>
+        <View style={{alignItems: 'flex-start'}}>
+          <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>General</Text>
+          <TouchableOpacity onPress={onNamePress} style={{ marginBottom: 12, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+            <Icon style={style.icon} type="Feather" name="user"/>
+            <View>
+              <Text style={{fontFamily: 'Sora-Regular'}}>{t("general.name.title")}</Text>
+              <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>
                 {name || t("general.name.subtitle")}
               </Text>
-            </Body>
-          </ListItem>
-          <ListItem style={style.listItem} icon={true} onPress={onLangPress}>
-            <Left><Icon style={style.icon} type="Entypo" name="language" /></Left>
-            <Body>
-              <Text>{t("general.lang.title")}</Text>
-              <Text note={true}>
-                {languages[i18n.language].name}
-              </Text>
-            </Body>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onTogglePushNotificationsPress}>
-            <Left><Icon style={style.icon} type="Entypo" name="bell" /></Left>
-            <Body>
-              <Text>{t("general.pushNotification.title")}</Text>
-              <Text note={true}>{t("general.pushNotification.subtitle")}</Text>
-            </Body>
-            <Right><CheckBox checked={pushNotificationsEnabled} onPress={onTogglePushNotificationsPress} /></Right>
-          </ListItem>
-          <ListItem style={style.listItem} icon={true} onPress={onToggleClipBoardInvoiceCheck}>
-            <Left><Icon style={style.icon} type="Entypo" name="clipboard" /></Left>
-            <Body>
-              <Text>{t("general.checkClipboard.title")}</Text>
-              <Text note={true}>{t("general.checkClipboard.subtitle")}</Text>
-            </Body>
-            <Right><CheckBox checked={clipboardInvoiceCheckEnabled} onPress={onToggleClipBoardInvoiceCheck} /></Right>
-          </ListItem>
-          <ListItem style={style.listItem} icon={true} onPress={onToggleTransactionGeolocationEnabled}>
-            <Left><Icon style={style.icon} type="Entypo" name="location-pin" /></Left>
-            <Body>
-              <Text>{t("general.saveGeolocation.title")}</Text>
-              <Text note={true}>{t("general.saveGeolocation.subtitle")}</Text>
-            </Body>
-            <Right><CheckBox checked={transactionGeolocationEnabled} onPress={onToggleTransactionGeolocationEnabled} /></Right>
-          </ListItem>
-          {transactionGeolocationEnabled && PLATFORM === "android" &&
-            <ListItem style={style.listItem} icon={true} onPress={onChangeMapStylePress}>
-              <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="google-maps" /></Left>
-              <Body>
-                <Text>{t("general.mapTheme.title")}</Text>
-                <Text note={true}>{camelCaseToSpace(transactionGeolocationMapStyle)}</Text>
-              </Body>
-            </ListItem>
-          }
-
-
-          <ListItem style={style.itemHeader} itemHeader={true} first={true}>
-            <Text>{t("wallet.title")}</Text>
-          </ListItem>
-
-          {seedAvailable &&
-            <>
-              <ListItem style={style.listItem} button={true} icon={true} onPress={onGetSeedPress}>
-                <Left><Icon style={style.icon} type="AntDesign" name="form" /></Left>
-                <Body>
-                  <Text>{t("wallet.seed.show.title")}</Text>
-                  <Text note={true}>{t("wallet.seed.show.subtitle")}</Text>
-                </Body>
-              </ListItem>
-              {onboardingState === "DONE" &&
-                <ListItem style={style.listItem} button={true} icon={true} onPress={onRemoveSeedPress}>
-                  <Left><Icon style={style.icon} type="Entypo" name="eraser" /></Left>
-                  <Body>
-                    <Text>{t("wallet.seed.remove.title")}</Text>
-                    <Text note={true}>{t("wallet.seed.remove.subtitle")}</Text>
-                  </Body>
-                </ListItem>
-              }
-            </>
-          }
-          {["android", "ios", "macos"].includes(PLATFORM) &&
-            <ListItem style={style.listItem} icon={true} onPress={onExportChannelsPress}>
-              <Left><Icon style={style.icon} type="MaterialIcons" name="save" /></Left>
-              <Body>
-                <Text>{t("wallet.backup.export.title")}</Text>
-              </Body>
-            </ListItem>
-          }
-          {["android", "ios"].includes(PLATFORM) &&
-            <ListItem style={style.listItem} icon={true} onPress={onVerifyChannelsBackupPress}>
-              <Left><Icon style={style.icon} type="MaterialIcons" name="backup" /></Left>
-              <Body>
-                <Text>{t("wallet.backup.verify.title")}</Text>
-              </Body>
-            </ListItem>
-          }
-          {(PLATFORM == "android" && !isRecoverMode) &&
-            <ListItem style={style.listItem} icon={true} onPress={onToggleGoogleDriveBackup}>
-              <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="google-drive" /></Left>
-              <Body>
-                <Text>{t("wallet.backup.googleCloud.title")}</Text>
-                <Text note={true}>{t("wallet.backup.googleCloud.subtitle")}</Text>
-              </Body>
-              <Right><CheckBox checked={googleDriveBackupEnabled} onPress={onToggleGoogleDriveBackup} /></Right>
-            </ListItem>
-          }
-          {(googleDriveBackupEnabled && !isRecoverMode) &&
-            <ListItem style={style.listItem} icon={true} onPress={onDoGoogleDriveBackupPress}>
-              <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="folder-google-drive" /></Left>
-              <Body><Text>{t("wallet.backup.googleCloudForce.title")}</Text></Body>
-            </ListItem>
-          }
-          {(PLATFORM == "ios" && !isRecoverMode) &&
-            <ListItem style={style.listItem} icon={true} onPress={onToggleICloudBackup}>
-              <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="apple-icloud" /></Left>
-              <Body>
-                <Text>{t("wallet.backup.iCloud.title")}</Text>
-                <Text note={true}>{t("wallet.backup.iCloud.subtitle")}</Text>
-              </Body>
-              <Right><CheckBox checked={iCloudBackupEnabled} onPress={onToggleICloudBackup} /></Right>
-            </ListItem>
-          }
-          {(iCloudBackupEnabled && !isRecoverMode) &&
-            <ListItem style={style.listItem} icon={true} onPress={onDoICloudBackupPress}>
-              <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="folder" /></Left>
-              <Body><Text>{t("wallet.backup.iCloudForce.title")}</Text></Body>
-            </ListItem>
-          }
-
-          <ListItem style={style.itemHeader} itemHeader={true}>
-            <Text>{t("security.title")}</Text>
-          </ListItem>
-
-          <ListItem style={style.listItem} button={true} icon={true} onPress={loginMethods!.has(LoginMethods.pincode) ? onRemovePincodePress : onSetPincodePress}>
-            <Left><Icon style={style.icon} type="AntDesign" name="lock" /></Left>
-            <Body><Text>{t("security.pincode.title")}</Text></Body>
-            <Right><CheckBox checked={loginMethods!.has(LoginMethods.pincode)} onPress={loginMethods!.has(LoginMethods.pincode) ? onRemovePincodePress : onSetPincodePress} /></Right>
-          </ListItem>
-          {fingerprintAvailable &&
-            <ListItem style={style.listItem} button={true} icon={true} onPress={onToggleFingerprintPress}>
-              <Left>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onTogglePushNotificationsPress} style={{ marginBottom: 12, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+            <Icon style={style.icon} type="Feather" name="bell"/>
+            <View>
+              <Text style={{fontFamily: 'Sora-Regular'}}>{t("general.pushNotification.title")}</Text>
+              <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("general.pushNotification.subtitle")}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}} onPress={onToggleClipBoardInvoiceCheck}>
+            <Icon style={style.icon} type="Feather" name="clipboard"/>
+            <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+              <Text style={{fontFamily: 'Sora-Regular'}}>{t("general.checkClipboard.title")}</Text>
+              {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("general.checkClipboard.subtitle")}</Text> */}
+              <View>
+                <CheckBox checked={clipboardInvoiceCheckEnabled} onPress={onToggleClipBoardInvoiceCheck} />
+              </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onToggleTransactionGeolocationEnabled} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+            <Icon style={style.icon} type="Feather" name="map-pin"/>
+            <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+              <Text style={{fontFamily: 'Sora-Regular'}}>{t("general.saveGeolocation.title")}</Text>
+              {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("general.checkClipboard.subtitle")}</Text> */}
+              <View>
+                <CheckBox checked={transactionGeolocationEnabled} onPress={onToggleTransactionGeolocationEnabled} />
+              </View>
+            </View>
+          </TouchableOpacity>
+          <View style={{marginTop: 32}}>
+            <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>Wallet</Text>
+            {seedAvailable &&
+              <TouchableOpacity onPress={onGetSeedPress} style={{ marginBottom: 12, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                <Icon style={style.icon} type="Feather" name="edit"/>
+                <View>
+                  <Text style={{fontFamily: 'Sora-Regular'}}>{t("wallet.seed.show.title")}</Text>
+                  <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>
+                    {t("wallet.seed.show.subtitle")}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            }
+            <TouchableOpacity onPress={onExportChannelsPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="save"/>
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("wallet.backup.export.title")}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onVerifyChannelsBackupPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="upload-cloud"/>
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("wallet.backup.verify.title")}</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{marginTop: 32}}>
+            <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>Security</Text>
+            <TouchableOpacity onPress={loginMethods!.has(LoginMethods.pincode) ? onRemovePincodePress : onSetPincodePress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="lock"/>
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("security.pincode.title")}</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("general.checkClipboard.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={loginMethods!.has(LoginMethods.pincode)} onPress={loginMethods!.has(LoginMethods.pincode) ? onRemovePincodePress : onSetPincodePress} />
+                </View>
+              </View>
+            </TouchableOpacity>
+            {fingerprintAvailable && 
+              <TouchableOpacity onPress={onToggleFingerprintPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
                 {biometricsSensor !== "Face ID" &&
                   <Icon style={style.icon} type="Entypo" name="fingerprint" />
                 }
                 {biometricsSensor === "Face ID" &&
-                  <Icon style={style.icon} type="MaterialCommunityIcons" name="face-recognition" />
+                  <Icon style={style.icon} type="Feather" name="smile" />
                 }
-              </Left>
-              <Body>
-                <Text>
-                {t("security.biometrics.title")}{" "}
-                  {biometricsSensor === "Biometrics" && t("security.biometrics.fingerprint")}
-                  {biometricsSensor === "Face ID" && t("security.biometrics.faceId")}
-                  {biometricsSensor === "Touch ID" && t("security.biometrics.touchID")}
-                </Text>
-              </Body>
-              <Right><CheckBox checked={fingerPrintEnabled} onPress={onToggleFingerprintPress}/></Right>
-            </ListItem>
-          }
-          {PLATFORM === "android" &&
-            <ListItem style={style.listItem} icon={true} onPress={onToggleScheduledSyncEnabled} onLongPress={onLongPressScheduledSyncEnabled}>
-              <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="sync-alert" /></Left>
-              <Body>
-                <Text>{t("security.chainSync.title")}</Text>
-                <Text note={true}>
-                  {t("security.chainSync.subtitle")}
-                </Text>
-              </Body>
-              <Right><CheckBox checked={scheduledSyncEnabled} onPress={onToggleScheduledSyncEnabled} /></Right>
-            </ListItem>
-          }
-
-
-          <ListItem style={style.itemHeader} itemHeader={true}>
-            <Text>{t("display.title")}</Text>
-          </ListItem>
-
-          <ListItem style={style.listItem} icon={true} onPress={onFiatUnitPress}>
-            <Left><Icon style={style.icon} type="FontAwesome" name="money" /></Left>
-            <Body>
-              <Text>{t("display.fiatUnit.title")}</Text>
-              <Text note={true}  onPress={onFiatUnitPress}>{currentFiatUnit}</Text>
-            </Body>
-          </ListItem>
-          <ListItem style={style.listItem} icon={true} onPress={onBitcoinUnitPress}>
-            <Left><Icon style={style.icon} type="FontAwesome5" name="btc" /></Left>
-            <Body>
-              <Text>{t("display.bitcoinUnit.title")}</Text>
-              <Text note={true}  onPress={onBitcoinUnitPress}>{BitcoinUnits[currentBitcoinUnit].settings}</Text>
-            </Body>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onChangeOnchainExplorerPress}>
-            <Left><Icon style={style.icon} type="FontAwesome" name="chain" /></Left>
-            <Body>
-              <Text>{t("display.onchainExplorer.title")}</Text>
-              <Text note={true}>{onchainExplorer in OnchainExplorer ? camelCaseToSpace(onchainExplorer) : onchainExplorer}</Text>
-            </Body>
-          </ListItem>
-
-
-          <ListItem style={style.itemHeader} itemHeader={true}>
-            <Text>{t("bitcoinNetwork.title")}</Text>
-          </ListItem>
-
-          {lndChainBackend === "neutrino" &&
-            <ListItem style={style.listItem} icon={true} onPress={onSetBitcoinNodePress} onLongPress={onSetBitcoinNodeLongPress}>
-              <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="router-network" /></Left>
-              <Body>
-                <Text>{t("bitcoinNetwork.node.title")}</Text>
-                <Text note={true}>{t("bitcoinNetwork.node.subtitle")}</Text>
-              </Body>
-            </ListItem>
-          }
-          {lndChainBackend === "bitcoindWithZmq" &&
-            <>
-              <ListItem style={style.listItem} icon={true} onPress={onSetBitcoindRpcHostPress}>
-                <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="router-network" /></Left>
-                <Body>
-                  <Text>{t("bitcoinNetwork.rpc.title")}</Text>
-                </Body>
-              </ListItem>
-              <ListItem style={style.listItem} icon={true} onPress={onSetBitcoindPubRawBlockPress}>
-                <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="router-network" /></Left>
-                <Body>
-                  <Text>{t("bitcoinNetwork.zmqRawBlock.title")}</Text>
-                </Body>
-              </ListItem>
-              <ListItem style={style.listItem} icon={true} onPress={onSetBitcoindPubRawTxPress}>
-                <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="router-network" /></Left>
-                <Body>
-                  <Text>{t("bitcoinNetwork.zmqRawTx.title")}</Text>
-                </Body>
-              </ListItem>
-            </>
-          }
-          <ListItem style={style.listItem} icon={true} onPress={onToggleReceiveViaP2TR}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="carrot" /></Left>
-            <Body>
-              <Text>{t("bitcoinNetwork.p2tr.title")}</Text>
-            </Body>
-            <Right><CheckBox checked={receiveViaP2TR} onPress={onToggleReceiveViaP2TR} /></Right>
-          </ListItem>
-
-          <ListItem style={style.itemHeader} itemHeader={true}>
-            <Text>{t("LN.title")}</Text>
-          </ListItem>
-
-          <ListItem style={style.listItem} icon={true} onPress={() => navigation.navigate("LightningNodeInfo")}>
-            <Left><Icon style={style.icon} type="Feather" name="user" /></Left>
-            <Body><Text>{t("LN.node.title")}</Text></Body>
-          </ListItem>
-          <ListItem style={style.listItem} icon={true} onPress={() => navigation.navigate("LightningPeers")}>
-            <Left><Icon style={style.icon} type="Feather" name="users" /></Left>
-            <Body><Text>{t("LN.peers.title")}</Text></Body>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onToggleAutopilotPress}>
-            <Left><Icon style={style.icon} type="Entypo" name="circular-graph" /></Left>
-            <Body><Text>{t("LN.autopilot.title")}</Text></Body>
-            <Right><CheckBox checked={autopilotEnabled} onPress={onToggleAutopilotPress} /></Right>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onInboundServiceListPress}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="cloud-download" /></Left>
-            <Body>
-              <Text>{t("LN.inbound.title")}</Text>
-              <Text note={true}>{t("LN.inbound.subtitle")}</Text>
-            </Body>
-          </ListItem>
-          {dunderEnabled &&
-            <ListItem style={style.listItem} button={true} icon={true} onPress={onSetDunderServerPress} onLongPress={onSetDunderServerLongPress}>
-              <Left><Icon style={style.icon} type="Entypo" name="slideshare" /></Left>
-              <Body>
-                <Text>{t("LN.LSP.title")}</Text>
-              </Body>
-            </ListItem>
-          }
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onToggleRequireGraphSyncPress}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="database-sync" /></Left>
-            <Body>
-              <Text>{t("LN.graphSync.title")}</Text>
-              <Text note={true}>{t("LN.graphSync.subtitle")}</Text>
-            </Body>
-            <Right><CheckBox checked={requireGraphSync} onPress={onToggleRequireGraphSyncPress} /></Right>
-          </ListItem>
-
-          <ListItem style={style.itemHeader} itemHeader={true}>
-            <Text>{t("miscelaneous.title")}</Text>
-          </ListItem>
-
-          <ListItem style={style.listItem} icon={true} onPress={() => navigation.navigate("About")}>
-            <Left><Icon style={style.icon} type="AntDesign" name="info" /></Left>
-            <Body><Text>{t("miscelaneous.about.title")}</Text></Body>
-          </ListItem>
-          {PLATFORM === "android" &&
-            <ListItem style={style.listItem} icon={true} onPress={() => copyAppLog()}>
-              <Left><Icon style={style.icon} type="AntDesign" name="copy1" /></Left>
-              <Body>
-                <Text>{t("miscelaneous.appLog.title")}</Text>
-              </Body>
-            </ListItem>
-          }
-          {(PLATFORM === "android" || PLATFORM === "ios") &&
-            <ListItem style={style.listItem} icon={true} onPress={() => copyLndLog()}>
-              <Left><Icon style={style.icon} type="AntDesign" name="copy1" /></Left>
-              <Body>
-                <Text>{t("miscelaneous.lndLog.title")}</Text>
-              </Body>
-            </ListItem>
-          }
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onToggleHideExpiredInvoicesPress}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="file-hidden" /></Left>
-            <Body><Text>{t("miscelaneous.expiredInvoices.title")}</Text></Body>
-            <Right><CheckBox checked={hideExpiredInvoices} onPress={onToggleHideExpiredInvoicesPress} /></Right>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onToggleScreenTransitionsEnabledPress}>
-            <Left><Icon style={style.icon} type="Ionicons" name="swap-horizontal" /></Left>
-            <Body><Text>{t("miscelaneous.screenTransactions.title")}</Text></Body>
-            <Right><CheckBox checked={screenTransitionsEnabled} onPress={onToggleScreenTransitionsEnabledPress} /></Right>
-          </ListItem>
-          <ListItem style={style.listItem} icon={true} onPress={onPressSignMesseage}>
-            <Left><Icon style={style.icon} type="FontAwesome5" name="file-signature" /></Left>
-            <Body><Text>{t("miscelaneous.signMessage.title")}</Text></Body>
-          </ListItem>
-          {/* <ListItem style={style.listItem} icon={true} onPress={onPressDeleteWallet}>
-            <Left><Icon style={style.icon} type="FontAwesome5" name="file-signature" /></Left>
-            <Body><Text>Delete wallet</Text></Body>
-          </ListItem> */}
-
-          <ListItem style={style.itemHeader} itemHeader={true}>
-            <Text>{t("experimental.title")}</Text>
-          </ListItem>
-          <ListItem style={style.listItem} icon={true} onPress={onToggleDunderEnabled}>
-            <Left><Icon style={style.icon} type="Entypo" name="slideshare" /></Left>
-            <Body>
-              <Text>{t("experimental.LSP.title")}</Text>
-              <Text note={true}>{t("experimental.LSP.subtitle")}</Text>
-            </Body>
-            <Right><CheckBox checked={dunderEnabled} onPress={onToggleDunderEnabled} /></Right>
-          </ListItem>
-          <ListItem style={style.listItem} icon={true} onPress={onChangeMultiPartPaymentEnabledPress}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="multiplication" /></Left>
-            <Body>
-              <Text>{t("experimental.MPP.title")}</Text>
-              <Text note={true}>{t("experimental.MPP.subtitle")}</Text>
-            </Body>
-            <Right><CheckBox checked={multiPathPaymentsEnabled} onPress={onChangeMultiPartPaymentEnabledPress} /></Right>
-          </ListItem>
-          {["android", "ios"].includes(PLATFORM) &&
-            <ListItem style={style.listItem} icon={true} onPress={onChangeTorEnabled}>
-              <Left>
-                <TorSvg />
-              </Left>
-              <Body>
-                <Text>{t("experimental.tor.title")}</Text>
-              </Body>
-              <Right><CheckBox checked={torEnabled} onPress={onChangeTorEnabled} /></Right>
-            </ListItem>
-          }
-          {(torEnabled && PLATFORM === "android") &&
-            <ListItem style={style.listItem} button={true} icon={true} onPress={onShowOnionAddressPress}>
-              <Left><Icon style={[style.icon, { marginLeft: 1, marginRight: -1}]} type="AntDesign" name="qrcode" /></Left>
-              <Body>
-                <Text>{t("experimental.onion.title")}</Text>
-                <Text note={true}>{t("experimental.onion.subtitle")}</Text>
-              </Body>
-            </ListItem>
-          }
-          <ListItem style={style.listItem} icon={true} onPress={onPressSetInvoiceExpiry} onLongPress={onLongPressSetInvoiceExpiry}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="timer-outline" /></Left>
-            <Body>
-              <Text>Invoice expiry (seconds)</Text>
-              <Text note={true}>{invoiceExpiry} seconds</Text>
-            </Body>
-          </ListItem>
-
-          <ListItem style={style.itemHeader} itemHeader={true}>
-            <Text>{t("debug.title")}</Text>
-          </ListItem>
-          {(name === "Hampus" || __DEV__ === true) &&
-            <ListItem style={style.listItem} icon={true} onPress={() => navigation.navigate("DEV_CommandsX")}>
-              <Left><Icon style={style.icon} type="MaterialIcons" name="developer-mode" /></Left>
-              <Body><Text>{t("miscelaneous.dev.title")}</Text></Body>
-            </ListItem>
-          }
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onToggleDebugShowStartupInfo}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="android-debug-bridge" /></Left>
-            <Body><Text>{t("debug.startup.title")}</Text></Body>
-            <Right><CheckBox checked={debugShowStartupInfo} onPress={onToggleDebugShowStartupInfo} /></Right>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onPressRescanWallet}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="restart" /></Left>
-            <Body>
-              <Text>{t("debug.rescanWallet.title")}</Text>
-              <Text note={true}>{t("debug.rescanWallet.subtitle")}</Text>
-            </Body>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onLndMobileHelpCenterPress}>
-            <Left><Icon style={[style.icon, { marginLeft: 1, marginRight: -1}]} type="Entypo" name="lifebuoy" /></Left>
-            <Body>
-              <Text>{t("debug.helpCencer.title")}</Text>
-            </Body>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onGetNodeInfoPress}>
-            <Left><Icon style={[style.icon, { marginLeft: 1, marginRight: -1}]} type="Entypo" name="info" /></Left>
-            <Body>
-              <Text>Get node info</Text>
-            </Body>
-          </ListItem>
-          {dunderEnabled &&
-            <ListItem style={style.listItem} button={true} icon={true} onPress={() => navigation.navigate("DunderDoctor")}>
-              <Left><Icon style={style.icon} type="Entypo" name="slideshare" /></Left>
-              <Body>
-                <Text>{t("debug.LSP.title")}</Text>
-              </Body>
-            </ListItem>
-          }
-          <ListItem style={style.listItem} icon={true} onPress={async () => {
-            navigation.navigate("LndLog");
-          }}>
-            <Left><Icon style={style.icon} type="Ionicons" name="newspaper-outline" /></Left>
-            <Body><Text>{t("debug.lndLog.title")}</Text></Body>
-          </ListItem>
-
-          {((name === "Hampus" || __DEV__ === true)) &&
-            <>
-              <ListItem style={style.listItem} icon={true} onPress={() => navigation.navigate("KeysendTest")}>
-                <Left><Icon style={style.icon} type="MaterialIcons" name="developer-mode" /></Left>
-                <Body><Text>{t("debug.keysend.title")}</Text></Body>
-              </ListItem>
-              <ListItem style={style.listItem} icon={true} onPress={() => navigation.navigate("GoogleDriveTestbed")}>
-                <Left><Icon style={style.icon} type="Entypo" name="google-drive" /></Left>
-                <Body><Text>{t("debug.googleDrive.title")}</Text></Body>
-              </ListItem>
-              <ListItem style={style.listItem} icon={true} onPress={() => navigation.navigate("WebLNBrowser")}>
-                <Left><Icon style={style.icon} type="MaterialIcons" name="local-grocery-store" /></Left>
-                <Body><Text>{t("debug.webln.title")}</Text></Body>
-              </ListItem>
-              <ListItem style={style.listItem} icon={true} onPress={() => {
-                writeConfig();
-                toast(t("msg.written",{ns:namespaces.common}))
-              }}>
-                <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="typewriter" /></Left>
-                <Body><Text>{t("debug.config.title")}</Text></Body>
-              </ListItem>
-            </>
-          }
-          <ListItem style={style.listItem} button={true} icon={true} onPress={() => setupDemo({ changeDb: false })}>
-            <Left><Icon style={[style.icon, { marginLeft: 1, marginRight: -1 }]} type="AntDesign" name="mobile1" /></Left>
-            <Body>
-              <Text>Activate Demo Mode</Text>
-              <Text note={true}>Used for promo. Restart app to reset</Text>
-            </Body>
-          </ListItem>
-          <ListItem style={style.listItem} button={true} icon={true} onPress={onToggleLndNoGraphCache}>
-            <Left><Icon style={style.icon} type="MaterialCommunityIcons" name="database-sync" /></Left>
-            <Body>
-              <Text>Disable lnd graph cache</Text>
-            </Body>
-            <Right><CheckBox checked={lndNoGraphCache} onPress={onToggleLndNoGraphCache} /></Right>
-          </ListItem>
-        </List>
-      </Content>
+                <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                  <Text style={{fontFamily: 'Sora-Regular'}}>
+                    {t("security.biometrics.title")}{" "}
+                    {biometricsSensor === "Biometrics" && t("security.biometrics.fingerprint")}
+                    {biometricsSensor === "Face ID" && t("security.biometrics.faceId")}
+                    {biometricsSensor === "Touch ID" && t("security.biometrics.touchID")}
+                  </Text>
+                  {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("general.checkClipboard.subtitle")}</Text> */}
+                  <View>
+                    <CheckBox checked={fingerPrintEnabled} onPress={onToggleFingerprintPress} />
+                  </View>
+                </View>
+              </TouchableOpacity>
+            }
+          </View>
+          <View style={{marginTop: 32}}>
+            <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>{t("display.title")}</Text>
+            <TouchableOpacity onPress={onFiatUnitPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="dollar-sign"/>
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("display.fiatUnit.title")}</Text>
+                <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true} onPress={onFiatUnitPress}>{currentFiatUnit}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onBitcoinUnitPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="FontAwesome5" name="btc" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("display.bitcoinUnit.title")}</Text>
+                <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}  onPress={onBitcoinUnitPress}>{BitcoinUnits[currentBitcoinUnit].settings}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onChangeOnchainExplorerPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="link" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("display.onchainExplorer.title")}</Text>
+                <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{onchainExplorer in OnchainExplorer ? camelCaseToSpace(onchainExplorer) : onchainExplorer}</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{marginTop: 32}}>
+            <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>{t("bitcoinNetwork.title")}</Text>
+            {lndChainBackend == "neutrino" &&
+              <TouchableOpacity onPress={onSetBitcoindRpcHostPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                <Icon style={style.icon} type="MaterialCommunityIcons" name="router-network" />
+                <View>
+                  <Text style={{fontFamily: 'Sora-Regular'}}>{t("bitcoinNetwork.rpc.title")}</Text>
+                </View>
+              </TouchableOpacity>
+            }
+            {lndChainBackend == "bitcoindWithZmq" &&
+              <>
+                <TouchableOpacity onPress={onSetBitcoindRpcHostPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                  <Icon style={style.icon} type="MaterialCommunityIcons" name="router-network" />
+                  <View>
+                    <Text style={{fontFamily: 'Sora-Regular'}}>{t("bitcoinNetwork.rpc.title")}</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onSetBitcoindPubRawBlockPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                  <Icon style={style.icon} type="MaterialCommunityIcons" name="router-network" />
+                  <View>
+                    <Text style={{fontFamily: 'Sora-Regular'}}>{t("bitcoinNetwork.zmqRawBlock.title")}</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onSetBitcoindPubRawTxPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                  <Icon style={style.icon} type="MaterialCommunityIcons" name="router-network" />
+                  <View>
+                    <Text style={{fontFamily: 'Sora-Regular'}}>{t("bitcoinNetwork.zmqRawTx.title")}</Text>
+                  </View>
+                </TouchableOpacity>
+              </>
+            }
+            <TouchableOpacity style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}} onPress={onToggleReceiveViaP2TR}>
+              <Icon style={style.icon} type="MaterialCommunityIcons" name="carrot" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>Receive from Taproot</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("general.checkClipboard.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={receiveViaP2TR} onPress={onToggleReceiveViaP2TR} />
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{marginTop: 32}}>
+            <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>{t("LN.title")}</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("LightningNodeInfo")} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="user" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("LN.node.title")}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("LightningPeers")} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="users" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("LN.peers.title")}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}} onPress={onToggleAutopilotPress}>
+              <Icon style={style.icon} type="Feather" name="bar-chart" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("LN.autopilot.title")}</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("general.checkClipboard.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={autopilotEnabled} onPress={onToggleAutopilotPress}  />
+                </View>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onInboundServiceListPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="download-cloud" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("LN.inbound.title")}</Text>
+                <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.inbound.subtitle")}</Text>
+              </View>
+            </TouchableOpacity>
+            {dunderEnabled && 
+              <TouchableOpacity onPress={onInboundServiceListPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                <Icon style={style.icon} type="Entypo" name="slideshare" />
+                <View>
+                  <Text style={{fontFamily: 'Sora-Regular'}}>{t("LN.LSP.title")}</Text>
+                </View>
+              </TouchableOpacity>
+            }
+            <TouchableOpacity style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}} onPress={onToggleRequireGraphSyncPress}>
+              <Icon style={style.icon} type="Feather" name="refresh-cw" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>Wait for sync before paying</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={requireGraphSync} onPress={onToggleRequireGraphSyncPress} />
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{marginTop: 32}}>
+            <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>{t("miscelaneous.title")}</Text>
+            {/* <TouchableOpacity onPress={() => navigation.navigate("About")} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="info" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("miscelaneous.about.title")}</Text>
+              </View>
+            </TouchableOpacity> */}
+            {PLATFORM === "android" &&
+              <TouchableOpacity onPress={() => copyAppLog()} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                <Icon style={style.icon} type="Feather" name="copy" />
+                <View>
+                  <Text style={{fontFamily: 'Sora-Regular'}}>{t("miscelaneous.appLog.title")}</Text>
+                </View>
+              </TouchableOpacity>
+            }
+            {(PLATFORM === "android" || PLATFORM === "ios") &&
+              <TouchableOpacity onPress={() => copyLndLog()} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                <Icon style={style.icon} type="Feather" name="copy" />
+                <View>
+                  <Text style={{fontFamily: 'Sora-Regular'}}>{t("miscelaneous.lndLog.title")}</Text>
+                </View>
+              </TouchableOpacity>
+            }
+            <TouchableOpacity style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}} onPress={onToggleHideExpiredInvoicesPress}>
+              <Icon style={style.icon} type="Feather" name="file" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>Hide expired invoices</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={hideExpiredInvoices} onPress={onToggleHideExpiredInvoicesPress} />
+                </View>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onToggleScreenTransitionsEnabledPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="list" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("miscelaneous.screenTransactions.title")}</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={screenTransitionsEnabled} onPress={onToggleScreenTransitionsEnabledPress} />
+                </View>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onPressSignMesseage} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="file-text" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("miscelaneous.signMessage.title")}</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{marginTop: 32}}>
+            <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>{t("experimental.title")}</Text>
+            <TouchableOpacity onPress={onToggleDunderEnabled} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="users" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("experimental.LSP.title")}</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={dunderEnabled} onPress={onToggleDunderEnabled} />
+                </View>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onChangeMultiPartPaymentEnabledPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="MaterialCommunityIcons" name="multiplication" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("experimental.MPP.title")}</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={multiPathPaymentsEnabled} onPress={onChangeMultiPartPaymentEnabledPress} />
+                </View>
+              </View>
+            </TouchableOpacity>
+            {["android", "ios"].includes(PLATFORM) &&
+              <TouchableOpacity onPress={onShowOnionAddressPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                <Icon style={[style.icon, { marginLeft: 1, marginRight: 10}]} type="AntDesign" name="qrcode" />
+                <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                  <Text style={{fontFamily: 'Sora-Regular'}}>{t("experimental.onion.subtitle")}</Text>
+                  {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+                </View>
+              </TouchableOpacity>
+            }
+            <TouchableOpacity onPress={onPressSetInvoiceExpiry} onLongPress={onLongPressSetInvoiceExpiry} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="clock" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>Invoice expiry (seconds)</Text>
+                <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{invoiceExpiry} seconds</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text style={{fontFamily: 'Sora-ExtraLight', marginBottom: 14,  fontSize: 22}}>{t("debug.title")}</Text>
+            {(name === "Hampus" || __DEV__ === true) &&
+              <TouchableOpacity onPress={() => navigation.navigate("DEV_CommandsX" as never)} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                <Icon style={style.icon} type="Feather" name="terminal" />
+                <View>
+                  <Text style={{fontFamily: 'Sora-Regular'}}>{t("miscelaneous.dev.title")}</Text>
+                </View>
+              </TouchableOpacity>
+            }
+            <TouchableOpacity onPress={onToggleDebugShowStartupInfo} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="MaterialCommunityIcons" name="android-debug-bridge" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("debug.startup.title")}</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={debugShowStartupInfo} onPress={onToggleDebugShowStartupInfo} />
+                </View>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onPressRescanWallet} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="refresh-cw" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("debug.rescanWallet.title")}</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("debug.rescanWallet.subtitle")}</Text> */}
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onPressRescanWallet} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Entypo" name="lifebuoy" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>{t("debug.helpCencer.title")}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onGetNodeInfoPress} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="info" />
+              <View>
+                <Text style={{fontFamily: 'Sora-Regular'}}>Get node info</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onToggleLndNoGraphCache} style={{ marginBottom: 24, flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+              <Icon style={style.icon} type="Feather" name="refresh-ccw" />
+              <View style={{flexDirection: 'row', width: '100%', alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Text style={{fontFamily: 'Sora-Regular'}}>Disable lnd graph cache</Text>
+                {/* <Text style={{fontFamily: 'Sora-ExtraLight'}} note={true}>{t("LN.graphSync.subtitle")}</Text> */}
+                <View>
+                  <CheckBox checked={lndNoGraphCache} onPress={onToggleLndNoGraphCache} />
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+      <Text style={{marginTop: 12, color: 'white', textAlign: 'center', fontFamily: 'Sora-Regular'}}>
+        Scroll down for more.
+      </Text>
     </Container>
   );
 };
@@ -1483,6 +1398,7 @@ const style = StyleSheet.create({
   listItem: {
     paddingLeft: 2,
     paddingRight: 2,
+    flexDirection: 'row',
     // paddingLeft: 24,
     // paddingRight: 24,
   },
@@ -1497,6 +1413,7 @@ const style = StyleSheet.create({
   },
   icon: {
     fontSize: 22,
+    marginRight: 15,
     ...Platform.select({
       web: {
         marginRight: 5,

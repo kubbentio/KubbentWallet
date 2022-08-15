@@ -34,7 +34,7 @@ const MetaData = ({ title, data, url }: IMetaDataProps) => {
         toast(t("msg.clipboardCopy",{ns:namespaces.common}), undefined, "warning");
       }}
     >
-      <Text style={{ fontWeight: "bold" }}>{title}:{"\n"}</Text>
+      <Text style={{ fontFamily: 'Sora-Regular' }}>{title}:{"\n"}</Text>
       {!url && data}
       {url && <TextLink url={url}>{data}</TextLink>}
     </Text>
@@ -100,7 +100,7 @@ export default function SyncInfo({}: ISyncInfoProps) {
             <H1 style={style.header}>
               {!nodeInfo?.syncedToChain ? t("syncedToChain.title") : t("syncedToChain.title1")}
             </H1>
-            <Text style={{ marginBottom: 14 }}>
+            <Text style={{ fontFamily: 'Sora-ExtraLight', marginBottom: 14 }}>
               {!nodeInfo?.syncedToChain
                 ?
                   t("syncedToChain.msg1")+"\n\n" +
@@ -158,7 +158,7 @@ export default function SyncInfo({}: ISyncInfoProps) {
             {!showLndLog && (
               <View style={{ marginTop: 10, flexDirection: "row" }}>
                 <Button small onPress={onPressShowLndLog}>
-                  <Text>Show lnd log</Text>
+                  <Text style={{fontFamily: 'Sora-Regular', color: 'black'}}>Show lnd log</Text>
                 </Button>
               </View>
             )}
@@ -167,7 +167,7 @@ export default function SyncInfo({}: ISyncInfoProps) {
                 <LogBox text={log.current} style={{ maxHeight: 170 }} />
                 <View style={{ marginTop: 10, flexDirection: "row" }}>
                   <Button small onPress={() => onPressCopy(log.current)}>
-                    <Text>Copy log text</Text>
+                    <Text style={{fontFamily: 'Sora-Regular', color: 'black'}}>Copy log text</Text>
                   </Button>
                 </View>
               </View>
@@ -186,15 +186,17 @@ const style = StyleSheet.create({
     minHeight: "40%",
   },
   header: {
-    fontWeight: "bold",
     marginBottom: 10,
+    fontFamily: 'Sora-Regular'
   },
   detailText: {
     marginBottom: 7,
+    fontFamily: 'Sora-ExtraLight'
   },
   qrText: {
     marginBottom: 7,
     paddingTop: 4,
+    fontFamily: 'Sora-Regular',
     paddingLeft: 18,
     paddingRight: 18,
   }

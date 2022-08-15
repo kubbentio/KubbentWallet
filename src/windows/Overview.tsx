@@ -215,12 +215,12 @@ function Overview({ navigation }: IOverviewProps) {
           {pendingOpenBalance.greaterThan(0) && (
             <Card>
               <CardItem>
-                <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-                  <Text style={{ flexShrink: 1, width: "100%", marginRight: 5 }}>
+                <View style={{ flex: 1, marginBottom: 28, flexDirection: "row", alignItems: "center" }}>
+                  <Text style={{ fontFamily: 'Sora-ExtraLight', flexShrink: 1, width: "100%", marginRight: 5 }}>
                     A new channel is in the process of being opened...
                   </Text>
-                  <Button style={{ }} small onPress={() => navigation.navigate("LightningInfo" as never)}>
-                    <Text>View</Text>
+                  <Button small onPress={() => navigation.navigate("LightningInfo" as never)}>
+                    <Text style={{fontFamily: 'Sora-Regular', color: 'black'}}>View</Text>
                   </Button>
                 </View>
               </CardItem>
@@ -256,25 +256,14 @@ function Overview({ navigation }: IOverviewProps) {
         </ScrollView>
         <Animated.View style={[style.animatedTop, { height: headerHeight }]} pointerEvents="box-none">
             <View style={StyleSheet.absoluteFill}>
-              {/* <AnimatedIcon
-                style={[style.onchainIcon, { opacity: iconOpacity }]} type="FontAwesome" name="btc" onPress={() => navigation.navigate("OnChain")}
-              /> */}
-              {/* <AnimatedIcon
-                style={[style.channelsIcon, { opacity: iconOpacity }]} type="Entypo" name="thunder-cloud" onPress={() => (navigation.navigate as any)("LightningInfo")}
-              /> */}
               <AnimatedIcon
-                style={[style.settingsIcon, {}]} type="Feather" name="menu" onPress={() => navigation.navigate("Settings")}
+                style={[style.settingsIcon, {}]} type="Feather" name="settings" onPress={() => navigation.navigate("Settings")}
               />
               {!syncedToChain &&
-                <Animated.View style={[style.helpIcon, { opacity: iconOpacity }]}>
+                <Animated.View style={[style.menuIcon, { opacity: iconOpacity }]}>
                   <Spinner onPress={onPressSyncIcon} />
                 </Animated.View>
               }
-              {/* {syncedToChain &&
-                <AnimatedIcon
-                  style={[style.weblnBrowswerIcon, { opacity: iconOpacity }]} type="MaterialCommunityIcons" name="cart-outline" onPress={() => navigation.navigate("WebLNBrowser")}
-                />
-              } */}
             </View>
 
             <Animated.Text
@@ -329,13 +318,13 @@ const RecoverInfo = () => {
   return (
     <Card>
       <CardItem>
-        <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-          <Text>
+        <View style={{ flex: 1, marginBottom: 36, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+          <Text style={{fontFamily: 'Sora-ExtraLight'}}>
             {!recoverInfo.recoveryFinished && <>{t("recoverInfo.msg1")}</>}
             {recoverInfo.recoveryFinished && <>{t("recoverInfo.msg2")}</>}
           </Text>
           <Button small onPress={() => navigation.navigate("SyncInfo")}>
-            <Text>{t("recoverInfo.more")}</Text>
+            <Text style={{color: 'black'}}>{t("recoverInfo.more")}</Text>
           </Button>
         </View>
       </CardItem>
@@ -360,11 +349,11 @@ const SendOnChain = ({ bitcoinAddress }: ISendOnChain) => {
   return (
     <Card>
       <CardItem>
-        <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between" }}>
+        <View style={{ marginBottom: 32, flex: 1, flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ width: "59%", justifyContent: "center", paddingRight: 4 }}>
-            <Text style={{ fontSize: 15 * fontFactor }}>
+            <Text style={{ fontFamily: 'Sora-Regular', fontSize: 15 * fontFactor }}>
                 {t("sendOnChain.title")}{"\n\n"}
-              <Text style={{ fontSize: 13 * fontFactor }}>
+              <Text style={{ fontFamily: 'Sora-ExtraLight', fontSize: 11 * fontFactor }}>
                 {t("sendOnChain.msg1")}{"\n\n"}
                 {t("sendOnChain.msg2")}{"\n\n"}
                 {t("sendOnChain.msg3")} {formatBitcoin(Long.fromValue(22000), bitcoinUnit)} ({convertBitcoinToFiat(22000, currentRate, fiatUnit)}).
@@ -405,16 +394,16 @@ const DoBackup = () => {
   return (
     <Card>
       <CardItem>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, marginBottom: 42 }}>
           <View>
-            <Text style={{ fontSize: 15 * fontFactor }}>{t("doBackup.msg1")}{"\n\n"}{t("doBackup.msg2")}</Text>
+            <Text style={{ fontFamily: 'Sora-ExtraLight', fontSize: 15 * fontFactor }}>{t("doBackup.msg1")}{"\n\n"}{t("doBackup.msg2")}</Text>
           </View>
           <View style={{ flexDirection: "row-reverse", marginTop: 11 }}>
             <Button small style={{marginLeft: 7 }} onPress={onPressBackupWallet}>
-              <Text style={{ fontSize: 11 * fontFactorNormalized }}>{t("doBackup.backup")}</Text>
+              <Text style={{ color: 'black', fontSize: 11 * fontFactorNormalized }}>{t("doBackup.backup")}</Text>
             </Button>
             <Button small onPress={onPressDismiss}>
-              <Text style={{ fontSize: 11 * fontFactorNormalized }}>{t("msg.dismiss",{ns:namespaces.common})}</Text>
+              <Text style={{ color: 'black', fontSize: 11 * fontFactorNormalized }}>{t("msg.dismiss",{ns:namespaces.common})}</Text>
             </Button>
           </View>
         </View>
@@ -486,7 +475,7 @@ const style = StyleSheet.create({
       web: 6,
     }),
     right: 8,
-    fontSize: 29,
+    fontSize: 24,
     color: kubbentTheme.light,
   },
   helpIcon: {
@@ -505,12 +494,17 @@ const style = StyleSheet.create({
   },
   lightningSyncIcon: {
     position: "absolute",
-    padding: 4,
+    padding: 2,
     top: Platform.select({
-      native: 10 + iconTopPadding,
+      native: 12.5 + iconTopPadding,
       web: 7,
     }) ?? 0,
-    right: 8 + 24 + 8 + 24 + 8 + 13,
+    right: Platform.select({
+      native: 8 + 24 + 8 + 8,
+      web: 8 + 24 + 8 + 7
+    }) ?? 0,
+    fontSize: 27,
+    color: kubbentTheme.light,
   },
   weblnBrowswerIcon: {
     position: "absolute",
