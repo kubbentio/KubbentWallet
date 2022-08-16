@@ -41,6 +41,7 @@ export default StyleSheet.create({
   },
   lightningAddress: {
     fontSize: 13,
+    fontFamily: 'Sora-Regular'
   },
   contactAddIcon: {
     fontSize: 25,
@@ -54,17 +55,20 @@ export default StyleSheet.create({
   },
   text: {
     marginBottom: 14,
+    fontFamily: 'Sora-Regular',
   },
   inputLabel: {
     marginBottom: 9,
+    fontFamily: 'Sora-Regular',
   },
   boldText: {
-    fontWeight: "bold",
+    fontFamily: 'Sora-Regular'
   },
   iconText: {
   },
   icon: {
     fontSize: 18,
+    fontFamily: 'Sora-Regular',
   },
   inputAmountContainer: {
     width: "100%",
@@ -81,6 +85,7 @@ export default StyleSheet.create({
     paddingBottom: 5,
     paddingLeft: 12,
     paddingRight: 8,
+    fontFamily: 'Sora-ExtraLight'
   },
   inputCurrencyButton: {
     borderRadius: 10,
@@ -101,6 +106,7 @@ export default StyleSheet.create({
   metadataSectionCheckboxLabel: {
     flex: 1,
     fontSize: 13,
+    fontFamily: 'Sora-Regular',
     marginTop: PLATFORM === "ios" ? 2 : 0,
   },
 });

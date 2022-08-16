@@ -131,7 +131,7 @@ export default function LNURLPayRequest({ navigation, route }: IPayRequestProps)
             {__DEV__ &&
               <View style={{ position: "absolute", top: 50, right: 0, zIndex: 10000 }}>
                 <Button small={true} onPress={viewMetadata}>
-                  <Text style={{ fontSize: 7.5 }}>View metadata</Text>
+                  <Text style={{ color: 'black', fontSize: 7.5 }}>View metadata</Text>
                 </Button>
               </View>
             }
