@@ -194,12 +194,6 @@ export default function TransactionDetails({ route, navigation }: ITransactionDe
   }
 
   const hasCoordinates = transaction.locationLat && transaction.locationLong;
-
-  if(transaction.note === null) {
-    transaction.note = "No description";
-  } else {
-    transaction.note = transaction.note;
-  }
   
   if (currentScreen === "Overview") {
     return (
@@ -293,14 +287,19 @@ export default function TransactionDetails({ route, navigation }: ITransactionDe
             <Text style={style.title}>Date</Text>
             <Text style={style.subtitle}>{formatISO(fromUnixTime(transaction.date.toNumber()))}</Text>
           </View>
-          <View style={style.metadata}>
-            <Text style={style.title}>Amount in Fiat</Text>
-            <Text style={style.subtitle}>{transaction.valueFiat.toFixed(2)} ${transaction.valueFiatCurrency}</Text>
-          </View>
-          <View style={style.metadata}>
-            <Text style={style.title}>Fee</Text>
-            <Text style={style.subtitle}>{transaction.fee + " Satoshi"}</Text>
-          </View>
+          {/*  {transaction.valueFiat != null && transaction.valueFiatCurrency && <MetaData title={t("amountInFiatTimeOfPayment")} data={`${transaction.valueFiat.toFixed(2)} ${transaction.valueFiatCurrency}`} />} */}
+          {transaction.valueFiat != null && transaction.valueFiatCurrency && 
+            <View style={style.metadata}>
+              <Text style={style.title}>Amount in Fiat</Text>
+              <Text style={style.subtitle}>{transaction.valueFiat.toFixed(2)}</Text>
+            </View>
+          }
+          {transaction.fee !== null && transaction.fee !== undefined && 
+            <View style={style.metadata}>
+              <Text style={style.title}>Fee</Text>
+              <Text style={style.subtitle}>{transaction.fee + " Satoshi"}</Text>
+            </View>
+          }
           <View style={style.metadata}>
             <Text style={style.title}>Status</Text>
             <Text style={style.subtitle}>{transaction.status}</Text>
@@ -313,14 +312,22 @@ export default function TransactionDetails({ route, navigation }: ITransactionDe
             <Text style={style.title}>Preimage</Text>
             {transaction.status === "SETTLED" && transaction.preimage && <Text style={{fontFamily: 'Sora-ExtraLight', maxWidth: 200, fontSize: 12}}>{bytesToHexString(transaction.preimage)}</Text>}
           </View>
-          <View style={style.metadata}>
-            <Text style={style.title}>Note</Text>
-            <Text style={style.subtitle}>{transaction.note}</Text>
-          </View>
+          {transaction.note == null &&
+            <View style={style.metadata}>
+              <Text style={style.title}>Note</Text>
+              <Text style={style.subtitle}>No Description</Text>
+            </View>
+          }
+          {transaction.note != null &&
+            <View style={style.metadata}>
+              <Text style={style.title}>Note</Text>
+              <Text style={style.subtitle}>{transaction.note}</Text>
+            </View>
+          }
         </SafeAreaView>
         <SafeAreaView style={{alignContent: 'center', alignItems: 'center'}}>
           <TouchableOpacity style={{alignItems: 'center', borderRadius: 5, padding: 10, width: '95%', backgroundColor: 'white'}} onPress={onPressSetNote}>
-            <Text style={{fontFamily: 'Sora-Regular', color: 'black', textAlign: 'center', fontSize: 18}}>Set Note</Text>
+            <Text style={{fontFamily: 'Sora-ExtraLight', color: 'black', textAlign: 'center', fontSize: 14}}>{"Set Note".toUpperCase()}</Text>
           </TouchableOpacity>
         </SafeAreaView>
       </Container>
