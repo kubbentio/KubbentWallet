@@ -182,6 +182,7 @@ const style = StyleSheet.create({
   pincodeButtonText: {
     fontSize: smallScreen ? 24 : 32,
     lineHeight: smallScreen ? 34 : 42,
+    color: 'black'
   },
   buttonBackspace: {
     elevation: 0,

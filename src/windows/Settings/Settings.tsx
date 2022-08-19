@@ -73,18 +73,19 @@ export default function Settings({ navigation }: ISettingsProps) {
   const deleteSeedFromDevice = useStoreActions((store) => store.security.deleteSeedFromDevice);
 
   const onGetSeedPress = async () => {
-    const seed = await getSeed()
-    if (seed) {
-      Alert.alert(t("wallet.seed.show.dialog.title"), seed.join(" "), [{
-        text: t("wallet.seed.show.dialog.copy"),
-        onPress: async () => {
-          Clipboard.setString(seed.join(" "));
-          toast(t("wallet.seed.show.dialog.alert"), undefined, "warning");
-        }
-      }, {
-        text: t("buttons.ok",{ns:namespaces.common}),
-      }]);
-    }
+    // const seed = await getSeed()
+    // if (seed) {
+    //   Alert.alert(t("wallet.seed.show.dialog.title"), seed.join(" "), [{
+    //     text: t("wallet.seed.show.dialog.copy"),
+    //     onPress: async () => {
+    //       Clipboard.setString(seed.join(" "));
+    //       toast(t("wallet.seed.show.dialog.alert"), undefined, "warning");
+    //     }
+    //   }, {
+    //     text: t("buttons.ok",{ns:namespaces.common}),
+    //   }]);
+    // }
+    navigation.navigate("Welcome" as never, { screen: "Seed"} as never)
   }
 
   const onRemoveSeedPress = async () => {
