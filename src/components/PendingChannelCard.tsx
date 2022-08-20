@@ -145,7 +145,7 @@ export const PendingChannelCard = ({ channel, type, alias }: IPendingChannelCard
                     const txId = channel.channel?.channelPoint?.split(":")[0];
                     onPressViewInExplorer(txId ?? "");
                   }}>
-                    <Text style={{ fontSize: 8 }}>{t("channel.viewInBlockExplorer")}</Text>
+                    <Text style={{ fontSize: 8, fontFamily: 'Sora-Regular', color: 'black' }}>{t("channel.viewInBlockExplorer")}</Text>
                   </Button>
                 </Left>
               </Row>

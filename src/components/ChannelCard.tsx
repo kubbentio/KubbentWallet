@@ -132,7 +132,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
               <Text style={style.channelDetailTitle}>{t("channel.node")}</Text>
             </Left>
             <Right>
-              <CopyText style={{ fontSize: 9.5, textAlign: "right" }}>{channel.remotePubkey}</CopyText>
+              <CopyText style={{ fontSize: 9.5, textAlign: "right", fontFamily: 'Sora-ExtraLight' }}>{channel.remotePubkey}</CopyText>
             </Right>
           </Row>
           <Row style={{ width: "100%" }}>
@@ -140,7 +140,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
               <Text style={style.channelDetailTitle}>{t("channel.channelId")}</Text>
             </Left>
             <Right>
-              <CopyText style={{ fontSize: 14 }}>{channel.chanId?.toString()}</CopyText>
+              <CopyText style={{ fontSize: 14, fontFamily: 'Sora-ExtraLight' }}>{channel.chanId?.toString()}</CopyText>
             </Right>
           </Row>
           <Row style={{ width: "100%" }}>
@@ -149,25 +149,25 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
             </Left>
             <Right>
               {channel.active ?
-                <Text style={{...style.channelDetailValue, color: "green"}}>{t("channel.statusActive")}</Text>
+                <Text style={{...style.channelDetailValue, fontFamily: 'Sora-ExtraLight', color: "green"}}>{t("channel.statusActive")}</Text>
                 :
-                <Text style={{...style.channelDetailValue, color: "red"}}>{t("channel.statusInactive")}</Text>
+                <Text style={{...style.channelDetailValue, fontFamily: 'Sora-ExtraLight', color: "red"}}>{t("channel.statusInactive")}</Text>
               }
             </Right>
           </Row>
           <Row style={{ width: "100%" }}>
             <Left style={{ alignSelf: "flex-start" }}>
-              <Text>{t("channel.capacity")}</Text>
+              <Text style={style.channelDetailTitle}>{t("channel.capacity")}</Text>
             </Left>
             <Right>
               {!preferFiat &&
-                <Text>
+                <Text style={style.channelDetailValue}>
                   {valueBitcoin(channel.capacity ?? Long.fromValue(0), bitcoinUnit)}{" "}
                   {getUnitNice(new BigNumber(localBalance.toNumber()), bitcoinUnit)}
                 </Text>
               }
               {preferFiat &&
-                <Text>
+                <Text style={style.channelDetailValue}>
                   {valueFiat(channel.capacity ?? Long.fromValue(0), currentRate).toFixed(2)}{" "}{fiatUnit}
                 </Text>
               }
@@ -201,26 +201,26 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
           </Row>
           <Row style={{ width: "100%" }}>
             <Left style={{ alignSelf: "flex-start" }}>
-              <Text>{t("channel.howMuchCanBeSent")}</Text>
+              <Text style={style.channelDetailTitle}>{t("channel.howMuchCanBeSent")}</Text>
             </Left>
             <Right>
-              <Text>
+              <Text style={style.channelDetailValue}>
                 {!preferFiat &&
                   <>
-                    <Text style={{ color: kubbentTheme.green }}>
+                    <Text style={{ fontFamily: 'Sora-Regular', color: kubbentTheme.green }}>
                       {valueBitcoin(localBalance, bitcoinUnit)}{" "}
                     </Text>
-                    <Text>
+                    <Text style={style.channelDetailValue}>
                       {getUnitNice(new BigNumber(localBalance.toNumber()), bitcoinUnit)}
                     </Text>
                   </>
                 }
                 {preferFiat &&
                   <>
-                    <Text style={{ color: kubbentTheme.green }}>
+                    <Text style={{ fontFamily: 'Sora-ExtraLight', color: kubbentTheme.green }}>
                       {valueFiat(localBalance, currentRate).toFixed(2)}{" "}
                     </Text>
-                    <Text>
+                    <Text style={{fontFamily: 'Sora-ExtraLight'}}>
                       {fiatUnit}
                     </Text>
                   </>
@@ -230,26 +230,26 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
           </Row>
           <Row style={{ width: "100%" }}>
             <Left style={{ alignSelf: "flex-start" }}>
-              <Text>{t("channel.howMuchCanBeReceived")}</Text>
+              <Text style={style.channelDetailTitle}>{t("channel.howMuchCanBeReceived")}</Text>
             </Left>
             <Right>
-              <Text style={{ textAlign: "right" }}>
+              <Text style={{ fontFamily: 'Sora-ExtraLight', textAlign: "right" }}>
                 {!preferFiat &&
                   <>
-                    <Text style={{ color: kubbentTheme.red }}>
+                    <Text style={{ fontFamily: 'Sora-ExtraLight', color: kubbentTheme.red }}>
                       {valueBitcoin(remoteBalance, bitcoinUnit)}{" "}
                     </Text>
-                    <Text>
+                    <Text style={{fontFamily: 'Sora-ExtraLight'}}>
                       {getUnitNice(new BigNumber(remoteBalance.toNumber()), bitcoinUnit)}
                     </Text>
                   </>
                 }
                 {preferFiat &&
                   <>
-                    <Text style={{ color: kubbentTheme.red}}>
+                    <Text style={{ fontFamily: 'Sora-ExtraLight', color: kubbentTheme.red}}>
                       {valueFiat(remoteBalance, currentRate).toFixed(2)}{" "}
                     </Text>
-                    <Text>
+                    <Text style={{fontFamily: 'Sora-ExtraLight',}}>
                       {fiatUnit}
                     </Text>
                   </>
@@ -259,13 +259,13 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
           </Row>
           <Row style={{ width: "100%" }}>
             <Left style={{ alignSelf: "flex-start" }}>
-              <Text>{t("channel.localReserve")}</Text>
+              <Text style={style.channelDetailTitle}>{t("channel.localReserve")}</Text>
             </Left>
             <Right>
-              <Text>
+              <Text style={style.channelDetailValue}>
                 {!preferFiat &&
                   <>
-                    <Text>
+                    <Text style={style.channelDetailValue}>
                       {localReserve.eq(channel.localChanReserveSat!) &&
                         <>{valueBitcoin(localReserve, bitcoinUnit)}{" "}</>
                       }
@@ -278,14 +278,14 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
                       }
 
                     </Text>
-                    <Text>
+                    <Text style={style.channelDetailValue}>
                       {getUnitNice(new BigNumber(localReserve.toNumber()), bitcoinUnit)}
                     </Text>
                   </>
                 }
                 {preferFiat &&
                   <>
-                    <Text>
+                    <Text style={style.channelDetailValue}>
                       {localReserve.eq(channel.localChanReserveSat!) &&
                         <>{valueFiat(localReserve, currentRate).toFixed(2)}{" "}</>
                       }
@@ -297,7 +297,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
                         </>
                       }
                     </Text>
-                    <Text>
+                    <Text style={style.channelDetailValue}>
                       {fiatUnit}
                     </Text>
                   </>
@@ -310,7 +310,7 @@ export function ChannelCard({ channel, alias }: IChannelCardProps) {
               <Text style={style.channelDetailTitle}>{t("channel.commitmentFee")}</Text>
             </Left>
             <Right>
-              <Text>
+              <Text style={style.channelDetailValue}>
                 {preferFiat && valueFiat(channel.commitFee ?? Long.fromValue(0), currentRate).toFixed(2) + " " + fiatUnit}
                 {!preferFiat && valueBitcoin(channel.commitFee ?? Long.fromValue(0), bitcoinUnit) + " " + getUnitNice(new BigNumber(localReserve.toNumber()), bitcoinUnit)}
               </Text>
@@ -366,8 +366,10 @@ export const style = StyleSheet.create({
     fontSize: 16,
   },
   channelDetailTitle: {
+    fontFamily: 'Sora-Regular'
   },
   channelDetailValue: {
+    fontFamily: 'Sora-ExtraLight'
   },
   channelDetailAmount: {
     fontSize: 15,

@@ -547,7 +547,6 @@ const headerInfo = StyleSheet.create({
     color: "#d6dbdb",
     fontSize: 18 * fontFactor,
     lineHeight: 21 * fontFactor,
-    fontFamily: theme.fontFamily,
   }
 });
 

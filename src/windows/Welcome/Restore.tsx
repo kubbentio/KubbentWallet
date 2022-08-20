@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StatusBar, StyleSheet, Alert, NativeModules } from "react-native";
+import { StatusBar, StyleSheet, Alert, NativeModules, SafeAreaView } from "react-native";
 import DocumentPicker, { DocumentPickerResponse } from "react-native-document-picker";
 import { readFile } from "react-native-fs";
 import { Text, View, Button, H1, Textarea, Spinner, H3 } from "native-base";
@@ -18,6 +18,7 @@ import GoBackIcon from "../../components/GoBackIcon";
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
 import { toast } from "../../utils";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const iconTopPadding = (StatusBar.currentHeight ?? 0) + getStatusBarHeight(true);
 
@@ -175,7 +176,7 @@ export default function Restore({ navigation }: IProps) {
         networkActivityIndicatorVisible={true}
         barStyle="light-content"
       />
-      <View style={style.content}>
+      {/* <View style={style.content}>
         <View style={style.upperContent}>
           <View style={style.seed}>
             {PLATFORM !== "android" && <GoBackIcon style={style.goBack} />}
@@ -183,6 +184,7 @@ export default function Restore({ navigation }: IProps) {
               style={style.seedBox}
               rowSpan={6}
               bordered={false}
+              placeholder="Type here your seed"
               underline={false}
               onChangeText={setSeedText}
               value={seedText}
@@ -260,6 +262,53 @@ export default function Restore({ navigation }: IProps) {
             {loading && <Spinner color={kubbentTheme.light} />}
           </Button>
         </View>
+      </View> */}
+      <View style={style.content}>
+        <SafeAreaView>
+          <View style={style.text}>
+            <H1 style={style.textHeader}>{t("restore.title")}</H1>
+            <Text style={style.textSubtitle}>
+              Write your seed and put your channel backup file to fully recover your wallet.
+            </Text>
+            <Textarea
+              style={style.seedBox}
+              rowSpan={6}
+              bordered={false}
+              placeholder="Type here your seed"
+              underline={false}
+              onChangeText={setSeedText}
+              value={seedText}
+              returnKeyType="done"
+              blurOnSubmit={true}
+            />
+            {backupType === "none" &&
+                <View style={{ display: "flex", flexDirection: "column" }}>
+                  <TouchableOpacity style={{ borderRadius: 5, paddingHorizontal: 30, paddingVertical: 5, backgroundColor: 'white', marginTop: 6, marginBottom: 10 }} onPress={pickChannelsExportFile}>
+                    <Text style={{fontFamily: 'Sora-Regular', textAlign: 'center', color: 'black'}}>
+                      {backupFile === null && t("restore.channel.file")}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              }
+              {backupType === "file" &&
+                <View style={{ flexDirection: "row", justifyContent: "space-between"}}>
+                  <Text style={{fontFamily: 'Sora-ExtraLight'}}>{backupFile &&  backupFile.name}</Text>
+                  <Button small onPress={undoBackupChoice}>
+                    <Text style={{color: 'black'}}>
+                      x
+                    </Text>
+                  </Button>
+                </View>
+              }
+          </View>
+        </SafeAreaView>
+        <SafeAreaView>
+          <Button block={true} onPress={onRestorePress} disabled={loading} style={{backgroundColor: 'white', borderRadius: 5, paddingHorizontal: 100, paddingVertical: 10}}>
+            {/* <Text style={{color: 'black', fontFamily: 'Sora-Regular'}}>Restore Wallet</Text> */}
+            {!loading && <Text style={{color: 'black', fontFamily: 'Sora-Regular'}}>{t("restore.title")}</Text>}
+            {loading && <Spinner color='black' />}
+          </Button>
+        </SafeAreaView>
       </View>
     </Container>
   );
@@ -270,11 +319,11 @@ const style = StyleSheet.create({
     marginTop: iconTopPadding,
     width: "100%",
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     paddingLeft: 16,
     paddingRight: 16,
-    paddingBottom: 16,
+    paddingBottom: 50,
   },
   seed: {
     padding: 12,
@@ -286,11 +335,14 @@ const style = StyleSheet.create({
     alignContent: "center",
   },
   seedBox: {
-    width: "100%",
     height: 150,
-    backgroundColor: kubbentTheme.gray,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'white',
     fontSize: 20,
-    marginTop: PLATFORM !== "android" ? 60 : undefined,
+    marginBottom: 12,
+    fontFamily: 'Sora-Regular',
+    marginTop: 32,
   },
   upperContent: {
     width: "100%",
@@ -310,7 +362,13 @@ const style = StyleSheet.create({
     width: "100%",
   },
   textHeader: {
+    fontFamily: 'Sora-Regular',
     marginBottom: 3,
+    fontSize: 32,
+  },
+  textSubtitle: {
+    fontFamily: 'Sora-ExtraLight',
+    fontSize: 18,
   },
   card: {
 

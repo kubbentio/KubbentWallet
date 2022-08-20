@@ -106,7 +106,7 @@ export default function DEV_Commands({ navigation, continueCallback }: IProps) {
             console.log(encoder);
           }}><Text style={styles.buttonText}>TextEncoder</Text></Button>
           <Button small onPress={async () => {
-            const metadata = '[["text/plain","lnurl-pay chat:  Comment 📝"],["text/long-desc","Write a message to be displayed on chat.kubbentwallet.com.\\n\\nOnce the payment goes through, your message will be displayed on the web page."]]';
+            const metadata = '[["text/plain","lnurl-pay chat:  Comment 📝"],["text/long-desc","Write a message to be displayed on chat.blixtwallet.com.\\n\\nOnce the payment goes through, your message will be displayed on the web page."]]';
 
             console.log(
               await JSHash(metadata, CONSTANTS.HashAlgorithms.sha256)

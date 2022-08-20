@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, StatusBar, NativeModules, SafeAreaView } from "react-native";
+import { StyleSheet, StatusBar, NativeModules, SafeAreaView, Image } from "react-native";
 import { Text, H1, Button, View, Spinner, Icon } from "native-base";
 import { useStoreActions, useStoreState } from "../../state/store";
 import * as Animatable from "react-native-animatable";
@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
 import { toast } from "../../utils";
 import { Alert } from "../../utils/alert";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface IAnimatedH1Props {
   children: JSX.Element | string;
@@ -219,7 +220,7 @@ ${t("createWallet.msg3")}`,
           networkActivityIndicatorVisible={true}
           barStyle="light-content"
         />
-
+{/* 
         {(!createWalletLoading && PLATFORM !== "macos") &&  (
           <TopMenu />
         )}
@@ -241,6 +242,31 @@ ${t("createWallet.msg3")}`,
             </AnimatedView>
           :
             <Spinner color={kubbentTheme.light} />
+        } */}
+        {!createWalletLoading
+          ?
+        <>
+            <SafeAreaView>
+              <Text style={{ marginTop: 32, fontFamily: 'Sora-Regular', fontSize: 22 }}>
+                Welcome to Kubbent Wallet
+              </Text>
+              <Text style={{ fontFamily: 'Sora-ExtraLight', textAlign: 'center', fontSize: 18 }}>
+                Continue on to gain access to the lightning network and have sovereignty for your money.
+              </Text>
+            </SafeAreaView><SafeAreaView>
+                <Image style={{ resizeMode: 'contain', width: 300, height: 300 }} source={require('../../../assets/images/kubbentLogo.png')} />
+              </SafeAreaView><SafeAreaView>
+                <TouchableOpacity onPress={onRestoreWalletPress} style={{ marginBottom: 10, borderRadius: 5, borderWidth: 1, borderColor: 'white', paddingHorizontal: 100, paddingVertical: 10 }}>
+                  <Text style={{ fontFamily: 'Sora-Regular' }}>{t("restoreWallet.title")}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onCreateWalletPress} style={{ borderRadius: 5, backgroundColor: 'white', paddingHorizontal: 100, paddingVertical: 10 }}>
+                  {!createWalletLoading && <Text style={{ fontFamily: 'Sora-Regular', color: 'black' }}>{t("createWallet.title")}</Text>}
+                  {createWalletLoading && <Spinner color={'black'} />}
+                </TouchableOpacity>
+              </SafeAreaView>
+          </>
+          :
+          <Spinner color={kubbentTheme.light} />
         }
       </SafeAreaView>
     </Container>
@@ -253,8 +279,10 @@ const style = StyleSheet.create({
   content: {
     flex: 1,
     width: "100%",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
+    paddingLeft: 32,
+    paddingRight: 32,
   },
   header: {
     fontSize: 38,

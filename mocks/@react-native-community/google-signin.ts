@@ -4,7 +4,7 @@ const GoogleSignin = {
   currentUserAsync: () => {
     return Promise.resolve({
       name: 'kubbent-jest',
-      email: 'kubbent-jest@kubbentwallet.com',
+      email: 'kubbent-jest@blixtwallet.com',
       // .... other user data
     });
   },

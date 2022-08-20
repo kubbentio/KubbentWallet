@@ -176,11 +176,11 @@ export default async function SetupKubbentDemo(
     note: "fiatjaf on Telegram",
   }, {
     id: 3,
-    domain: "kubbentwallet.com",
+    domain: "blixtwallet.com",
     type: "PERSON",
     lnUrlPay: "https://789",
     lnUrlWithdraw: null,
-    lightningAddress: "hampus@kubbentwallet.com",
+    lightningAddress: "hampus@blixtwallet.com",
     lud16IdentifierMimeType: "text/identifier",
     note: "Hampus's Lightning Box",
   }, {
