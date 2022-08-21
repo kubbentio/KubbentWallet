@@ -201,7 +201,7 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
         <SafeAreaView>
           <TouchableOpacity onPress={send} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
             {canSend && <Text style={{color: 'black', fontFamily: 'Sora-Regular', textAlign: 'center'}}>Pay</Text>}
-            {!canSend && <Spinner color={kubbentTheme.light} />}
+            {!canSend && <Spinner color='black'/>}
           </TouchableOpacity>
         </SafeAreaView>
       </Container>

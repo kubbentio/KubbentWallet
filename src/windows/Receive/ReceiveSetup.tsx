@@ -302,7 +302,7 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
         </SafeAreaView>
         <TouchableOpacity disabled={!canSend} onPress={onCreateInvoiceClick} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
           {loading
-            ? <Spinner color={'white'} />
+            ? <Spinner color={'black'} />
             : <Text style={{fontFamily: 'Sora-ExtraLight', color: 'black'}}>{t("createInvoice.title")}</Text>
           }
         </TouchableOpacity>
