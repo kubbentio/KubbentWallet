@@ -125,7 +125,7 @@ export default function ReceiveSetupLsp({ navigation }: IReceiveSetupProps) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: t("layout.title"),
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -437,9 +437,16 @@ export default function ReceiveSetupLsp({ navigation }: IReceiveSetupProps) {
           <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeFiatInput} placeholder="0" value={dollarValue !== undefined ? dollarValue.toString() : undefined}/>
           <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.description.title")}`}</Text>
           <TextInput onChangeText={setDescription} onFocus={() => setMathPadVisible(false)} value={description} placeholder={t("form.description.placeholder")} style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}}/>
-          <View>
-            <Text>{t("createInvoice.lsp.msg")}</Text>
-          </View>
+          <Text style={{fontFamily: 'Sora-Regular'}}>{t("createInvoice.lsp.msg")}</Text>
+          <TextClickable style={{fontSize: 14, lineHeight: 23} as TextStyle} onPress={() => navigation.navigate("DunderLspInfo")}>
+            {t("createInvoice.lsp.msg1")}
+          </TextClickable>
+          {/* <TextClickable style={{
+          fontSize: 14,
+          lineHeight: 23,
+        } as TextStyle} onPress={() => navigation.navigate("DunderLspInfo")}>{t("createInvoice.lsp.msg1")}</TextClickable> */}
+          {/* <View>
+          </View> */}
         </SafeAreaView>
         <TouchableOpacity disabled={!canSend} onLongPress={ondemandChannelServiceActive ? createKubbentLspInvoice : undefined}  onPress={shouldUseDunder ? createKubbentLspInvoice : createInvoice}  style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
           {loading

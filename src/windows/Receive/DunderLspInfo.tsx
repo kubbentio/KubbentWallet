@@ -21,16 +21,16 @@ export default function DunderLspInfo({ route }: any) {
             <H1 style={style.header}>
               {t("title")}
             </H1>
-            <Text style={{ marginBottom: 16 }}>
+            <Text style={{ fontFamily: 'Sora-ExtraLight', marginBottom: 16 }}>
               {t("msg")}
             </Text>
-            <Text style={{ marginBottom: 16 }}>
+            <Text style={{ fontFamily: 'Sora-ExtraLight', marginBottom: 16 }}>
               {t("msg1")}
             </Text>
-            <Text style={{ marginBottom: 16 }}>
+            <Text style={{ fontFamily: 'Sora-ExtraLight', marginBottom: 16 }}>
               {t("msg2")}
             </Text>
-            <Text style={{ marginBottom: 16 }}>
+            <Text style={{ fontFamily: 'Sora-ExtraLight', marginBottom: 16 }}>
               {t("msg3")} <TextLink url="https://github.com/hsjoberg/dunder-lsp">{t("msg4")}</TextLink>
               {" "}{t("msg5")}
             </Text>
@@ -48,11 +48,12 @@ const style = StyleSheet.create({
     minHeight: "20%",
   },
   header: {
-    fontWeight: "bold",
+    fontFamily: 'Sora-Regular',
     marginBottom: 10,
   },
   detailText: {
     marginBottom: 7,
+    fontFamily: 'Sora-ExtraLight',
   },
   qrText: {
     marginBottom: 7,

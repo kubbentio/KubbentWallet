@@ -349,6 +349,12 @@ const SendOnChain = ({ bitcoinAddress }: ISendOnChain) => {
   return (
     <Card>
       <CardItem>
+        <View style={{marginBottom: 12, flex: 1, alignContent: 'center', alignItems: 'center', flexDirection: "row", justifyContent: "space-between" }}>
+          <AnimatedIcon style={{marginRight: 15, color: 'white'}} type="Feather" name="alert-triangle" />
+          <Text style={{paddingRight: 15, fontFamily: 'Sora-Regular', fontSize: 14}}>This is a beta wallet, please be aware that something could go wrong.</Text>
+        </View>
+      </CardItem>
+      <CardItem>
         <View style={{ marginBottom: 32, flex: 1, flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ width: "59%", justifyContent: "center", paddingRight: 4 }}>
             <Text style={{ fontFamily: 'Sora-Regular', fontSize: 15 * fontFactor }}>

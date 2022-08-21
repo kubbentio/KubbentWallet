@@ -170,37 +170,24 @@ export default function Start({ navigation }: IStartProps) {
   const onCreateWalletPress = async () => {
     try {
       await generateSeed(undefined);
-      Alert.alert(
-        t("msg.warning",{ns:namespaces.common}),
-`${t("createWallet.msg1")}
+      try {
+        setCreateWalletLoading(true);
+        await createWallet();
+        await setSyncEnabled(true); // TODO test
+        await changeScheduledSyncEnabled(true);
 
-${t("createWallet.msg2")}
-
-${t("createWallet.msg3")}`,
-        [{
-          text: t("createWallet.msg4"),
-          onPress: async  () => {
-            try {
-              setCreateWalletLoading(true);
-              await createWallet();
-              await setSyncEnabled(true); // TODO test
-              await changeScheduledSyncEnabled(true);
-
-              navigation.dispatch(
-                CommonActions.reset({
-                  index: 0,
-                  routes: [
-                    { name: "Loading" },
-                  ],
-                })
-              );
-            } catch (error) {
-              toast(error.message, undefined, "danger");
-              setCreateWalletLoading(false);
-            }
-          }
-        }],
-      );
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [
+              { name: "Loading" },
+            ],
+          })
+        );
+      } catch (error) {
+        toast(error.message, undefined, "danger");
+        setCreateWalletLoading(false);
+      }
     } catch (e) {
       Alert.alert(e.message);
     }
