@@ -35,6 +35,7 @@ export interface ISecurityModel {
   loginMethods: Set<LoginMethods>;
   seedAvailable: boolean;
   fingerprintAvailable: Computed<ISecurityModel, boolean>;
+  hideBalanceEnabled: Computed<ISecurityModel, boolean>;
   fingerprintEnabled: Computed<ISecurityModel, boolean>;
   sensor: Biometrics | null;
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, View, Image, Platform, PixelRatio } from "react-native";
-import { Body, Card, CardItem, Text, Right, Row } from "native-base";
+import { StyleSheet, View, Image, Platform, PixelRatio, Animated } from "react-native";
+import { Body, Card, CardItem, Text, Right, Row, Icon } from "native-base";
 
 import { fromUnixTime } from "date-fns";
 import { ITransaction } from "../storage/database/transaction";
@@ -17,6 +17,9 @@ interface IProps {
   transaction: ITransaction;
   unit: keyof IBitcoinUnits;
 }
+
+const AnimatedIcon = Animated.createAnimatedComponent(Icon);
+
 export default function TransactionCard({ onPress, transaction, unit }: IProps) {
   const { date, value, amtPaidSat, status, tlvRecordName } = transaction;
   const positive = value.isPositive();
@@ -86,9 +89,9 @@ export default function TransactionCard({ onPress, transaction, unit }: IProps) 
                 <Text style={positive ? transactionStyle.transactionTopValuePositive : transactionStyle.transactionTopValueNegative}>
                   {transactionValue.notEquals(0) &&
                     <>
-                      {(positive ? "+" : "")}
+                      {(positive ? "" : "")}
                       {!preferFiat && formatBitcoin(transactionValue, unit, false)}
-                      {preferFiat && convertBitcoinToFiat(transactionValue, currentRate, fiatUnit)}
+                      {preferFiat && <Text style={{fontSize: 10}}><AnimatedIcon type={'Feather'} name={'eye-off'}/></Text>}
                     </>
                   }
                 </Text>

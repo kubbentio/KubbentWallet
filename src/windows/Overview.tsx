@@ -266,7 +266,7 @@ function Overview({ navigation }: IOverviewProps) {
               }
             </View>
 
-            <Animated.Text
+            {/* <Animated.Text
               testID="BIG_BALANCE_HEADER"
               onPress={onPressBalanceHeader}
               style={[headerInfo.btc, {
@@ -290,14 +290,35 @@ function Overview({ navigation }: IOverviewProps) {
             >
               {!preferFiat && bitcoinBalance}
               {preferFiat && fiatBalance}
-            </Animated.Text>
-
-            {pendingOpenBalance.equals(0) &&
+            </Animated.Text> */}
+            <TouchableOpacity onPress={onPressBalanceHeader}>
+              {!preferFiat &&
+                <View style={{
+                  marginTop: 30,
+                }}>
+                  <Text style={{color: 'white', fontSize: 36, fontFamily: 'Sora-Regular'}}>
+                    {bitcoinBalance}
+                  </Text>
+                  <Text style={{color: 'white', textAlign: 'center', fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>
+                    {fiatBalance}
+                  </Text>
+                </View>
+              }
+              {preferFiat &&
+                <View style={{justifyContent: 'center', marginTop: '15%' }}>
+                  <Text style={{fontFamily: 'Sora-Regular', textAlign: 'center', fontSize: 22}}>
+                    Nothing for you to see here :)
+                  </Text>
+                </View>
+              }
+            </TouchableOpacity>
+            
+            {/* {pendingOpenBalance.equals(0) &&
               <Animated.Text style={[{ fontFamily: 'Sora-ExtraLight',  opacity: headerFiatOpacity }, headerInfo.fiat]}>
                 {!preferFiat && fiatBalance}
                 {preferFiat && bitcoinBalance}
               </Animated.Text>
-            }
+            } */}
             {pendingOpenBalance.greaterThan(0) &&
               <Animated.Text style={[{ fontFamily: 'Sora-ExtraLight', opacity: headerFiatOpacity }, headerInfo.pending]}>
                 {!preferFiat && <>({formatBitcoin(pendingOpenBalance, bitcoinUnit)} {t("msg.pending",{ns:namespaces.common})})</>}

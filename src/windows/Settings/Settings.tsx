@@ -218,6 +218,7 @@ export default function Settings({ navigation }: ISettingsProps) {
     }
   };
 
+
   // Autopilot
   const autopilotEnabled = useStoreState((store) => store.settings.autopilotEnabled);
   const changeAutopilotEnabled = useStoreActions((store) => store.settings.changeAutopilotEnabled);
