@@ -191,7 +191,7 @@ function Overview({ navigation }: IOverviewProps) {
       <StatusBar
         barStyle="light-content"
         hidden={false}
-        backgroundColor="transparent"
+        backgroundColor="black"
         animated={false}
         translucent={true}
       />
