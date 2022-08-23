@@ -253,7 +253,6 @@ function Overview({ navigation }: IOverviewProps) {
             </View>
           </View>
           {txs}
-        </ScrollView>
         <Animated.View style={[style.animatedTop, { height: headerHeight }]} pointerEvents="box-none">
             <View style={StyleSheet.absoluteFill}>
               <AnimatedIcon
@@ -285,12 +284,12 @@ function Overview({ navigation }: IOverviewProps) {
                     ios: 1
                   }) ?? 0) +
                   16
-                ),
-              }]}
-            >
-              {!preferFiat && bitcoinBalance}
-              {preferFiat && fiatBalance}
-            </Animated.Text> */}
+                  ),
+                }]}
+                >
+                {!preferFiat && bitcoinBalance}
+                {preferFiat && fiatBalance}
+              </Animated.Text> */}
             <TouchableOpacity onPress={onPressBalanceHeader}>
               {!preferFiat &&
                 <View style={{
@@ -315,8 +314,8 @@ function Overview({ navigation }: IOverviewProps) {
             
             {/* {pendingOpenBalance.equals(0) &&
               <Animated.Text style={[{ fontFamily: 'Sora-ExtraLight',  opacity: headerFiatOpacity }, headerInfo.fiat]}>
-                {!preferFiat && fiatBalance}
-                {preferFiat && bitcoinBalance}
+              {!preferFiat && fiatBalance}
+              {preferFiat && bitcoinBalance}
               </Animated.Text>
             } */}
             {pendingOpenBalance.greaterThan(0) &&
@@ -326,6 +325,7 @@ function Overview({ navigation }: IOverviewProps) {
               </Animated.Text>
             }
         </Animated.View>
+            </ScrollView>
       </View>
     </Container>
   );
