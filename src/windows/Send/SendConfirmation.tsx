@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { Vibration, BackHandler, Keyboard, TouchableOpacity } from "react-native";
+import { Vibration, BackHandler, Keyboard, TouchableOpacity, View } from "react-native";
 import { Button, Icon, Text, Spinner } from "native-base";
 import { RouteProp } from "@react-navigation/native";
 import Container from "../../components/Container";
@@ -22,7 +22,7 @@ import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { formatBitcoin, convertBitcoinToFiat } from "../../utils/bitcoin-units";
-import { TextInput } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 
 export interface ISendConfirmationProps {
   navigation: StackNavigationProp<SendStackParamList, "SendConfirmation">;
@@ -186,18 +186,22 @@ export default function SendConfirmation({ navigation, route }: ISendConfirmatio
           <Text style={{fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text>
           <Text style={{fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text>
         </SafeAreaView> */}
-        <SafeAreaView>
-          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("layout.balance")}</Text>
-          <Text style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${bitcoinBalance} - ${fiatBalance}`}</Text>
-          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("form.invoice.title")}</Text>
-          <Text style={{ marginBottom: 8, fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${bolt11Invoice!.substring(0, 29).toLowerCase()}...`}</Text>
-          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} in ${bitcoinUnit}`}</Text>
-          <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeBitcoinInput) || undefined} keyboardType="numeric" placeholder="0" value={bitcoinValue}/>
-          <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} in ${fiatUnit}`}</Text>
-          <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeFiatInput) || undefined} keyboardType="numeric" placeholder="0" value={dollarValue}/>
-          {/* <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.description.title")}`}</Text>
-          <TextInput multiline={PLATFORM === "android"} value={description} placeholder="Type here your message" style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}/> */}
-        </SafeAreaView>
+        <ScrollView>
+          <View style={{justifyContent: 'space-between'}}>
+            <SafeAreaView>
+              <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("layout.balance")}</Text>
+              <Text style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${bitcoinBalance} - ${fiatBalance}`}</Text>
+              <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("form.invoice.title")}</Text>
+              <Text style={{ marginBottom: 8, fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${bolt11Invoice!.substring(0, 29).toLowerCase()}...`}</Text>
+              <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} in ${bitcoinUnit}`}</Text>
+              <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeBitcoinInput) || undefined} keyboardType="numeric" placeholder="0" value={bitcoinValue}/>
+              <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} in ${fiatUnit}`}</Text>
+              <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} onChangeText={(amountEditable && onChangeFiatInput) || undefined} keyboardType="numeric" placeholder="0" value={dollarValue}/>
+              {/* <Text style={{fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.description.title")}`}</Text>
+              <TextInput multiline={PLATFORM === "android"} value={description} placeholder="Type here your message" style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}/> */}
+            </SafeAreaView>
+          </View>
+        </ScrollView>
         <SafeAreaView>
           <TouchableOpacity onPress={send} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
             {canSend && <Text style={{color: 'black', fontFamily: 'Sora-Regular', textAlign: 'center'}}>Pay</Text>}

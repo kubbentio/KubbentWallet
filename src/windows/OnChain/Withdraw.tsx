@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect, useRef } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import { Text, Container, Button, Icon, Spinner } from "native-base";
 import { StackNavigationProp } from "@react-navigation/stack";
 import Slider from "@react-native-community/slider";
@@ -18,6 +18,8 @@ import Input from "../../components/Input";
 
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView } from "react-native-gesture-handler";
 
 export interface IOpenChannelProps {
   navigation: StackNavigationProp<OnChainStackParamList, "Withdraw">;
@@ -103,10 +105,11 @@ export default ({ navigation }: IOpenChannelProps) => {
   };
 
   return (
-    <Container>
-      <Text style={{fontSize: 22, marginLeft: 14, fontFamily: 'Sora-Regular', marginTop: 32, alignContent: 'center', alignItems: 'center'}}>Withdraw your coins</Text>
-      <Text style={{marginBottom: '25%', fontSize: 18, marginLeft: 14, fontFamily: 'Sora-ExtraLight', alignContent: 'center', alignItems: 'center'}}>Send your bitcoin to another wallet here.</Text>
-      <KubbentForm
+    <Container style={{paddingLeft: 24, marginRight: 24, justifyContent: 'space-between'}}>
+      <ScrollView>
+        {/* <Text style={{fontSize: 22, fontFamily: 'Sora-Regular', marginTop: 32, alignContent: 'center', alignItems: 'center'}}>Withdraw your coins</Text>
+      <Text style={{marginBottom: '25%', fontSize: 18, fontFamily: 'Sora-ExtraLight', alignContent: 'center', alignItems: 'center'}}>Send your bitcoin to another wallet here.</Text> */}
+      {/* <KubbentForm
         items={[{
           key: "BTC_ADDRESS",
           title: t("form.address.title"),
@@ -215,7 +218,61 @@ export default ({ navigation }: IOpenChannelProps) => {
         ]}
         noticeText={`${formatBitcoinValue(Long.fromValue(onChainBalance))} available`}
         noticeIcon={Long.fromValue(onChainBalance).gt(0) ? null : "info"}
-      />
+      /> */}
+      <SafeAreaView>
+        <Text style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}}>{`${formatBitcoinValue(Long.fromValue(onChainBalance))} available`}</Text>
+        <Text style={{marginTop: 10, fontSize: 26, fontFamily: 'Sora-Regular'}}>Bitcoin Adress</Text>
+        <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} 
+          testID="INPUT_BITCOIN_ADDRESS"
+          placeholder="Type here your bitcoin address"
+          value={address}
+          onChangeText={onAddressChange}
+        />
+        <Text style={{marginTop: 10, fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} ${BitcoinUnits[bitcoinUnit].nice}`}</Text>
+        <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} 
+          testID="INPUT_AMOUNT"
+          placeholder={`${t("form.amount.placeholder")} ${BitcoinUnits[bitcoinUnit].nice}`}
+          keyboardType="numeric"
+          returnKeyType="done"
+          onChangeText={onChangeBitcoinInput}
+          value={withdrawAll ? t("form.amount.withdrawAll") : bitcoinValue || ""}
+          // disabled={withdrawAll}
+        />
+        <Text style={{marginTop: 10, fontSize: 26, fontFamily: 'Sora-Regular'}}>{`${t("form.amount.title")} ${fiatUnit}`}</Text>
+        <TextInput style={{fontSize: 20, fontFamily: 'Sora-ExtraLight'}} 
+          testID="INPUT_AMOUNT_FIAT"
+          placeholder={`${t("form.amount.placeholder")} ${fiatUnit}`}
+          keyboardType="numeric"
+          returnKeyType="done"
+          onChangeText={onChangeFiatInput}
+          value={dollarValue}
+        />
+        <Text style={{marginTop: 10, fontSize: 26, fontFamily: 'Sora-Regular'}}>{t("form.feeRate.title")}</Text>
+        <View style={{marginTop: 26, flexDirection: 'row'}}>
+          <TextInput
+            keyboardType="numeric"
+            returnKeyType="done"
+            value={`${feeRate || ""}`}
+            placeholder="Type here the fee rate"
+            onChangeText={(text) => {
+              let value = Math.min(Number.parseInt(text || "0"), 1000);
+              if (Number.isNaN(value)) {
+                value = 0
+              }
+              setFeeRate(value);
+              slider.current?.setNativeProps({ value })
+            }}
+            style={style.feeRateTextInput}>
+          </TextInput>
+          {feeRate !== 0 && <Text style={{fontFamily: 'Sora-Regular'}}> sat/vB</Text>}
+          {feeRate === 0 && <Text style={{fontFamily: 'Sora-Regular'}}> {t("form.feeRate.auto")}</Text>}
+        </View>
+      </SafeAreaView>
+      </ScrollView>
+      <TouchableOpacity onPress={onWithdrawClick} style={{height: 50, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', borderRadius: 5}}>
+          {!sending && <Text style={{color: 'black'}}>{t("form.withdraw.title")}</Text>}
+          {sending && <Spinner color={kubbentTheme.light} />}
+      </TouchableOpacity>
     </Container>
   );
 };
@@ -223,7 +280,7 @@ export default ({ navigation }: IOpenChannelProps) => {
 const style = StyleSheet.create({
   feeRateTextInput: {
     height: 21,
-    fontFamily: kubbentTheme.fontRegular,
+    fontFamily: 'Sora-ExtraLight',
     fontSize: 15,
     padding: 0,
     color: 'white',

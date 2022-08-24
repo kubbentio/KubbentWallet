@@ -13,7 +13,7 @@ import { kubbentTheme } from "../../native-base-theme/variables/commonColor";
 import useBalance from "../../hooks/useBalance";
 import { MATH_PAD_NATIVE_ID, MAX_SAT_INVOICE, PLATFORM } from "../../utils/constants";
 import { toast } from "../../utils";
-import { Keyboard, TouchableOpacity } from "react-native";
+import { Keyboard, TouchableOpacity, View } from "react-native";
 import Container from "../../components/Container";
 import { IFiatRates } from "../../state/Fiat";
 import Input from "../../components/Input";
@@ -21,7 +21,7 @@ import Input from "../../components/Input";
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TextInput } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 
 const MATH_PAD_HEIGHT = 44;
 
@@ -292,15 +292,19 @@ export default function ReceiveSetup({ navigation }: IReceiveSetupProps) {
       <Container style={{width: '90%', marginTop: 32, marginBottom: 32}}>
         {/* <Text style={{flex: 1, textAlign: 'center', fontSize: 32, fontFamily: 'Sora-Regular'}}>{t("layout.title")}</Text> */}
         {/* <Text style={{flex: 1, fontSize: 22, fontFamily: 'Sora-ExtraLight'}}>{t("layout.subtitle")}</Text> */}
-        <SafeAreaView style={{flex: 2}}>
-          <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountBitcoin.title")} in ${bitcoinUnit.nice}`}</Text>
-          <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeBitcoinInput} placeholder="0" value={bitcoinValue !== undefined ? bitcoinValue.toString() : undefined}/>
-          <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountFiat.title")} in ${fiatUnit}`}</Text>
-          <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeFiatInput} placeholder="0" value={dollarValue !== undefined ? dollarValue.toString() : undefined}/>
-          <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.description.title")}`}</Text>
-          <TextInput onChangeText={setDescription} onFocus={() => setMathPadVisible(false)} value={description} placeholder={t("form.description.placeholder")} style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}}/>
-        </SafeAreaView>
-        <TouchableOpacity disabled={!canSend} onPress={onCreateInvoiceClick} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
+       <ScrollView>
+        <View style={{height: '100%', alignContent: 'space-between', alignItems: 'stretch', justifyContent: 'space-between'}}>
+            <SafeAreaView>
+              <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountBitcoin.title")} in ${bitcoinUnit.nice}`}</Text>
+              <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeBitcoinInput} placeholder="0" value={bitcoinValue !== undefined ? bitcoinValue.toString() : undefined}/>
+              <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.amountFiat.title")} in ${fiatUnit}`}</Text>
+              <TextInput style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}} keyboardType="numeric" onChangeText={onChangeFiatInput} placeholder="0" value={dollarValue !== undefined ? dollarValue.toString() : undefined}/>
+              <Text style={{fontFamily: 'Sora-Regular', fontSize: 26}}>{`${t("form.description.title")}`}</Text>
+              <TextInput onChangeText={setDescription} onFocus={() => setMathPadVisible(false)} value={description} placeholder={t("form.description.placeholder")} style={{fontFamily: 'Sora-ExtraLight', fontSize: 20}}/>
+            </SafeAreaView>
+        </View>
+       </ScrollView>
+       <TouchableOpacity disabled={!canSend} onPress={onCreateInvoiceClick} style={{height: 50, justifyContent: 'center', alignItems: 'center', marginTop: 32, backgroundColor: 'white', borderRadius: 5}}>
           {loading
             ? <Spinner color={'black'} />
             : <Text style={{fontFamily: 'Sora-ExtraLight', color: 'black'}}>{t("createInvoice.title")}</Text>
