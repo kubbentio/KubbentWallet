@@ -50,7 +50,8 @@ export default function App() {
         <StyleProvider style={getTheme(theme)}>
           <NavigationContainer theme={navigatorTheme} documentTitle={{ enabled: false }} ref={navigator}>
             <Root>
-              {debug ? <DEV_Commands continueCallback={() => setDebug(false)} /> : <Main />}
+              <Main/>
+              {/* {debug ? <DEV_Commands continueCallback={() => setDebug(false)} /> : <Main />} */}
             </Root>
           </NavigationContainer>
         </StyleProvider>
