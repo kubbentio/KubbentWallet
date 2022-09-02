@@ -9,6 +9,9 @@ powered by lnd and Neutrino SPV.
 
 - [ ] Percentage and fee calculation
 
+# THIS IS A FORK OF THE BLIXT WALLET
+https://github.com/hsjoberg/blixt-wallet
+
 ### Android
 
 - Install [Node](https://nodejs.org), [Yarn](https://classic.yarnpkg.com) and [Android Studio + Android SDK (including NDK)](https://developer.android.com/studio/)
@@ -22,9 +25,6 @@ powered by lnd and Neutrino SPV.
 To start the application:
 - Run: `yarn start-metro`
 - Run: `yarn android:mainnet-debug` or `yarn android:testnet-debug`
-
-# THIS IS A FORK OF THE BLIXT WALLET
-https://github.com/hsjoberg/blixt-wallet
 
 ## License
 
