@@ -1,6 +1,6 @@
 # Kubbent Lightning Wallet
 
-<a href="https://play.google.com/apps/testing/com.kubbent"><img alt="Get it on Google Play" height="52" src="https://kubbent.github.io/assets/images/google-play-badge-2.png" /></a>&nbsp;
+<a href="https://play.google.com/apps/testing/com.kubbent">Download from PlaySore</a>&nbsp;
 
 Kubbent Wallet is an open source Lightning Bitcoin Wallet for Android with focus on usability and user experience,
 powered by lnd and Neutrino SPV.
