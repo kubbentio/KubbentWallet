@@ -9,7 +9,7 @@ powered by lnd and Neutrino SPV.
 
 - [ ] Percentage and fee calculation
 
-# THIS IS A FORK OF THE BLIXT WALLET
+# THIS CONTAINS A LOT OF BLIXT WALLET CODE
 https://github.com/hsjoberg/blixt-wallet
 
 ### Android
