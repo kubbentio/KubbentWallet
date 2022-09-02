@@ -22,6 +22,8 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+android/
+*.pem
 # Android/IntelliJ
 #
 build/
