@@ -1,4 +1,4 @@
-package com.kubbentwallet;
+package com.kubbent;
 
 import android.util.Log;
 import android.content.ComponentName;

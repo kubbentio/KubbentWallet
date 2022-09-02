@@ -18,7 +18,7 @@ import { Alert } from "../../utils/alert";
 import { useTranslation } from "react-i18next";
 import { namespaces } from "../../i18n/i18n.constants";
 
-const INITIAL_URL = "https://kubbentwallet.github.io/webln";
+const INITIAL_URL = "https://kubbent.github.io/webln";
 
 interface IBrowserProps {
   navigation: StackNavigationProp<RootStackParamList, "WebLNBrowser">;

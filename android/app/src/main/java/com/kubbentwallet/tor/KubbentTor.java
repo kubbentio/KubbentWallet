@@ -1,4 +1,4 @@
-package com.kubbentwallet.tor;
+package com.kubbent.tor;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;

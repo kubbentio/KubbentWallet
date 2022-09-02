@@ -1,7 +1,7 @@
 # Kubbent Lightning Wallet
 
-<a href="https://play.google.com/apps/testing/com.kubbentwallet"><img alt="Get it on Google Play" height="52" src="https://kubbentwallet.github.io/assets/images/google-play-badge-2.png" /></a>&nbsp;
-<a href="https://testflight.apple.com/join/EXvGhRzS"><img alt="Download on the App Store" height="52" src="https://kubbentwallet.github.io/assets/images/appstore-badge.svg" /></a>&nbsp;
+<a href="https://play.google.com/apps/testing/com.kubbent"><img alt="Get it on Google Play" height="52" src="https://kubbent.github.io/assets/images/google-play-badge-2.png" /></a>&nbsp;
+<a href="https://testflight.apple.com/join/EXvGhRzS"><img alt="Download on the App Store" height="52" src="https://kubbent.github.io/assets/images/appstore-badge.svg" /></a>&nbsp;
 <a href="https://t.me/KubbentWallet"><img height="52" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" /></a>
 
 Kubbent Wallet is an open source Lightning Bitcoin Wallet for Android with focus on usability and user experience,

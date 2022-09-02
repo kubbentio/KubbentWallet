@@ -781,7 +781,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kubbentwallet.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kubbent.debug;
 				PRODUCT_NAME = "Kubbent Wallet Debug";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LndMobile/KubbentWallet-Bridging-Header.h";
@@ -823,7 +823,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kubbentwallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kubbent;
 				PRODUCT_NAME = "Kubbent Wallet";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LndMobile/KubbentWallet-Bridging-Header.h";
@@ -1056,7 +1056,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kubbentwallet.testnet.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kubbent.testnet.debug;
 				PRODUCT_NAME = "Kubbent Wallet Testnet Debug";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LndMobile/KubbentWallet-Bridging-Header.h";
@@ -1186,7 +1186,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kubbentwallet.testnet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kubbent.testnet;
 				PRODUCT_NAME = "Kubbent Wallet Testnet";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LndMobile/KubbentWallet-Bridging-Header.h";
@@ -1318,7 +1318,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kubbentwallet.regtest.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kubbent.regtest.debug;
 				PRODUCT_NAME = "Kubbent Wallet Regtest Debug";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LndMobile/KubbentWallet-Bridging-Header.h";
@@ -1448,7 +1448,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kubbentwallet.regtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kubbent.regtest;
 				PRODUCT_NAME = "Kubbent Wallet Regtest";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LndMobile/KubbentWallet-Bridging-Header.h";
@@ -1580,7 +1580,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kubbentwallet.mainnet.fakelnd.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kubbent.mainnet.fakelnd.debug;
 				PRODUCT_NAME = "Kubbent Wallet Fakelnd Debug";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LndMobile/KubbentWallet-Bridging-Header.h";
@@ -1710,7 +1710,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kubbentwallet.mainnet.fakelnd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kubbent.mainnet.fakelnd;
 				PRODUCT_NAME = "Kubbent Wallet Fakelnd";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LndMobile/KubbentWallet-Bridging-Header.h";

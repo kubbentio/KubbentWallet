@@ -1,4 +1,4 @@
-package com.kubbentwallet.tor;
+package com.kubbent.tor;
 
 import android.content.Context;
 

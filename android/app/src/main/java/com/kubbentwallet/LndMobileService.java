@@ -1,4 +1,4 @@
-package com.kubbentwallet;
+package com.kubbent;
 
 import android.app.ActivityManager;
 import android.app.Service;

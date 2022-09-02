@@ -1,7 +1,7 @@
-package com.kubbentwallet;
+package com.kubbent;
 
-import com.kubbentwallet.tor.KubbentTor;
-import com.kubbentwallet.tor.KubbentTorUtils;
+import com.kubbent.tor.KubbentTor;
+import com.kubbent.tor.KubbentTorUtils;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;

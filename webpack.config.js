@@ -86,7 +86,7 @@ module.exports = {
       DEBUG: JSON.stringify(process.env.NODE_ENV !== "production"),
       VERSION_CODE: JSON.stringify(1),
       BUILD_TYPE: JSON.stringify(process.env.NODE_ENV === "production" ? "release" : "debug"),
-      APPLICATION_ID: JSON.stringify("com.kubbentwallet.webdemo"),
+      APPLICATION_ID: JSON.stringify("com.kubbent.webdemo"),
       VERSION_NAME: JSON.stringify("webdemo"),
       CHAIN: JSON.stringify("mainnet"),
       __DEV__: JSON.stringify(process.env.NODE_ENV !== "production"),

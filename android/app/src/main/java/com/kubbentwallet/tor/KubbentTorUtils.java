@@ -1,6 +1,6 @@
-package com.kubbentwallet.tor;
+package com.kubbent.tor;
 
-import com.kubbentwallet.BuildConfig;
+import com.kubbent.BuildConfig;
 
 public class KubbentTorUtils {
   public static int getSocksPort() {

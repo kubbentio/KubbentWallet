@@ -2,7 +2,7 @@ version: 2
 jobs:
   build_aar:
     docker:
-      - image: kubbentwallet/kubbentwallet:latest
+      - image: kubbent/kubbent:latest
     steps:
       - run: go get golang.org/x/tools/go/packages
       - run: go get golang.org/x/tools/cmd/goimports
@@ -21,7 +21,7 @@ jobs:
             - mobile/build/android/Lndmobile.aar
   build_kubbent:
     docker:
-      - image: kubbentwallet/kubbentwallet:latest
+      - image: kubbent/kubbent:latest
     steps:
       - attach_workspace:
           at: /go/src/github.com/lightningnetwork/lnd

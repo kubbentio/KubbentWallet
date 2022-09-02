@@ -1,4 +1,4 @@
-package com.kubbentwallet;
+package com.kubbent;
 
 import com.facebook.react.ReactActivity;
 

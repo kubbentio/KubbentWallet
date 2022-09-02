@@ -1,4 +1,4 @@
-package com.kubbentwallet;
+package com.kubbent;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;

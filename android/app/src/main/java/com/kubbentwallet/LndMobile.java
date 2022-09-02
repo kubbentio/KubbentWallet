@@ -1,6 +1,6 @@
-package com.kubbentwallet;
+package com.kubbent;
 
-import com.kubbentwallet.tor.KubbentTorUtils;
+import com.kubbent.tor.KubbentTorUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
