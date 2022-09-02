@@ -22,9 +22,10 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
-android/
+android/app
 *.pem
 *.jar
+*.keystore
 *.der
 # Android/IntelliJ
 #
